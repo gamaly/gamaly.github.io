@@ -6,18 +6,18 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
     <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-      
     </style>
     <title>Greg Maly Portfolio</title>
 
 </head>
 
 <body>
-    <div class="sticky-top text-center mb-4 bg-white border bottom">
+    <div id="headerbar" class="sticky-top text-center mb-4 bg-white border bottom">
         <h1 class="display-4">Greg Maly</h1>
         <h3 class="font-weight-light text-secondary pb-4">Active Data Science and Web Development Portfolio</h2>
     </div>
@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="row mb-4">
-            <div class="col-sm">
+            <div class="col-sm mb-4">
                 <div class="card" style="border-width:thick">
                     <div class="card-header h5" style="text-align: center">R Shiny Dashboarding</div>
                     <img class="card-img-top border-bottom" style="height: 200px" src="images/cs3.PNG" alt="Card image cap">
@@ -101,6 +101,34 @@
 
     </div>
     </div>
+    <script>
+        //Fade header on scroll down
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    $("#headerbar").css("opacity", 1 - $(window).scrollTop() / $('#headerbar').height());
+                });
+            });
+
+        }
+
+        // Add smooth scrolling to all links for navbars
+        $(document).ready(function () {
+
+            $("a").on('click', function (event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function () {
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
