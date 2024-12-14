@@ -1,324 +1,188 @@
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    color: #f8f9fa; /* Light text color */
+    background-color: #121212; /* Dark background color */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .navbar {
+    background-color: #222; /* Darker navbar background for better contrast */
+    border-bottom: 1px solid #444;
+  }
+  .navbar-brand, .nav-link, .navbar-text {
+    color: #f8f9fa; /* Light text color for navbar */
+    font-size: 1.1rem; /* Slightly larger font size for readability */
+    padding: 0.5rem 1rem; /* Increased padding for better spacing */
+  }
+  .navbar-brand:hover, .nav-link:hover {
+    color: #ddd; /* Slightly lighter on hover */
+  }
+  .jumbotron, .bgimg-1, .bgimg-2 {
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+  }
+  .jumbotron, .bgimg-1, .bgimg-2 {
+    background-color: #333; /* Dark background for sections */
+  }
+  .caption {
+    text-align: center;
+    color: #f8f9fa; /* Light text color */
+    padding: 20px;
+  }
+  .card {
+    background-color: #444; /* Dark card background */
+    color: #f8f9fa; /* Light text color */
+  }
+  .card-header {
+    background-color: #555; /* Darker card header */
+    color: #f8f9fa; /* Light text color */
+  }
+  .card-footer {
+    background-color: #555; /* Darker card footer */
+    color: #eee; /* Even lighter text color for better contrast */
+  }
+  a {
+    color: #f8f9fa; /* Light link color */
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: #ddd; /* Slightly lighter on hover */
+  }
+  footer {
+    background-color: #333; /* Dark footer background */
+    padding: 10px 0;
+    color: #f8f9fa; /* Light text color */
+    margin-top: auto;
+  }
+  .social-links a {
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+  }
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
+  .social-links a img {
+    display: block;
+  }
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  .social-links a {
+    margin-right: 15px; /* Adjust spacing between icons */
+  }
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  .social-links a:last-child {
+    margin-right: 0; /* Remove margin from the last icon */
+  }
+</style>
 </head>
 
-<style>
-  .bgimg-1,
-  .bgimg-2,
-  .bgimg-3 {
-    position: relative;
-    opacity: 0.65;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-  }
-
-  .bgimg-1 {
-    background-image: url("personalprojects.jpg");
-    min-height: 200px;
-  }
-
-  .bgimg-2 {
-    background-image: url("resumebackground.jpg");
-    min-height: 200px;
-  }
-
-  .caption {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    text-align: center;
-    color: #000;
-  }
-
-  .caption span.border {
-    background-color: #111;
-    color: #fff;
-    padding: 18px;
-    font-size: 25px;
-    letter-spacing: 10px;
-  }
-
-  .lead {
-    background-color: white;
-    color: black;
-    opacity: .90;
-    padding: 18px;
-    float: center;
-    margin:0 auto;
-
-  }
-
-  #about {
-    min-height: 100%;
-    vertical-align: middle;
-
-  }
-
-  .vertical-center {
-    min-height: 100%;
-    /* Fallback for browsers do NOT support vh unit */
-    min-height: 100vh;
-    /* These two lines are counted as one :-)       */
-
-    display: flex;
-    align-items: center;
-  }
-
-  #abouttext {
-    vertical-align: middle;
-  }
-
-  .jumbotron {
-
-    background-image: url("gregbgphoto.JPG");
-    opacity: 0.65;
-    background-size: cover;
-  }
-  
- a:link {
-  text-decoration: none;
-  color: black;
-}
-
-a:visited {
-  text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-a:active {
-  text-decoration: none;
-}
-  
-</style>
-
-<header>
-  <nav class="navbar fixed-top navbar-expand-lg  navbar-light"
-    style="background-color:white;border-bottom:1px solid #adadad;">
-    <a class=" navbar-brand" href="#">Gregory Maly</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link click" href="#about" id="aboutlink">About <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link click projectslink" href="#projects">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="resumelink" href="#resume">Resume</a>
-        </li>
-      </ul>
-      <span class="navbar-text">
-        Data Science, Technology for Good, Arts, Education
-      </span>
-    </div>
-  </nav>
-  </div>
-</header>
-
-
 <body>
-  <a name="about"></a>
-  <div class="jumbotron vertical-center" id="about">
-    <div class="row container lead center">
-      <h1 class="display-4">About</h1>
-      <p>Hello there! My name is Greg Maly. I lead a team of data scientists, web developers, and
-        multimedia designers at <a href="https://www.exchange.design">Exchange.Design</a>. <a
-          href="https://www.dai.com/our-work/solutions/digital-acceleration">We</a> build tools and analyze data for
-        international development programs around the world. In my spare time I go on adventures with my growing
-        family, produce and perform music around DC, and do pro-bono <a href="#projects" class="projectslink">technical
-          and analytical work </a> for causes I
-        believe in. I also hooked up a raspberry pie to my garden sprinkler system. I spend a bit of time worrying about the impact of algorithms and machine learning on society, antimicrobial resistance (AMR),
-        and climate change.</p>
-    </div>
-  </div>
-
-  <a name="projects"></a>
-
-  <div class="bgimg-1">
-    <div class="caption">
-      <span class="border">Projects</span>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="card text-center m-4">
-      <div class="card-header card-title h5" style="background-color: grey; color: white">PHR Management and Analytics</div>
-
-      <img class="card-img-top" src="CBCtracker.PNG" alt="Card image cap">
-
-      <div class="card-body">
-        <p class="card-text">In 2018, a close family member was diagnosed with a rare blood disease called Severe
-          Aplastic Anemia. To help us track routine Combined Blood Cell (CBC) tests and medications, I built a Personal
-          Health Records (PHR) management system. The tool combines a simple to use data management back end with a
-          series of charts and graphs. Most interestingly (I think), the system runs a set of linear regression models
-          to check for correlations between variables and make predictions on white blood cell counts.</p>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <a class="navbar-brand" href="#">Gregory Maly</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <!-- Removed navigation links -->
+        </ul>
       </div>
-      <div class="card-footer text-muted">
-        Tools: R/Shiny, HTML, CSS, JavaScript
+    </nav>
+  </header>
+
+  <main>
+    <section id="projects" class="bgimg-1 my-5">
+      <div class="caption">
+        <h2>Projects</h2>
+      </div>
+    </section>
+
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-md-6 mb-4 d-flex">
+          <div class="card">
+            <img class="card-img-top" src="images/EthicalAI.png" alt="Ethical AI Project">
+            <div class="card-body">
+              <h5 class="card-title">Ethical AI Storymap</h5>
+              <p class="card-text">Description of the new project. You can provide a brief overview of what the project is about and its significance.</p>
+              <a href="https://storymaps.arcgis.com/stories/06e304e31e0b47d9a1a52c64feaf4442" target="_blank" class="btn btn-primary">View Project</a>
+            </div>
+            <div class="card-footer text-muted">Tools: QGIS, ArcGIS Online</div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4 d-flex">
+          <div class="card">
+            <img class="card-img-top" src="images/conflicteventsbuilder.png" alt="AI-Powered Conflict Dataset Builder">
+            <div class="card-body">
+              <h5 class="card-title">AI-Powered Conflict Dataset Builder</h5>
+              <p class="card-text">This project serves as a proof of concept for using machine learning to build a structured dataset out of unstructured news articles. It demonstrates the potential of AI in transforming unstructured data into valuable insights.</p>
+              <a href="https://events.evidencebase.ai/" target="_blank" class="btn btn-primary">View Project</a>
+            </div>
+            <div class="card-footer text-muted">Tools: Python, Streamlit, Langchain</div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4 d-flex">
+          <div class="card">
+            <img class="card-img-top" src="CBCtracker.PNG" alt="PHR Management and Analytics">
+            <div class="card-body">
+              <h5 class="card-title">PHR Management and Analytics</h5>
+              <p class="card-text">In 2018, a close family member was diagnosed with a rare blood disease called Severe Aplastic Anemia. To help us track routine Combined Blood Cell (CBC) tests and medications, I built a Personal Health Records (PHR) management system.</p>
+            </div>
+            <div class="card-footer text-muted">Tools: R/Shiny, HTML, CSS, JavaScript</div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4 d-flex">
+          <div class="card">
+            <img class="card-img-top" src="WaterTracker.PNG" alt="Spa Creek Water Testing">
+            <div class="card-body">
+              <h5 class="card-title">Spa Creek Water Testing</h5>
+              <p class="card-text">Spa Creek Conservancy in Annapolis, MD conducts weekly water tests in over a dozen sites in Spa Creek and Back Creek. This platform provides a weekly update on results.</p>
+            </div>
+            <div class="card-footer text-muted">Tools: R/Shiny, HTML, CSS, JavaScript</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="card text-center m-4">
-      <div class="card-header card-title h5" style="background-color: grey; color: white">Spa Creek Water Testing</div>
-      <img class="card-img-top" src="WaterTracker.PNG" alt="Card image cap">
+  </main>
 
-      <div class="card-body">
-        <p class="card-text">Spa Creek Conservancy in Annapolis, MD conducts weekly water tests in over a dozen sites in
-          Spa Creek and Back Creek. This platform provides a weekly update on results, keeps a running analysis of the
-          correlation between total rainfall and test results, and shows the distribution of scores by testing site</p>
-      </div>
-      <div class="card-footer text-muted">
-        Tools: R/Shiny, HTML, CSS, JavaScript
+  <footer class="text-center">
+    <div class="container">
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/gregmaly/" class="fab fa-linkedin" target="_blank" style="font-size: 24px; margin-right: 15px;"></a>
+        <a href="https://bsky.app/profile/gmaly.bsky.social" target="_blank" style="display: inline-block; width: 24px; height: 24px; margin-right: 15px;">
+          <img src="icons/bluesky-brands-solid.svg" alt="Bluesky" style="width: 100%; height: 100%;">
+        </a>
       </div>
     </div>
+  </footer>
 
-  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script>
+    function scrollToAnchor(aid) {
+      var aTag = $("a[name='" + aid + "']");
+      $('html,body').animate({ scrollTop: aTag.offset().top }, 'slow');
+    }
 
+    $("#aboutlink").click(function () {
+      scrollToAnchor('about');
+    });
 
-  <a name="resume"></a>
+    $(".projectslink").click(function () {
+      scrollToAnchor('projects');
+    });
 
-  <div class="bgimg-2">
-    <div class="caption">
-      <span class="border">Resume</span>
-    </div>
-  </div>
+    $("#resumelink").click(function () {
+      scrollToAnchor('resume');
+    });
+  </script>
 </body>
-
-<div class="container">
-  <p class="text-center mt-2"><a href="https://www.linkedin.com/in/gregmaly/" target="_blank">LinkedIn Profile</a></p>
-  <h2>Education</h2>
-  <hr>
-  <h6>Master of Arts, International Studies, University of Denver, 2013</h6>
-  <h6>Bachelors of Arts, Policy, Ethics, & Conflict, St. Mary’s College of Maryland, 2005</h6>
-
-
-  <h2 class="mt-4">Work Experience</h2>
-
-  <hr>
-  <h4>2017 - 2022</h4>
-  <h6>Director, Digital Products, Center for Digital Acceleration, DAI</h6>
-  <ul>
-    <li>Lead team of software developers, data scientists, and “maker lab” style hardware developers to create
-      innovative, data driven products for the company to support global health, agriculture, energy, governance, and
-      conflict analysis programs around the world.</li>
-    <li>Develop data analysis products in R, Python, and QGIS, and widely used web applications in the
-      Python/Django framework.
-    <li>Build eLearning courses to support ongoing training and use of internally developed data products.</li>
-    <li>Develop budgets, oversee staff growth, write project proposals, and provide strategic direction on data
-      analytics and product development.</li>
-  </ul>
-
-  <h4>2013 - 2017</h4>
-  <h6>Conflict Data Analyst & Training Specialist, Bureau of Conflict and Stabilization Operations, US Department of
-    State (MicroSystems Automation Group Support Contractor)</h6>
-  <ul>
-    <li>Co-Lead the bureau’s Office of Advanced Analytics. Introduced mapping and data visualization technologies to the
-      bureau. Lead bureau-wide GIS use from database structure to cartographic design. Lead conflict analysis efforts in
-      Central America and the Middle East.</li>
-    <li>Manage research projects and large databases in RStudio and SQL. Developed multiple web applications in R/Shiny,
-      and dashboards using the GoogleCharts Javascript API and D3.js. Leverage cloud based and local servers to host
-      webGIS tools.</li>
-    <li>Regularly briefed Ambassadors and Senior Executive Staff on research findings.</li>
-  </ul>
-
-  <h4>2012 - 2017 (Intermittent)</h4>
-  <h6>Course Facilitator, Institute for Technology and Social Change (TechChange)</h6>
-  <ul>
-    <li>Trained mid-career practitioners on the use of emerging technologies for humanitarian assistance & disaster
-      response, global health analysis, and peacebuilding challenges using eLearning platforms.</li>
-    <li>Lead instructor: Mapping for Social Good. Course included series of in-depth modules on open source GIS,
-      including the use of QGIS and Leaflet.js, and implementation of spatial analysis methods.</li>
-    <li>Lead Instructor: Technology for Disaster Response and Humanitarian Assistance.</li>
-  </ul>
-
-  <h4>2011 - 2013</h4>
-  <h6>Graduate Researcher, Global Health Affairs Program, University of Denver</h6>
-  <ul>
-    <li>Built a geodatabase to connect health workers to patients in low income neighborhoods in New Delhi, India.
-      Trained a team of local software developers on spatial data collection and analysis, and a team of health workers
-      on how to manage the growing dataset.</li>
-    <li>Supported research efforts of the program, including literature reviews, focus groups, and University-wide
-      convenings.</li>
-  </ul>
-
-  <h4>2010 - 2012</h4>
-  <h6>Graduate Researcher, Frederick S. Pardee Center for International Futures, University of Denver</h6>
-  <ul>
-    <li>Researched drivers of traffic accident mortality rates in sub-Saharan Africa, examining historical trends in
-      vehicle ownership and infrastructure development. Wrote policy recommendations based on historical analysis,
-      suggesting potential intervention points.</li>
-  </ul>
-
-  <h4>2005 - 2010</h4>
-  <h6>Program Specialist, Academy for Conflict Management and Peacebuilding, US Institute of Peace</h6>
-  <ul>
-    <li>Developed USIP’s first distance learning web portal and multimedia library in Moodle, HTML and CSS. Recorded
-      interviews with over 100 subject matter experts on video, and hosted content for web distribution. </li>
-    <li>Led an interagency research team to survey and analyze over 450 conflict management and peacebuilding
-      educational programs around the globe. Coordinated the development of Measuring Progress in Conflict Environments
-      (MPICE), a published methodology to systematically connect conflict analysis to program monitoring and evaluation.
-    </li>
-  </ul>
-
-</div>
-
-
-<footer class="footer fixed-bottom pb-4">
-  <div class="row mt-4 float-right">
-    <a href="https://www.dai-global-digital.com" class="fa fa-blog fa-lg col-1" target="_blank"></a>
-    <a href="https://www.linkedin.com/in/gregmaly/" class="fab fa-linkedin fa-lg col-1" target="_blank"></a>
-    <a href="https://twitter.com/Greg_Maly" class="fab fa-twitter fa-lg col-1" target="_blank"></a>
-  </div>
-</footer>
-
-<script>
-  function scrollToAnchor(aid) {
-    var aTag = $("a[name='" + aid + "']");
-    $('html,body').animate({ scrollTop: aTag.offset().top }, 'slow');
-  }
-
-  $("#aboutlink").click(function () {
-    scrollToAnchor('about');
-  });
-
-  $(".projectslink").click(function () {
-    scrollToAnchor('projects');
-  });
-
-  $("#resumelink").click(function () {
-    scrollToAnchor('resume');
-  });
-
-</script>
