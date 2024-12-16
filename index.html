@@ -4,83 +4,87 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <style>
-  body {
-    font-family: Arial, sans-serif;
-    color: #f8f9fa; /* Light text color */
-    background-color: #121212; /* Dark background color */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  .navbar {
-    background-color: #222; /* Darker navbar background for better contrast */
-    border-bottom: 1px solid #444;
-  }
-  .navbar-brand, .nav-link, .navbar-text {
-    color: #f8f9fa; /* Light text color for navbar */
-    font-size: 1.1rem; /* Slightly larger font size for readability */
-    padding: 0.5rem 1rem; /* Increased padding for better spacing */
-  }
-  .navbar-brand:hover, .nav-link:hover {
-    color: #ddd; /* Slightly lighter on hover */
-  }
-  .jumbotron, .bgimg-1, .bgimg-2 {
-    background-size: cover;
-    background-position: center;
-    opacity: 0.8;
-  }
-  .jumbotron, .bgimg-1, .bgimg-2 {
-    background-color: #333; /* Dark background for sections */
-  }
-  .caption {
-    text-align: center;
-    color: #f8f9fa; /* Light text color */
-    padding: 20px;
-  }
-  .card {
-    background-color: #444; /* Dark card background */
-    color: #f8f9fa; /* Light text color */
-  }
-  .card-header {
-    background-color: #555; /* Darker card header */
-    color: #f8f9fa; /* Light text color */
-  }
-  .card-footer {
-    background-color: #555; /* Darker card footer */
-    color: #eee; /* Even lighter text color for better contrast */
-  }
-  a {
-    color: #f8f9fa; /* Light link color */
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-    color: #ddd; /* Slightly lighter on hover */
-  }
-  footer {
-    background-color: #333; /* Dark footer background */
-    padding: 10px 0;
-    color: #f8f9fa; /* Light text color */
-    margin-top: auto;
-  }
-  .social-links a {
-    display: inline-block;
-    vertical-align: middle;
-    text-decoration: none;
-  }
-
-  .social-links a img {
-    display: block;
-  }
-
-  .social-links a {
-    margin-right: 15px; /* Adjust spacing between icons */
-  }
-
-  .social-links a:last-child {
-    margin-right: 0; /* Remove margin from the last icon */
-  }
-</style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .navbar {
+      background-color: #007bff;
+      border-bottom: 1px solid #0056b3;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .navbar-brand, .nav-link, .navbar-text {
+      color: #ffffff;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+    }
+    .navbar-brand:hover, .nav-link:hover {
+      color: #ff7f50;
+    }
+    .jumbotron, .bgimg-1, .bgimg-2 {
+      background-size: cover;
+      background-position: center;
+      opacity: 0.8;
+    }
+    .caption {
+      text-align: center;
+      color: #f8f9fa;
+      padding: 20px;
+    }
+    .card {
+      background-color: #ffffff;
+      color: #333;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .card-header, .card-footer {
+      background-color: #f7f9fc;
+      color: #555;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: #ff7f50;
+    }
+    footer {
+      background-color: #f7f9fc;
+      padding: 10px 0;
+      color: #333;
+      margin-top: auto;
+    }
+    .social-links a {
+      display: inline-block;
+      vertical-align: middle;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: #ddd;
+    }
+    .social-links a img {
+      display: block;
+    }
+    .social-links a {
+      margin-right: 15px;
+    }
+    .social-links a:last-child {
+      margin-right: 0;
+    }
+    main {
+      margin-top: 80px;
+    }
+  </style>
 </head>
 
 <body>
@@ -99,9 +103,25 @@
   </header>
 
   <main>
-    <section id="projects" class="bgimg-1 my-5">
-      <div class="caption">
-        <h2>Projects</h2>
+    <section id="bio" class="my-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>About Me</h2>
+            <p>Hello! I'm Gregory Maly, and I focus on integrating data science into efforts to address social and environmental challenges. I specialize in building practical, technology-based solutions that turn complex data into actionable insights.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="my-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Sample Projects</h2>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -112,7 +132,7 @@
             <img class="card-img-top" src="images/EthicalAI.png" alt="Ethical AI Project">
             <div class="card-body">
               <h5 class="card-title">Ethical AI Storymap</h5>
-              <p class="card-text">USAID, a leader in global development, is pioneering the integration of Artificial Intelligence (AI) into its expansive mission.</p>
+              <p class="card-text">This Esri StoryMap, built for the USAID Digital Frontiers program, is designed to visualize and convey USAID's efforts to integrate Artificial Intelligence into its global development work</p>
               <a href="https://storymaps.arcgis.com/stories/06e304e31e0b47d9a1a52c64feaf4442" target="_blank" class="btn btn-primary">View Project</a>
             </div>
             <div class="card-footer text-muted">Tools: QGIS, ArcGIS Online</div>
@@ -123,7 +143,7 @@
             <img class="card-img-top" src="images/conflicteventsbuilder.png" alt="AI-Powered Conflict Dataset Builder">
             <div class="card-body">
               <h5 class="card-title">AI-Powered Conflict Dataset Builder</h5>
-              <p class="card-text">This project serves as a proof of concept for using machine learning to build a structured dataset out of unstructured news articles. It demonstrates the potential of AI in transforming unstructured data into valuable insights.</p>
+              <p class="card-text">This project is a proof of concept showcasing the use of machine learning to create structured datasets from unstructured news articles. It highlights how AI can extract meaningful insights from raw text, paving the way for more up-to-date information and smarter data-driven decision-making.</p>
               <a href="https://events.evidencebase.ai/" target="_blank" class="btn btn-primary">View Project</a>
             </div>
             <div class="card-footer text-muted">Tools: Python, Streamlit, Langchain</div>
@@ -147,6 +167,27 @@
               <p class="card-text">Spa Creek Conservancy in Annapolis, MD conducts weekly water tests in over a dozen sites in Spa Creek and Back Creek. This platform provides a weekly update on results.</p>
             </div>
             <div class="card-footer text-muted">Tools: R/Shiny, HTML, CSS, JavaScript</div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4 d-flex">
+          <div class="card">
+            <img class="card-img-top" src="images/DPGExplorr.png" alt="DPG Explorer">
+            <div class="card-body">
+              <h5 class="card-title">DPG Explorer</h5>
+              <p class="card-text">The DPG Explorer is a platform built to showcase open-source technologies addressing global challenges, powered by data from the DPG Registry API. I developed it to help users discover, evaluate, and engage with digital public goods aligned with the UN’s Sustainable Development Goals.</p>
+              <a href="https://app.powerbi.com/view?r=eyJrIjoiOGNhMDE0MzMtNzBmMi00ZDAxLWEzODItMjQ4ZWIwNmY5YTM0IiwidCI6IjczNjIwMmZmLWY0MDctNDhiYS04NGE1LTMzYWRhNTE1MzI1NyIsImMiOjJ9" target="_blank" class="btn btn-primary">View Project</a>
+            </div>
+            <div class="card-footer text-muted">Tools: PowerBI, Python</div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4 d-flex">
+          <div class="card">
+            <img class="card-img-top" src="images/Evidencebase.png" alt="EvidenceBase.ai">
+            <div class="card-body">
+              <h5 class="card-title">EvidenceBase.ai</h5>
+              <p class="card-text">EvidenceBase.ai is an LLM-powered internal knowledge base designed to help businesses unlock the value of their internal content. It combines advanced natural language processing techniques, including named entity recognition, text classification, and generative AI, to enable intuitive querying and retrieval of key information. This tool transforms how organizations access and leverage their knowledge, making insights more actionable and accessible.</p>
+            </div>
+            <div class="card-footer text-muted">Tools: Python, Streamlit, Spacy, Postgres/PGVector</div>
           </div>
         </div>
       </div>

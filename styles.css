@@ -1,0 +1,126 @@
+.sidebar {
+    position: fixed;
+    top: 56px;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 1rem 0;
+    background-color: #f7f9fc;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 56px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  .sidebar-heading {
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  .bio-text {
+    padding: 1rem;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .navbar {
+    background-color: #007bff;
+    border-bottom: 1px solid #0056b3;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand, .nav-link, .navbar-text {
+    color: #ffffff;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .navbar-brand:hover, .nav-link:hover {
+    color: #ff7f50;
+  }
+  
+  .jumbotron, .bgimg-1, .bgimg-2 {
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+  }
+  
+  .caption {
+    text-align: center;
+    color: #f8f9fa;
+    padding: 20px;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-header, .card-footer {
+    background-color: #f7f9fc;
+    color: #555;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    color: #ff7f50;
+  }
+  
+  footer {
+    background-color: #f7f9fc;
+    padding: 10px 0;
+    color: #333;
+    margin-top: auto;
+  }
+  
+  .social-links a {
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    transition: color 0.3s;
+    margin-right: 15px;
+  }
+  
+  .social-links a:hover {
+    color: #ddd;
+  }
+  
+  .social-links a img {
+    display: block;
+  }
+  
+  .social-links a:last-child {
+    margin-right: 0;
+  }
+
+  
