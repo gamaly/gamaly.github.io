@@ -4,8 +4,8 @@ export default function Hero() {
       <div className="max-w-3xl mx-auto">
         <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight text-charcoal mb-8">
           I work at the intersection of data science, AI, and public
-          accountability — building the infrastructure researchers and
-          journalists use to investigate harm.
+          accountability — building tools and infrastructure for researchers
+          and journalists investigating harm.
         </h1>
 
         <p className="font-[family-name:var(--font-mono)] text-sm text-warm-gray mb-3">
