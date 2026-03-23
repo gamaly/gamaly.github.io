@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(where npm:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(taskkill /PID 45036 /F)",
+      "Bash(cmd /c \"taskkill /PID 45036 /F\")",
+      "Bash(cmd /c \"del /F /Q \"\".next\\\\dev\\\\logs\\\\next-development.log\"\" 2>nul & dir .next\\\\dev\\\\logs\"\")",
+      "Bash(cmd /c \"del /F /Q \"\".next\\\\dev\\\\lock\"\"\")",
+      "Bash(powershell -Command \"Stop-Process -Id 45036 -Force -ErrorAction SilentlyContinue; Start-Sleep -Milliseconds 500; Get-Process -Id 45036 -ErrorAction SilentlyContinue | Select-Object Id,Name\")",
+      "Bash(powershell -Command \"Get-NetTCPConnection -LocalPort 65161 -ErrorAction SilentlyContinue | Select-Object LocalPort,OwningProcess\")",
+      "Bash(powershell -NoProfile -Command \"netstat -ano | findstr '':65161''\")"
+    ]
+  }
+}

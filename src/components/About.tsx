@@ -29,8 +29,8 @@ export default function About() {
           </a>
           , a public interest database linking digital harm incidents to policy
           responses. I believe technology infrastructure matters: the tools
-          researchers and advocates use shape what&rsquo;s visible and what
-          isn&rsquo;t.
+          researchers, advocates, and governments use shape what&rsquo;s
+          visible, what gets acted on, and what doesn&rsquo;t.
         </p>
       </div>
     </section>

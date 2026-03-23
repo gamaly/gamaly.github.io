@@ -3,9 +3,8 @@ export default function Hero() {
     <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-6">
       <div className="max-w-3xl mx-auto">
         <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight text-charcoal mb-8">
-          I work at the intersection of data science, AI, and public
-          accountability — building tools and infrastructure for researchers
-          and journalists investigating harm.
+          Building data tools and technology infrastructure for researchers,
+          journalists, government, and civil society.
         </h1>
 
         <p className="font-[family-name:var(--font-mono)] text-sm text-warm-gray mb-3">
