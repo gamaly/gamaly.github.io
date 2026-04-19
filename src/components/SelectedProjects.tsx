@@ -2,7 +2,7 @@ const projects = [
   {
     title: "Digital Harms Tracker",
     description:
-      "Structured database linking digital harm incidents to policy responses. Public interest AI infrastructure.",
+      "Founder, engineer, and primary researcher behind a structured database linking digital harm incidents to policy responses. Public interest AI infrastructure.",
     status: "Active",
     link: "https://digitalharmstracker.org",
     linkLabel: "digitalharmstracker.org",
@@ -10,7 +10,7 @@ const projects = [
   {
     title: "Bait to Plate",
     description:
-      "One of the largest seafood supply chain accountability databases in development, built at The Outlaw Ocean Project. Links fishing vessels, labor records, and catch data to trace accountability from ocean to consumer.",
+      "Lead data scientist and data engineer for one of the largest seafood supply chain accountability databases in development, built at The Outlaw Ocean Project. Links fishing vessels, labor records, and catch data to trace accountability from ocean to consumer.",
     status: "Active",
   },
   {
@@ -22,13 +22,13 @@ const projects = [
   {
     title: "EvidenceBase.ai",
     description:
-      "Personalized copilot tool built for non-profits to surface and synthesize evidence for program design and decision-making. Open source project, sunset in 2025.",
+      "Lead engineer and product manager for a personalized copilot tool built for non-profits to surface and synthesize evidence for program design and decision-making. Open source project, sunset in 2025.",
     status: "Sunset",
   },
   {
     title: "FEWS NET Health Threat Extension Support",
     description:
-      "ML-powered subnational disease forecasts for Mozambique and Somalia, built for USAID. Extended FEWS NET food security monitoring to include health threat modeling at the subnational level.",
+      "Project manager and data scientist for ML-powered subnational disease forecasts for Mozambique and Somalia, built for USAID. Extended FEWS NET food security monitoring to include health threat modeling at the subnational level.",
     status: "Completed",
   },
   {
@@ -42,6 +42,8 @@ const projects = [
     description:
       "Civic tech for Spa Creek Conservancy. Weekly water quality tracking for Annapolis waterways. Volunteer project.",
     status: "Completed",
+    link: "https://www.aacc.edu",
+    linkLabel: "aacc.edu",
   },
 ];
 
