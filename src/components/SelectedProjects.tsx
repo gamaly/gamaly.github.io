@@ -18,8 +18,6 @@ const projects = [
     description:
       "Technical advisory and delivery work for USAID's flagship digital development program — a $90M DAI-implemented initiative advancing responsible technology across USAID Missions worldwide. Work included AI strategy, responsible AI frameworks, and technical capacity building.",
     status: "Completed",
-    link: "https://www.digitalfrontiersdai.com",
-    linkLabel: "digitalfrontiersdai.com",
   },
   {
     title: "EvidenceBase.ai",
