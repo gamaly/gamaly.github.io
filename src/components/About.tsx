@@ -6,7 +6,7 @@ export default function About() {
           Social scientist by training, data and AI practitioner by profession.
           I&rsquo;ve spent twenty years building technology and data systems for
           organizations working on hard
-          problems&thinsp;&mdash;&thinsp;conflict, accountability, ocean crime,
+          problems: conflict, accountability, ocean crime,
           global development. I co-founded Exchange.Design, an AI consultancy
           supporting mission-driven organizations in adopting AI and data
           science, and currently lead data science and AI work at{" "}

@@ -17,7 +17,7 @@ const work = [
     title: "Technical & Advisory Work",
     role: "Independent",
     description:
-      "Data science, analytics, and advisory work for government and nonprofit clients — spanning AI strategy, data infrastructure, applied analytics, and responsible technology deployment.",
+      "Data science, analytics, and advisory work for government and nonprofit clients. AI strategy, data infrastructure, applied analytics, and responsible technology deployment.",
   },
 ];
 

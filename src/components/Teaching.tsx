@@ -14,7 +14,7 @@ export default function Teaching() {
         <div className="space-y-6">
           <p className="font-[family-name:var(--font-body)] text-base text-charcoal/75 leading-relaxed">
             Guest lecturer and course instructor at Johns Hopkins SAIS, the U.S.
-            Department of State, and the U.S. Institute of Peace&thinsp;&mdash;&thinsp;including
+            Department of State, and the U.S. Institute of Peace, including
             early online course development on Moodle when that was still a
             frontier.
           </p>

@@ -40,7 +40,7 @@ const projects = [
   {
     title: "Spa Creek Water Testing Platform",
     description:
-      "Civic tech for Spa Creek Conservancy — weekly water quality tracking for Annapolis waterways. Volunteer project.",
+      "Civic tech for Spa Creek Conservancy. Weekly water quality tracking for Annapolis waterways. Volunteer project.",
     status: "Completed",
   },
 ];

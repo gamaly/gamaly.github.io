@@ -14,7 +14,7 @@ export default function Education() {
               University of Denver
             </p>
             <p className="font-[family-name:var(--font-mono)] text-xs text-warm-gray-light mt-0.5 mb-3">
-              MA, International Studies — International Political Economy, Comparative Politics, International Political Theory
+              MA, International Studies: International Political Economy, Comparative Politics, International Political Theory
             </p>
             <ul className="space-y-2">
               <li className="font-[family-name:var(--font-body)] text-sm text-charcoal/70 leading-relaxed">
