@@ -14,12 +14,32 @@ const projects = [
     status: "Active",
   },
   {
+    title: "USAID Digital Frontiers",
+    description:
+      "Technical advisory and delivery work for USAID's flagship digital development program — a $90M DAI-implemented initiative advancing responsible technology across USAID Missions worldwide. Work included AI strategy, responsible AI frameworks, and technical capacity building.",
+    status: "Completed",
+    link: "https://www.digitalfrontiersdai.com",
+    linkLabel: "digitalfrontiersdai.com",
+  },
+  {
     title: "USAID Ethical AI Storymap",
     description:
       "Esri StoryMap built for USAID Digital Frontiers visualizing AI integration in global development.",
     status: "Published",
     link: "https://storymaps.arcgis.com/stories/5b7b27a0de0846f7bfc5260e04175c31",
     linkLabel: "View Storymap",
+  },
+  {
+    title: "EvidenceBase.ai",
+    description:
+      "Personalized copilot tool built for non-profits to surface and synthesize evidence for program design and decision-making. Open source project, sunset in 2025.",
+    status: "Sunset",
+  },
+  {
+    title: "FEWS NET Health Threat Extension Support",
+    description:
+      "ML-powered subnational disease forecasts for Mozambique and Somalia, built for USAID. Extended FEWS NET food security monitoring to include health threat modeling at the subnational level.",
+    status: "Completed",
   },
   {
     title: "AI-Powered Conflict Dataset Builder",
