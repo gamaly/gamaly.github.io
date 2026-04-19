@@ -36,8 +36,8 @@ export default function About() {
             Digital Harms Tracker
           </a>
           , public-interest infrastructure linking platform harm evidence to
-          the policy and legal response, and advising the U.S. Department of
-          the Treasury&rsquo;s Office of Technical Assistance.
+          the policy and legal response, and advising U.S. government agencies
+          on data science and technology.
         </p>
       </div>
     </section>

@@ -18,6 +18,9 @@ const work = [
     role: "Independent",
     description:
       "Data science, analytics, and advisory work for government and nonprofit clients. AI strategy, data infrastructure, applied analytics, and responsible technology deployment.",
+    clients: [
+      { name: "U.S. government agencies", detail: "" },
+    ],
   },
 ];
 
@@ -43,6 +46,16 @@ export default function CurrentWork() {
               <p className="font-[family-name:var(--font-body)] text-base text-charcoal/75 leading-relaxed mb-2">
                 {item.description}
               </p>
+              {item.clients && (
+                <ul className="mt-2 space-y-1">
+                  {item.clients.map((c) => (
+                    <li key={c.name} className="flex gap-2">
+                      <span className="font-[family-name:var(--font-body)] text-sm text-charcoal/80">{c.name}</span>
+                      <span className="font-[family-name:var(--font-mono)] text-xs text-warm-gray-light pt-0.5">{c.detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
               {item.link && (
                 <a
                   href={item.link}
