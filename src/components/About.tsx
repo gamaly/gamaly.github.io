@@ -1,15 +1,23 @@
 export default function About() {
   return (
     <section className="py-16 md:py-24 px-6 border-t border-parchment">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto space-y-6">
         <p className="font-[family-name:var(--font-body)] text-lg md:text-xl leading-relaxed text-charcoal/90">
           Social scientist by training, data and AI practitioner by profession.
           I&rsquo;ve spent twenty years building technology and data systems for
-          organizations working on hard
-          problems: conflict, accountability, ocean crime,
-          global development. I co-founded Exchange.Design, an AI consultancy
-          supporting mission-driven organizations in adopting AI and data
-          science, and currently lead data science and AI work at{" "}
+          organizations working on hard problems: conflict, accountability, ocean
+          crime, global development.
+        </p>
+        <p className="font-[family-name:var(--font-body)] text-lg md:text-xl leading-relaxed text-charcoal/90">
+          I believe technology infrastructure matters. The tools researchers,
+          advocates, and governments use shape what&rsquo;s visible, what gets
+          acted on, and what doesn&rsquo;t. My work sits where that
+          infrastructure meets the people who need it: policy staff,
+          investigative journalists, humanitarian responders, civil society
+          researchers.
+        </p>
+        <p className="font-[family-name:var(--font-body)] text-lg md:text-xl leading-relaxed text-charcoal/90">
+          Current focus: leading data science and AI at{" "}
           <a
             href="https://www.theoutlawocean.com"
             target="_blank"
@@ -18,7 +26,7 @@ export default function About() {
           >
             The Outlaw Ocean Project
           </a>
-          . I&rsquo;m also the founder and primary developer of the{" "}
+          , and building the{" "}
           <a
             href="https://digitalharmstracker.org"
             target="_blank"
@@ -27,10 +35,8 @@ export default function About() {
           >
             Digital Harms Tracker
           </a>
-          , a public interest database linking digital harm incidents to policy
-          responses. I believe technology infrastructure matters: the tools
-          researchers, advocates, and governments use shape what&rsquo;s
-          visible, what gets acted on, and what doesn&rsquo;t.
+          , public-interest infrastructure linking platform harm evidence to
+          the policy and legal response.
         </p>
       </div>
     </section>
