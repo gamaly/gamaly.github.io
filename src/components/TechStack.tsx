@@ -2,7 +2,7 @@ const skills = [
   { label: "Languages", items: "Python · R · SQL · JavaScript" },
   { label: "AI & NLP", items: "LLMs · NLP · text analysis · TF-IDF to transformers" },
   { label: "Geospatial", items: "GIS · ArcGIS · QGIS · geospatial analytics" },
-  { label: "Data & Infra", items: "data engineering · statistical modeling · Power BI · Azure ML" },
+  { label: "Data & Infra", items: "data engineering · statistical modeling · Power BI · Azure ML · Neo4j" },
   { label: "Statistics", items: "regression · sampling · causal inference · program evaluation" },
   { label: "Methods", items: "survey design · network analysis · spatial statistics" },
 ];
