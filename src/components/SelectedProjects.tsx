@@ -22,14 +22,6 @@ const projects = [
     linkLabel: "digitalfrontiersdai.com",
   },
   {
-    title: "USAID Ethical AI Storymap",
-    description:
-      "Esri StoryMap built for USAID Digital Frontiers visualizing AI integration in global development.",
-    status: "Published",
-    link: "https://storymaps.arcgis.com/stories/5b7b27a0de0846f7bfc5260e04175c31",
-    linkLabel: "View Storymap",
-  },
-  {
     title: "EvidenceBase.ai",
     description:
       "Personalized copilot tool built for non-profits to surface and synthesize evidence for program design and decision-making. Open source project, sunset in 2025.",
