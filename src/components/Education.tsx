@@ -50,11 +50,8 @@ export default function Education() {
             <p className="font-[family-name:var(--font-body)] text-base font-semibold text-charcoal leading-snug">
               George Mason University
             </p>
-            <p className="font-[family-name:var(--font-mono)] text-xs text-warm-gray-light mt-0.5 mb-3">
-              Coursework toward mediation certification, Northern Virginia Mediation Service
-            </p>
-            <p className="font-[family-name:var(--font-body)] text-sm text-charcoal/70 leading-relaxed">
-              Public disputes, consensus-building, dispute resolution, and conflict management systems.
+            <p className="font-[family-name:var(--font-mono)] text-xs text-warm-gray-light mt-0.5">
+              Coursework in mediation and conflict management systems, Northern Virginia Mediation Service
             </p>
           </div>
 

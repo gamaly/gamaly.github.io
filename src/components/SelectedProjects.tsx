@@ -16,7 +16,7 @@ const projects = [
   {
     title: "USAID Digital Frontiers",
     description:
-      "Served as Head of Data Science and Digital Products at DAI, the implementing partner for USAID's flagship $90M digital development program. Led data science strategy and digital product delivery across a program working with 35+ USAID Missions worldwide on responsible technology adoption.",
+      "Served as Associate Director, Data Science and Digital Products at DAI, the implementing partner for USAID's flagship $90M digital development program. Led data science strategy and digital product delivery across a program working with 35+ USAID Missions worldwide on responsible technology adoption.",
     status: "Completed",
   },
   {
@@ -42,8 +42,6 @@ const projects = [
     description:
       "Civic tech for Spa Creek Conservancy, in partnership with Anne Arundel Community College. Weekly water quality tracking for Annapolis waterways. Volunteer project.",
     status: "Completed",
-    link: "https://www.aacc.edu",
-    linkLabel: "aacc.edu",
   },
 ];
 

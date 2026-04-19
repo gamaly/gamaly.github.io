@@ -5,7 +5,6 @@ import CurrentWork from "@/components/CurrentWork";
 import PastVentures from "@/components/PastVentures";
 import TechStack from "@/components/TechStack";
 import SelectedProjects from "@/components/SelectedProjects";
-import Writing from "@/components/Writing";
 import Speaking from "@/components/Speaking";
 import Teaching from "@/components/Teaching";
 import Education from "@/components/Education";
@@ -23,7 +22,6 @@ export default function Home() {
         <PastVentures />
         <TechStack />
         <SelectedProjects />
-        <Writing />
         <Speaking />
         <Teaching />
         <Education />
