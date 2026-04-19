@@ -19,6 +19,31 @@ export default function Teaching() {
             frontier.
           </p>
 
+          <div className="space-y-4">
+            <div>
+              <p className="font-[family-name:var(--font-body)] text-sm text-charcoal/80 font-medium">
+                U.S. Department of State
+              </p>
+              <p className="font-[family-name:var(--font-mono)] text-xs text-warm-gray-light mb-1">
+                Learning and Training Specialist
+              </p>
+              <p className="font-[family-name:var(--font-body)] text-sm text-charcoal/70 leading-relaxed">
+                Designed and taught multiple courses in monitoring and evaluation and conflict analysis.
+              </p>
+            </div>
+            <div>
+              <p className="font-[family-name:var(--font-body)] text-sm text-charcoal/80 font-medium">
+                U.S. Institute of Peace
+              </p>
+              <p className="font-[family-name:var(--font-mono)] text-xs text-warm-gray-light mb-1">
+                Education and Training Center
+              </p>
+              <p className="font-[family-name:var(--font-body)] text-sm text-charcoal/70 leading-relaxed">
+                Courses in international negotiation and conflict resolution.
+              </p>
+            </div>
+          </div>
+
           <div>
             <p className="font-[family-name:var(--font-mono)] text-xs text-warm-gray-light mb-3">
               TechChange courses
