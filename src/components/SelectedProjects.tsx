@@ -22,7 +22,7 @@ const projects = [
   {
     title: "EvidenceBase.ai",
     description:
-      "Lead engineer and product manager for a personalized copilot tool built for non-profits to surface and synthesize evidence for program design and decision-making. Open source project, sunset in 2025.",
+      "Lead engineer and product manager for a personalized copilot tool built for non-profits to surface and synthesize evidence for program design and decision-making. Used by over 50 organizations. Open source project, sunset in 2025.",
     status: "Sunset",
   },
   {
@@ -40,7 +40,7 @@ const projects = [
   {
     title: "Spa Creek Water Testing Platform",
     description:
-      "Civic tech for Spa Creek Conservancy. Weekly water quality tracking for Annapolis waterways. Volunteer project.",
+      "Civic tech for Spa Creek Conservancy, in partnership with Anne Arundel Community College. Weekly water quality tracking for Annapolis waterways. Volunteer project.",
     status: "Completed",
     link: "https://www.aacc.edu",
     linkLabel: "aacc.edu",
