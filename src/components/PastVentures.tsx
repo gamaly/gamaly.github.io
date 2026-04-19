@@ -1,5 +1,11 @@
 const experience = [
   {
+    org: "U.S. Department of the Treasury",
+    role: "Data and Technology Advisor, Office of Technical Assistance",
+    description:
+      "Advisory support to the Department and international counterparts on data science and data engineering tools and methods.",
+  },
+  {
     org: "Exchange.Design",
     role: "Co-founder & CTO",
     description:
@@ -22,12 +28,6 @@ const experience = [
     role: "Conflict Data Analyst",
     description:
       "Integrated data analysis and geospatial methods into conflict prevention and stabilization policy work.",
-  },
-  {
-    org: "U.S. Department of the Treasury",
-    role: "Data and Technology Advisor, Office of Technical Assistance",
-    description:
-      "Advisory support to the Department and international counterparts on data science and data engineering tools and methods.",
   },
 ];
 
