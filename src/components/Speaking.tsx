@@ -2,12 +2,17 @@ const talks = [
   {
     role: "Panelist",
     title: "The Role of Artificial Intelligence in Peacebuilding",
-    event: "PeaceCon 2024",
+    event: "PeaceCon 2024, George Mason University",
   },
   {
     role: "Speaker",
     title: "Retrieval Augmented Generation and Conflict Data",
-    event: "AI for Peace Conference, 2023",
+    event: "AI for Peace Conference, Google New York, 2023",
+  },
+  {
+    role: "Panelist",
+    title: "Accelerating Progress Towards Africa's Agenda 2063 and the SDGs Using Gender Statistics",
+    event: "Joint Africa Conference on Gender Statistics, Casablanca, 2023",
   },
   {
     role: "Moderator",
@@ -26,7 +31,7 @@ const talks = [
     event: "FedGeo Day, 2019",
   },
   {
-    role: "Speaker",
+    role: "Opening Speaker",
     title: "Data Science in 20-minutes or Less",
     event: "MerlTech, 2018",
   },
