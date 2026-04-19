@@ -16,7 +16,7 @@ const projects = [
   {
     title: "USAID Digital Frontiers",
     description:
-      "Technical advisory and delivery work for USAID's flagship digital development program — a $90M DAI-implemented initiative advancing responsible technology across USAID Missions worldwide. Work included AI strategy, responsible AI frameworks, and technical capacity building.",
+      "Served as Head of Data Science and Digital Products at DAI, the implementing partner for USAID's flagship $90M digital development program. Led data science strategy and digital product delivery across a program working with 35+ USAID Missions worldwide on responsible technology adoption.",
     status: "Completed",
   },
   {
