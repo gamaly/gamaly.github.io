@@ -18,9 +18,6 @@ const work = [
     role: "Independent",
     description:
       "Data science, analytics, and advisory work for government and nonprofit clients. AI strategy, data infrastructure, applied analytics, and responsible technology deployment.",
-    clients: [
-      { name: "U.S. government agencies", detail: "" },
-    ],
   },
 ];
 
