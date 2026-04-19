@@ -25,7 +25,7 @@ const experience = [
   },
   {
     org: "U.S. Department of the Treasury",
-    role: "Technology Advisor",
+    role: "Data and Technology Advisor, Office of Technical Assistance",
     description:
       "Advisory support to the Department and international counterparts on data science and data engineering tools and methods.",
   },
