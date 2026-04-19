@@ -26,7 +26,7 @@ export default function About() {
           >
             The Outlaw Ocean Project
           </a>
-          , and building the{" "}
+          , building the{" "}
           <a
             href="https://digitalharmstracker.org"
             target="_blank"
@@ -36,7 +36,8 @@ export default function About() {
             Digital Harms Tracker
           </a>
           , public-interest infrastructure linking platform harm evidence to
-          the policy and legal response.
+          the policy and legal response, and advising the U.S. Department of
+          the Treasury&rsquo;s Office of Technical Assistance.
         </p>
       </div>
     </section>
