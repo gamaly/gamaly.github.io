@@ -3,10 +3,10 @@ export default function About() {
     <section className="py-16 md:py-24 px-6 border-t border-parchment">
       <div className="max-w-3xl mx-auto space-y-6">
         <p className="font-[family-name:var(--font-body)] text-lg md:text-xl leading-relaxed text-charcoal/90">
-          Social scientist by training, data and technology practitioner by profession.
-          I&rsquo;ve spent twenty years building technology and data systems for
-          organizations working on hard problems: conflict, accountability, ocean
-          crime, global development.
+          I&rsquo;m a social scientist, technologist, and builder. For twenty
+          years I&rsquo;ve been working with researchers, journalists,
+          governments, and civil society organizations on hard problems: conflict,
+          global health, ocean crime, global development.
         </p>
         <p className="font-[family-name:var(--font-body)] text-lg md:text-xl leading-relaxed text-charcoal/90">
           I believe technology infrastructure matters. The tools researchers,

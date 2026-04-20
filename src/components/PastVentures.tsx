@@ -4,6 +4,7 @@ const experience = [
     role: "Data and Technology Advisor, Office of Technical Assistance",
     description:
       "Advisory support to the Department and international counterparts on data science and data engineering tools and methods.",
+    current: true,
   },
   {
     org: "Exchange.Design",
@@ -49,6 +50,11 @@ export default function PastVentures() {
                 <span className="font-[family-name:var(--font-mono)] text-xs text-warm-gray-light">
                   {item.role}
                 </span>
+                {item.current && (
+                  <span className="font-[family-name:var(--font-mono)] text-xs text-amber">
+                    Current
+                  </span>
+                )}
               </div>
               <p className="font-[family-name:var(--font-body)] text-sm text-charcoal/70 leading-relaxed">
                 {item.description}
