@@ -12,6 +12,9 @@ const work = [
     role: "AI & Data Science Editor",
     description:
       "Leading the application of data science and AI in investigative journalism at The Outlaw Ocean Project. Current focus includes Bait to Plate, one of the largest seafood supply chain accountability databases in development, tracking labor abuse and illegal fishing across global fishing fleets.",
+    link: "https://www.theoutlawocean.com",
+    linkLabel: "theoutlawocean.com",
+    note: "Bait to Plate — pending publication, summer 2026",
   },
   {
     title: "Technical & Advisory Work",
@@ -43,28 +46,26 @@ export default function CurrentWork() {
               <p className="font-[family-name:var(--font-body)] text-base text-charcoal/75 leading-relaxed mb-2">
                 {item.description}
               </p>
-              {item.link && (
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 font-[family-name:var(--font-mono)] text-sm text-amber hover:text-amber-dark transition-colors"
-                >
-                  {item.linkLabel}
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 12 12"
-                    fill="none"
+              <div className="flex flex-wrap items-center gap-4">
+                {item.link && (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 font-[family-name:var(--font-mono)] text-sm text-amber hover:text-amber-dark transition-colors"
                   >
-                    <path
-                      d="M2 10L10 2M10 2H4M10 2V8"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
-                </a>
-              )}
+                    {item.linkLabel}
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" strokeWidth="1.5" />
+                    </svg>
+                  </a>
+                )}
+                {item.note && (
+                  <span className="font-[family-name:var(--font-mono)] text-xs text-warm-gray-light">
+                    {item.note}
+                  </span>
+                )}
+              </div>
             </div>
           ))}
         </div>
