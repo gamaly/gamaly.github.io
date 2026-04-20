@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-cream: #FAF7F2;
-  --color-sand: #F0EBE3;
-  --color-parchment: #E8E0D4;
-  --color-amber: #C2703E;
-  --color-amber-dark: #A85A2A;
+  --color-cream: #F5F5F0;
+  --color-sand: #ECEEE8;
+  --color-parchment: #DDDFD8;
+  --color-amber: #2D6A4F;
+  --color-amber-dark: #1E4D38;
   --color-charcoal: #1A1A1A;
-  --color-warm-gray: #6B6560;
-  --color-warm-gray-light: #9B9590;
+  --color-warm-gray: #5A5F58;
+  --color-warm-gray-light: #8A9088;
 
   --font-display: "Playfair Display", Georgia, serif;
   --font-body: "Source Serif 4", Georgia, serif;
