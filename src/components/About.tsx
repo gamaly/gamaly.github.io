@@ -3,7 +3,7 @@ export default function About() {
     <section className="py-16 md:py-24 px-6 border-t border-parchment">
       <div className="max-w-3xl mx-auto space-y-6">
         <p className="font-[family-name:var(--font-body)] text-lg md:text-xl leading-relaxed text-charcoal/90">
-          Social scientist by training, data and AI practitioner by profession.
+          Social scientist by training, data and technology practitioner by profession.
           I&rsquo;ve spent twenty years building technology and data systems for
           organizations working on hard problems: conflict, accountability, ocean
           crime, global development.
