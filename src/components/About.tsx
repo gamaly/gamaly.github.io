@@ -13,8 +13,8 @@ export default function About() {
           advocates, and governments use shape what&rsquo;s visible, what gets
           acted on, and what doesn&rsquo;t. My work sits where that
           infrastructure meets the people who need it: policy staff,
-          investigative journalists, humanitarian responders, civil society
-          researchers.
+          diplomats, investigative journalists, humanitarian responders,
+          community health workers, civil society researchers.
         </p>
         <p className="font-[family-name:var(--font-body)] text-lg md:text-xl leading-relaxed text-charcoal/90">
           Current focus: leading data science and AI at{" "}
