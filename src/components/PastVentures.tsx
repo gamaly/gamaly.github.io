@@ -52,7 +52,7 @@ export default function PastVentures() {
                 </span>
                 {item.current && (
                   <span className="font-[family-name:var(--font-mono)] text-xs text-amber">
-                    Current
+                    Active
                   </span>
                 )}
               </div>
