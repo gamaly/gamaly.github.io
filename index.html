@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gregory Maly</title>
+  <meta name="description" content="Independent researcher and builder working at the intersection of AI, digital rights, and public accountability.">
+  <meta property="og:title" content="Gregory Maly">
+  <meta property="og:description" content="Independent researcher and builder working at the intersection of AI, digital rights, and public accountability.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Playfair+Display:wght@600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F5F0;
+      --parchment: #DDDFD8;
+      --green: #2D6A4F;
+      --green-dark: #1E4D38;
+      --charcoal: #1A1A1A;
+      --warm-gray: #5A5F58;
+      --warm-gray-light: #8A9088;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: "Source Serif 4", Georgia, serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--green); color: white; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    #site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+
+    #site-header.scrolled {
+      background: rgba(245,245,240,0.9);
+      backdrop-filter: blur(4px);
+      border-color: var(--parchment);
+    }
+
+    #site-nav {
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      transition: color 0.2s;
+    }
+    .nav-logo:hover { color: var(--green); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.875rem;
+      color: var(--warm-gray);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--charcoal); }
+
+    #menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      color: var(--charcoal);
+    }
+
+    #mobile-menu {
+      display: none;
+      background: rgba(245,245,240,0.95);
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid var(--parchment);
+      padding: 0 1.5rem 1rem;
+    }
+    #mobile-menu.open { display: block; }
+    #mobile-menu ul { display: flex; flex-direction: column; gap: 0.75rem; list-style: none; }
+    #mobile-menu a {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.875rem;
+      color: var(--warm-gray);
+      transition: color 0.2s;
+    }
+    #mobile-menu a:hover { color: var(--charcoal); }
+
+    /* ── Layout ── */
+    section { padding: 4rem 1.5rem; border-top: 1px solid var(--parchment); }
+    footer  { padding: 2rem 1.5rem; border-top: 1px solid var(--parchment); }
+
+    .container { max-width: 48rem; margin: 0 auto; }
+
+    /* ── Section labels ── */
+    .section-label {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-gray-light);
+      margin-bottom: 3rem;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      padding-top: 8rem;
+      padding-bottom: 5rem;
+      border-top: none;
+    }
+
+    #hero h1 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      margin-bottom: 2rem;
+    }
+
+    .hero-location {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.875rem;
+      color: var(--warm-gray);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-role {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.875rem;
+      color: var(--warm-gray-light);
+    }
+
+    .hero-role strong { color: var(--charcoal); font-weight: 400; }
+
+    .hero-sep {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.875rem;
+      color: var(--warm-gray-light);
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.875rem;
+      padding: 0.625rem 1.25rem;
+      background: var(--charcoal);
+      color: var(--cream);
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--green); color: var(--cream); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.875rem;
+      padding: 0.625rem 1.25rem;
+      border: 1px solid rgba(26,26,26,0.2);
+      color: var(--charcoal);
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--green); color: var(--green); }
+
+    /* ── About ── */
+    .about-body { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .about-body p {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: rgba(26,26,26,0.9);
+    }
+
+    .text-link {
+      color: var(--green);
+      text-decoration: underline;
+      text-decoration-color: rgba(45,106,79,0.3);
+      text-underline-offset: 4px;
+      transition: color 0.2s;
+    }
+    .text-link:hover { color: var(--green-dark); }
+
+    /* ── Item list (work / experience / projects) ── */
+    .item-list { display: flex; flex-direction: column; gap: 2.5rem; }
+    .item-list.tight { gap: 2rem; }
+
+    .item-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.25rem 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .item-title {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+
+    .item-role {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      color: var(--warm-gray-light);
+    }
+
+    .item-active {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      color: var(--green);
+    }
+
+    .item-body {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: rgba(26,26,26,0.75);
+    }
+
+    .item-body-sm {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: rgba(26,26,26,0.7);
+    }
+
+    .item-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .item-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.875rem;
+      color: var(--green);
+      transition: color 0.2s;
+    }
+    .item-link:hover { color: var(--green-dark); }
+
+    .item-note {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      color: var(--warm-gray-light);
+    }
+
+    /* ── Tech stack ── */
+    .skill-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .skill-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .skill-label {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      color: var(--warm-gray-light);
+    }
+
+    .skill-items {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.875rem;
+      color: rgba(26,26,26,0.8);
+    }
+
+    /* ── Speaking ── */
+    .talk-list { display: flex; flex-direction: column; gap: 1.25rem; list-style: none; }
+
+    .talk-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .talk-role {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      color: var(--warm-gray-light);
+      padding-top: 0.125rem;
+    }
+
+    .talk-title {
+      font-size: 1rem;
+      color: var(--charcoal);
+      line-height: 1.4;
+    }
+
+    .talk-event {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      color: var(--warm-gray-light);
+      margin-top: 0.125rem;
+    }
+
+    /* ── Teaching ── */
+    .teaching-intro {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: rgba(26,26,26,0.75);
+      margin-bottom: 1.5rem;
+    }
+
+    .teaching-orgs { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+
+    .teaching-org-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(26,26,26,0.8);
+    }
+
+    .teaching-org-role {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      color: var(--warm-gray-light);
+      margin-bottom: 0.25rem;
+    }
+
+    .teaching-org-desc {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: rgba(26,26,26,0.7);
+    }
+
+    .techchange-label {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      color: var(--warm-gray-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .techchange-list { list-style: none; display: flex; flex-direction: column; gap: 0.375rem; }
+
+    .techchange-list li {
+      font-size: 0.875rem;
+      color: rgba(26,26,26,0.7);
+    }
+
+    /* ── Education ── */
+    .edu-school {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.3;
+    }
+
+    .edu-degree {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      color: var(--warm-gray-light);
+      margin-top: 0.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .edu-notes { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .edu-notes li {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: rgba(26,26,26,0.7);
+    }
+
+    .edu-thesis {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: rgba(26,26,26,0.7);
+    }
+
+    /* ── Contact ── */
+    .contact-body { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .contact-location {
+      font-size: 1rem;
+      color: rgba(26,26,26,0.75);
+    }
+
+    /* ── Footer ── */
+    footer p {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      color: var(--warm-gray-light);
+    }
+
+    /* ── Responsive ── */
+    @media (min-width: 640px) {
+      .skill-row { flex-direction: row; gap: 0; }
+      .skill-label { min-width: 8rem; flex-shrink: 0; }
+      .talk-item { flex-direction: row; gap: 0; }
+      .talk-role { min-width: 6rem; flex-shrink: 0; }
+      .hero-sep { display: inline; }
+    }
+
+    @media (min-width: 768px) {
+      #hero { padding-top: 10rem; padding-bottom: 7rem; }
+      section { padding-top: 6rem; padding-bottom: 6rem; }
+      .nav-links { display: flex; }
+      #menu-toggle { display: none; }
+      .about-body p { font-size: 1.25rem; }
+    }
+
+    @media (max-width: 767px) {
+      .nav-links { display: none; }
+      #menu-toggle { display: block; }
+      .hero-sep { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="site-header">
+    <nav id="site-nav">
+      <a href="#" class="nav-logo">Gregory Maly</a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#speaking">Speaking</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="menu-toggle" aria-label="Toggle menu">
+        <svg id="icon-hamburger" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M2 5H18" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M2 10H18" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M2 15H18" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <svg id="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" style="display:none">
+          <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </button>
+    </nav>
+    <div id="mobile-menu">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#speaking">Speaking</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section id="hero">
+    <div class="container">
+      <h1>Building data tools and technology infrastructure for researchers, journalists, government, and civil society.</h1>
+      <p class="hero-location">Based in Takoma Park, MD</p>
+      <div class="hero-roles">
+        <span class="hero-role">AI &amp; Data Science Editor, <strong>The Outlaw Ocean Project</strong></span>
+        <span class="hero-sep">/</span>
+        <span class="hero-role">Founder &amp; Developer, <strong>Digital Harms Tracker</strong></span>
+      </div>
+      <div class="hero-actions">
+        <a href="https://digitalharmstracker.org" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          Digital Harms Tracker
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" opacity="0.6"/></svg>
+        </a>
+        <a href="#contact" class="btn-secondary">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about-body">
+      <p>I&rsquo;m a social scientist, technologist, and builder. For twenty years I&rsquo;ve been working with researchers, journalists, governments, and civil society organizations on hard problems: conflict, global health, ocean crime, global development.</p>
+      <p>I believe technology infrastructure matters. The tools researchers, advocates, and governments use shape what&rsquo;s visible, what gets acted on, and what doesn&rsquo;t. My work sits where that infrastructure meets the people who need it: policy staff, diplomats, investigative journalists, humanitarian responders, community health workers, civil society researchers.</p>
+      <p>Current focus: leading data science and AI at <a href="https://www.theoutlawocean.com" target="_blank" rel="noopener noreferrer" class="text-link">The Outlaw Ocean Project</a>, building the <a href="https://digitalharmstracker.org" target="_blank" rel="noopener noreferrer" class="text-link">Digital Harms Tracker</a>, public-interest infrastructure linking platform harm evidence to the policy and legal response, and advising U.S. government agencies on data science and technology.</p>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="container">
+      <p class="section-label">Current Work</p>
+      <div class="item-list">
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">Digital Harms Tracker</span>
+            <span class="item-role">Founder &middot; Developer &middot; Data Engineer</span>
+          </div>
+          <p class="item-body">Building open infrastructure that links digital harm incidents to policy and regulatory responses. Designed for researchers, journalists, and advocates working on platform accountability.</p>
+          <div class="item-footer">
+            <a href="https://digitalharmstracker.org" target="_blank" rel="noopener noreferrer" class="item-link">
+              digitalharmstracker.org
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">The Outlaw Ocean Project</span>
+            <span class="item-role">AI &amp; Data Science Editor</span>
+          </div>
+          <p class="item-body">Leading the application of data science and AI in investigative journalism at The Outlaw Ocean Project. Current focus includes Bait to Plate, one of the largest seafood supply chain accountability databases in development, tracking labor abuse and illegal fishing across global fishing fleets.</p>
+          <div class="item-footer">
+            <a href="https://www.theoutlawocean.com" target="_blank" rel="noopener noreferrer" class="item-link">
+              theoutlawocean.com
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
+            </a>
+            <span class="item-note">Bait to Plate &mdash; pending publication, summer 2026</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">Technical &amp; Advisory Work</span>
+            <span class="item-role">Independent</span>
+          </div>
+          <p class="item-body">Data science, analytics, and advisory work for government and nonprofit clients. AI strategy, data infrastructure, applied analytics, and responsible technology deployment.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <p class="section-label">Select Experience</p>
+      <div class="item-list tight">
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">U.S. Department of the Treasury</span>
+            <span class="item-role">Data and Technology Advisor, Office of Technical Assistance</span>
+            <span class="item-active">Active</span>
+          </div>
+          <p class="item-body-sm">Advisory support to the Department and international counterparts on data science and data engineering tools and methods.</p>
+        </div>
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">Exchange.Design</span>
+            <span class="item-role">Co-founder &amp; CTO</span>
+          </div>
+          <p class="item-body-sm">Supported mission-driven organizations in adopting AI and data science tools and methods. Departed early 2026.</p>
+        </div>
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">UN Foundation / Data2X</span>
+            <span class="item-role">Data Science Advisor</span>
+          </div>
+          <p class="item-body-sm">Advisory on data strategy and applied analytics for gender data initiatives across global development programs.</p>
+        </div>
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">DAI Global</span>
+            <span class="item-role">Associate Director, Data Science &amp; Digital Products</span>
+          </div>
+          <p class="item-body-sm">Led data science and analytics teams delivering platforms and decision-support tools across international development programs.</p>
+        </div>
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">U.S. Department of State</span>
+            <span class="item-role">Conflict Data Analyst</span>
+          </div>
+          <p class="item-body-sm">Integrated data analysis and geospatial methods into conflict prevention and stabilization policy work.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">Selected Projects</p>
+      <div class="item-list tight">
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">Digital Harms Tracker</span>
+            <span class="item-active">Active</span>
+          </div>
+          <p class="item-body-sm">Founder, engineer, and primary researcher behind a structured database linking digital harm incidents to policy responses. Public interest AI infrastructure.</p>
+          <a href="https://digitalharmstracker.org" target="_blank" rel="noopener noreferrer" class="item-link" style="margin-top:0.25rem; display:inline-flex">
+            digitalharmstracker.org
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">Bait to Plate</span>
+            <span class="item-active">Active</span>
+          </div>
+          <p class="item-body-sm">Lead data scientist and data engineer for one of the largest seafood supply chain accountability databases in development, built at The Outlaw Ocean Project. Links fishing vessels, labor records, and catch data to trace accountability from ocean to consumer.</p>
+        </div>
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">USAID Digital Frontiers</span>
+            <span class="item-role">Completed</span>
+          </div>
+          <p class="item-body-sm">Served as Associate Director, Data Science and Digital Products at DAI, the implementing partner for USAID&rsquo;s flagship $90M digital development program. Led data science strategy and digital product delivery across a program working with 35+ USAID Missions worldwide on responsible technology adoption.</p>
+        </div>
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">EvidenceBase.ai</span>
+            <span class="item-role">Sunset</span>
+          </div>
+          <p class="item-body-sm">Lead engineer and product manager for a personalized copilot tool built for non-profits to surface and synthesize evidence for program design and decision-making. Used by over 50 organizations. Open source project, sunset in 2025.</p>
+        </div>
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">FEWS NET Health Threat Extension Support</span>
+            <span class="item-role">Completed</span>
+          </div>
+          <p class="item-body-sm">Project manager and data scientist for ML-powered subnational disease forecasts for Mozambique and Somalia, built for USAID. Extended FEWS NET food security monitoring to include health threat modeling at the subnational level.</p>
+        </div>
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">AI-Powered Conflict Dataset Builder</span>
+            <span class="item-role">Archived</span>
+          </div>
+          <p class="item-body-sm">Proof of concept using NLP to build structured datasets from conflict news coverage.</p>
+        </div>
+
+        <div>
+          <div class="item-header">
+            <span class="item-title">Spa Creek Water Testing Platform</span>
+            <span class="item-role">Completed</span>
+          </div>
+          <p class="item-body-sm">Civic tech for Spa Creek Conservancy, in partnership with Anne Arundel Community College. Weekly water quality tracking for Annapolis waterways. Volunteer project.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="technical">
+    <div class="container">
+      <p class="section-label" style="margin-bottom:2rem">Technical</p>
+      <div class="skill-list">
+        <div class="skill-row">
+          <span class="skill-label">Languages</span>
+          <span class="skill-items">Python &middot; R &middot; SQL &middot; JavaScript</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">AI &amp; NLP</span>
+          <span class="skill-items">LLMs &middot; NLP &middot; text analysis &middot; TF-IDF to transformers</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Geospatial</span>
+          <span class="skill-items">GIS &middot; ArcGIS &middot; QGIS &middot; geospatial analytics</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Data &amp; Infra</span>
+          <span class="skill-items">data engineering &middot; statistical modeling &middot; Power BI &middot; Azure ML &middot; Neo4j</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Statistics</span>
+          <span class="skill-items">regression &middot; sampling &middot; causal inference &middot; program evaluation</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Methods</span>
+          <span class="skill-items">survey design &middot; network analysis &middot; spatial statistics</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="speaking">
+    <div class="container">
+      <p class="section-label">Speaking</p>
+      <ul class="talk-list">
+        <li class="talk-item">
+          <span class="talk-role">Panelist</span>
+          <div>
+            <p class="talk-title">The Role of Artificial Intelligence in Peacebuilding</p>
+            <p class="talk-event">PeaceCon 2024, George Mason University</p>
+          </div>
+        </li>
+        <li class="talk-item">
+          <span class="talk-role">Speaker</span>
+          <div>
+            <p class="talk-title">Retrieval Augmented Generation and Conflict Data</p>
+            <p class="talk-event">AI for Peace Conference, Google New York, 2023</p>
+          </div>
+        </li>
+        <li class="talk-item">
+          <span class="talk-role">Panelist</span>
+          <div>
+            <p class="talk-title">Accelerating Progress Towards Africa&rsquo;s Agenda 2063 and the SDGs Using Gender Statistics</p>
+            <p class="talk-event">Joint Africa Conference on Gender Statistics, Casablanca, 2023</p>
+          </div>
+        </li>
+        <li class="talk-item">
+          <span class="talk-role">Moderator</span>
+          <div>
+            <p class="talk-title">Toward Ethical Artificial Intelligence in International Development</p>
+            <p class="talk-event">ICT4D, 2022</p>
+          </div>
+        </li>
+        <li class="talk-item">
+          <span class="talk-role">Moderator</span>
+          <div>
+            <p class="talk-title">Understanding Algorithmic Bias</p>
+            <p class="talk-event">Law Justice and Development Week, The World Bank, 2021</p>
+          </div>
+        </li>
+        <li class="talk-item">
+          <span class="talk-role">Panelist</span>
+          <div>
+            <p class="talk-title">Open Mapping and Data in Disaster Response</p>
+            <p class="talk-event">FedGeo Day, 2019</p>
+          </div>
+        </li>
+        <li class="talk-item">
+          <span class="talk-role">Opening Speaker</span>
+          <div>
+            <p class="talk-title">Data Science in 20-minutes or Less</p>
+            <p class="talk-event">MerlTech, 2018</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <div class="container">
+      <p class="section-label" style="margin-bottom:2rem">Teaching</p>
+      <p class="teaching-intro">Guest lecturer and course instructor at Johns Hopkins SAIS, the U.S. Department of State, and the U.S. Institute of Peace, including early online course development on Moodle when that was still a frontier.</p>
+      <div class="teaching-orgs">
+        <div>
+          <p class="teaching-org-name">U.S. Department of State</p>
+          <p class="teaching-org-role">Learning and Training Specialist</p>
+          <p class="teaching-org-desc">Designed and taught multiple courses in monitoring and evaluation and conflict analysis.</p>
+        </div>
+        <div>
+          <p class="teaching-org-name">U.S. Institute of Peace</p>
+          <p class="teaching-org-role">Education and Training Center</p>
+          <p class="teaching-org-desc">Courses in international negotiation and conflict resolution.</p>
+        </div>
+      </div>
+      <p class="techchange-label">TechChange courses</p>
+      <ul class="techchange-list">
+        <li>TC141: Mapping for Social Good (2012, 2013, 2015)</li>
+        <li>TC104: Technology for Humanitarian Assistance (2012)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container">
+      <p class="section-label">Education</p>
+      <div class="item-list">
+
+        <div>
+          <p class="edu-school">University of Denver</p>
+          <p class="edu-degree">MA, International Studies: International Political Economy, Comparative Politics, International Political Theory</p>
+          <ul class="edu-notes">
+            <li><strong>Graduate Researcher, Pardee Center for International Futures.</strong> Research with the International Futures (IFs) integrated assessment model.</li>
+            <li><strong>Graduate Researcher, Global Health Affairs Program.</strong> Mobile survey design for global health data collection.</li>
+            <li><strong>Coordinator, TechWeek@Korbel.</strong> Convened international experts on remote sensing, mobile technology, and digital tools in development.</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="edu-school">St. Mary&rsquo;s College of Maryland</p>
+          <p class="edu-degree">BA, Policy, Ethics &amp; Conflict (self-designed major)</p>
+          <p class="edu-thesis">Senior thesis on international diplomatic efforts in conflict resolution.</p>
+        </div>
+
+        <div>
+          <p class="edu-school">George Mason University</p>
+          <p class="edu-degree">Coursework in mediation and conflict management systems, Northern Virginia Mediation Service</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <p class="section-label" style="margin-bottom:2rem">Contact</p>
+      <div class="contact-body">
+        <p class="contact-location">Takoma Park, MD</p>
+        <a href="https://bsky.app/profile/gmaly.bsky.social" target="_blank" rel="noopener noreferrer" class="item-link">
+          @gmaly.bsky.social
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/gregmaly/" target="_blank" rel="noopener noreferrer" class="item-link">
+          LinkedIn
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Gregory Maly &middot; 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    var header = document.getElementById('site-header');
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    var menuToggle = document.getElementById('menu-toggle');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var iconHamburger = document.getElementById('icon-hamburger');
+    var iconClose = document.getElementById('icon-close');
+
+    menuToggle.addEventListener('click', function() {
+      var open = mobileMenu.classList.toggle('open');
+      iconHamburger.style.display = open ? 'none' : 'block';
+      iconClose.style.display = open ? 'block' : 'none';
+    });
+
+    document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.remove('open');
+        iconHamburger.style.display = 'block';
+        iconClose.style.display = 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>
