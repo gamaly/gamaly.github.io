@@ -11,45 +11,69 @@
   <link rel="icon" href="../favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Playfair+Display:wght@600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream: #F5F5F0;
-      --parchment: #DDDFD8;
-      --green: #2D6A4F;
-      --green-dark: #1E4D38;
-      --charcoal: #1A1A1A;
-      --warm-gray: #5A5F58;
-      --warm-gray-light: #8A9088;
+      --paper: #FFFFFF;
+      --ink: #0E0E0C;
+      --ink-soft: #3A3A36;
+      --ink-mute: #75736C;
+      --rule: #D6D4CC;
+      --rule-strong: #0E0E0C;
+      --accent: #A6231B;
+
+      --display: "Newsreader", Georgia, "Times New Roman", serif;
+      --meta: "Archivo Narrow", "Helvetica Neue", Arial, sans-serif;
     }
 
     body {
-      background: var(--cream);
-      color: var(--charcoal);
-      font-family: "Source Serif 4", Georgia, serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: 1.0625rem;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    ::selection { background: var(--green); color: white; }
+    ::selection { background: var(--ink); color: var(--paper); }
     a { color: inherit; text-decoration: none; }
 
-    header { padding: 1rem 1.5rem; }
+    /* ── Masthead ── */
+    header {
+      border-bottom: 3px double var(--rule-strong);
+    }
+    header .inner {
+      max-width: 60rem;
+      margin: 0 auto;
+      padding: 0.875rem 1.5rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
     .nav-logo {
-      font-family: "JetBrains Mono", "Courier New", monospace;
-      font-weight: 700;
-      font-size: 0.875rem;
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 1.125rem;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo:hover { color: var(--accent); }
+    .nav-back {
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--charcoal);
-      transition: color 0.2s;
+      color: var(--ink-soft);
     }
-    .nav-logo:hover { color: var(--green); }
+    .nav-back:hover { color: var(--accent); }
 
+    /* ── Layout ── */
     main {
       flex: 1;
       padding: 3rem 1.5rem 4rem;
@@ -57,100 +81,131 @@
       justify-content: center;
     }
 
-    .card {
-      width: 100%;
-      max-width: 26rem;
-      text-align: center;
-    }
+    .card { width: 100%; max-width: 24rem; }
 
     .section-label {
-      font-family: "JetBrains Mono", "Courier New", monospace;
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      font-family: var(--meta);
       font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--warm-gray-light);
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
+    }
+    .section-label::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
     }
 
+    /* ── QR ── */
     .qr-frame {
-      background: #fff;
-      border: 1px solid var(--parchment);
-      border-radius: 2px;
-      padding: 1.25rem;
-      margin-bottom: 2rem;
+      border: 1px solid var(--rule-strong);
+      padding: 1.125rem;
+      background: var(--paper);
     }
     #qr { display: block; width: 100%; height: auto; }
     .qr-fallback {
-      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-family: var(--meta);
       font-size: 0.8125rem;
-      color: var(--warm-gray);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      text-align: center;
       padding: 3rem 1rem;
     }
 
+    .qr-caption {
+      font-family: var(--meta);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      text-align: center;
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 1.75rem;
+    }
+
+    /* ── Identity ── */
     h1 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 1.75rem;
+      font-family: var(--display);
+      font-size: 2rem;
       font-weight: 600;
+      line-height: 1.1;
       letter-spacing: -0.02em;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
-    .roles {
-      font-family: "JetBrains Mono", "Courier New", monospace;
-      font-size: 0.8125rem;
-      line-height: 1.7;
-      color: var(--warm-gray);
-      margin-bottom: 2rem;
+    .roles { border-top: 1px solid var(--rule); }
+    .role {
+      display: block;
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
     }
-    .roles strong { color: var(--charcoal); font-weight: 400; }
+    .role strong { color: var(--ink); font-weight: 700; }
 
+    /* ── Actions ── */
     .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: center;
+      gap: 0.625rem;
+      margin-top: 1.75rem;
     }
 
     .btn-primary, .btn-secondary {
+      flex: 1 1 auto;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
-      font-family: "JetBrains Mono", "Courier New", monospace;
-      font-size: 0.875rem;
-      padding: 0.625rem 1.25rem;
-      border-radius: 2px;
-      border: 1px solid var(--charcoal);
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6875rem 1.125rem;
+      border: 1px solid var(--ink);
+      border-radius: 0;
       background: none;
-      color: var(--charcoal);
+      color: var(--ink);
       cursor: pointer;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
     }
-    .btn-primary { background: var(--charcoal); color: var(--cream); }
-    .btn-primary:hover { background: var(--green); border-color: var(--green); }
-    .btn-secondary:hover { color: var(--green); border-color: var(--green); }
+    .btn-primary { background: var(--ink); color: var(--paper); }
+    .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
-    .hint {
-      font-family: "JetBrains Mono", "Courier New", monospace;
-      font-size: 0.75rem;
-      color: var(--warm-gray-light);
-      margin-top: 1.5rem;
-    }
-
+    /* ── Footer ── */
     footer {
-      padding: 2rem 1.5rem;
-      border-top: 1px solid var(--parchment);
+      border-top: 3px double var(--rule-strong);
+      padding: 1.5rem;
       text-align: center;
-      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-family: var(--meta);
       font-size: 0.75rem;
-      color: var(--warm-gray-light);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
     }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="../" class="nav-logo">Gregory Maly</a>
+    <div class="inner">
+      <a href="../" class="nav-logo">Gregory Maly</a>
+      <a href="../" class="nav-back">&larr; Back</a>
+    </div>
   </header>
 
   <main>
@@ -159,21 +214,22 @@
 
       <div class="qr-frame">
         <canvas id="qr" width="1024" height="1024"></canvas>
-        <p class="qr-fallback" id="qr-fallback" style="display:none">QR code unavailable &mdash; use the buttons below.</p>
+        <p class="qr-fallback" id="qr-fallback" style="display:none">QR unavailable &mdash; use the buttons below</p>
       </div>
+      <p class="qr-caption">Scan with a phone camera to save</p>
 
       <h1>Gregory Maly</h1>
-      <p class="roles">
-        Founder &amp; Developer, <strong>Digital Harms Tracker</strong><br>
-        AI &amp; Data Science Editor, <strong>The Outlaw Ocean Project</strong>
-      </p>
-
-      <div class="actions">
-        <button class="btn-primary" id="vcf" type="button">Save contact (.vcf)</button>
-        <button class="btn-secondary" id="png" type="button">Download QR</button>
+      <div class="roles">
+        <span class="role">Founder &amp; Developer, <strong>Digital Harms Tracker</strong></span>
+        <span class="role">AI &amp; Data Science Editor, <strong>The Outlaw Ocean Project</strong></span>
+        <span class="role">Adjunct Professor, <strong>University of Maryland College of Information</strong></span>
       </div>
 
-      <p class="hint">Scan with a phone camera to save.</p>
+
+      <div class="actions">
+        <button class="btn-primary" id="vcf" type="button">Save contact</button>
+        <button class="btn-secondary" id="png" type="button">Download QR</button>
+      </div>
     </div>
   </main>
 
@@ -189,10 +245,11 @@
       "FN:Gregory Maly",
       "ORG:Digital Harms Tracker",
       "TITLE:Founder & Developer",
-      "EMAIL;TYPE=INTERNET,WORK:gamaly@gmail.com",
-      "URL:https://gamaly.github.io",
+      "EMAIL;TYPE=INTERNET,WORK:greg@digitalharmstracker.org",
+      "TEL;TYPE=CELL,VOICE:+1-703-304-6388",
+      "URL:https://www.gregorymaly.com",
       "URL:https://www.linkedin.com/in/gregmaly/",
-      "NOTE:AI & Data Science Editor, The Outlaw Ocean Project. Based in Takoma Park, MD.",
+      "NOTE:AI & Data Science Editor, The Outlaw Ocean Project. Adjunct Professor, UMD College of Information.",
       "END:VCARD"
     ].join("\r\n");
     /* ─────────────────────────────────────────────────────────────────── */
@@ -215,9 +272,9 @@
       canvas.width = canvas.height = size;
 
       var ctx = canvas.getContext('2d');
-      ctx.fillStyle = '#fff';
+      ctx.fillStyle = '#FFFFFF';
       ctx.fillRect(0, 0, size, size);
-      ctx.fillStyle = '#1A1A1A';
+      ctx.fillStyle = '#0E0E0C';
       for (var r = 0; r < n; r++) {
         for (var c = 0; c < n; c++) {
           if (qr.isDark(r, c)) ctx.fillRect((c + quiet) * scale, (r + quiet) * scale, scale, scale);
