@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bait to Plate &middot; Gregory Maly</title>
+  <meta name="description" content="Building a seafood supply chain accountability database at The Outlaw Ocean Project.">
+  <meta property="og:title" content="Bait to Plate">
+  <meta property="og:description" content="Building a seafood supply chain accountability database at The Outlaw Ocean Project.">
+  <meta property="og:type" content="article">
+  <meta name="theme-color" content="#0E0E0C">
+  <link rel="icon" href="../../icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper: #FFFFFF;
+      --ink: #0E0E0C;
+      --ink-soft: #3A3A36;
+      --ink-mute: #75736C;
+      --rule: #D6D4CC;
+      --rule-strong: #0E0E0C;
+      --accent: #26418F;
+      --accent-dark: #1A2E66;
+
+      --display: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --meta: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: 1rem;
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+      animation: settle 0.45s ease-out both;
+    }
+
+    @keyframes settle {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    ::selection { background: var(--ink); color: var(--paper); }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Masthead ── */
+    #site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--paper);
+      box-shadow: inset 0 -1px 0 transparent;
+      transition: box-shadow 0.3s ease-out;
+    }
+    #site-header.scrolled { box-shadow: inset 0 -1px 0 var(--rule); }
+
+    #site-nav {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 0.875rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .nav-logo {
+      font-weight: 800;
+      font-size: 1.0625rem;
+      letter-spacing: -0.025em;
+    }
+    .nav-logo:hover { color: var(--accent); }
+
+    .nav-back {
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      transition: color 0.2s ease-out;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    /* ── Layout: wide page, narrow text ── */
+    .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+    .col  { max-width: 40rem; }
+
+    /* ── Opening ── */
+    #lede { padding: 4rem 0 3rem; }
+
+    .kicker {
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 7vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+      text-wrap: balance;
+    }
+
+    .standfirst {
+      font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+      line-height: 1.5;
+      font-weight: 400;
+      color: var(--ink-soft);
+      max-width: 34rem;
+      text-wrap: pretty;
+    }
+
+    /* ── Credit block ── */
+    .credits {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem 2.5rem;
+      margin-top: 3rem;
+      max-width: 46rem;
+    }
+    .credit-label {
+      font-family: var(--meta);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 0.25rem;
+    }
+    .credit-value { font-size: 0.9375rem; color: var(--ink-soft); }
+
+    /* ── Body sections ── */
+    section { padding: 3rem 0; }
+
+    .section-label {
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 1.75rem;
+    }
+
+    h2 {
+      font-size: clamp(1.375rem, 3vw, 1.875rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      max-width: 24ch;
+      text-wrap: balance;
+    }
+
+    .col p { color: var(--ink-soft); text-wrap: pretty; }
+    .col p + p { margin-top: 1.25rem; }
+
+    .text-link {
+      color: var(--ink);
+      padding-bottom: 1px;
+      background-image:
+        linear-gradient(var(--accent), var(--accent)),
+        linear-gradient(var(--rule), var(--rule));
+      background-repeat: no-repeat, no-repeat;
+      background-position: 0 100%, 0 100%;
+      background-size: 0% 1px, 100% 1px;
+      transition: color 0.2s ease-out, background-size 0.35s cubic-bezier(0.2, 0.7, 0.3, 1);
+    }
+    .text-link:hover { color: var(--accent); background-size: 100% 1px, 100% 1px; }
+
+    /* ── Figures ── */
+    figure { margin: 3rem 0; }
+    figure img { display: block; width: 100%; height: auto; }
+
+    .fig-wide { max-width: none; }
+    .fig-two {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .fig-two figcaption { grid-column: 1 / -1; }
+
+    figcaption {
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      line-height: 1.5;
+      color: var(--ink-mute);
+      margin-top: 0.75rem;
+      max-width: 40rem;
+    }
+    figcaption b { color: var(--ink-soft); font-weight: 600; }
+
+    /* Placeholder: delete the div once a real <img> is dropped in. */
+    .fig-slot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FAFAF8;
+      outline: 1px dashed var(--rule);
+      outline-offset: -1px;
+      font-family: var(--meta);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      text-align: center;
+      padding: 1rem;
+    }
+    /* ── Video ── */
+    .video-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: var(--ink);
+      overflow: hidden;
+    }
+    .video-frame iframe,
+    .video-frame video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .ratio-wide { aspect-ratio: 16 / 9; }
+    .ratio-tall { aspect-ratio: 4 / 5; }
+    .ratio-square { aspect-ratio: 1 / 1; }
+
+    /* ── Numbers ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+      gap: 2.5rem 2rem;
+      margin: 1rem 0;
+    }
+    .stat-value {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+    }
+    .stat-label {
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-top: 0.625rem;
+      max-width: 16rem;
+    }
+
+    /* ── Pull quote ── */
+    blockquote {
+      max-width: 44rem;
+      margin: 3.5rem 0;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 500;
+      line-height: 1.35;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    blockquote cite {
+      display: block;
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-style: normal;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-top: 1.25rem;
+    }
+
+    /* ── Method list ── */
+    .steps { list-style: none; display: flex; flex-direction: column; gap: 2.25rem; max-width: 44rem; }
+    .step-num {
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+    }
+    .step-title { font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.02em; margin: 0.375rem 0 0.5rem; }
+    .step-body { font-size: 0.9375rem; color: var(--ink-soft); }
+
+    /* ── Footer ── */
+    footer { padding: 3rem 0 4rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin-bottom: 2rem; }
+
+    .item-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      padding-bottom: 2px;
+      background-image:
+        linear-gradient(var(--accent), var(--accent)),
+        linear-gradient(var(--rule), var(--rule));
+      background-repeat: no-repeat, no-repeat;
+      background-position: 0 100%, 0 100%;
+      background-size: 0% 1px, 100% 1px;
+      transition: color 0.2s ease-out, background-size 0.35s cubic-bezier(0.2, 0.7, 0.3, 1);
+    }
+    .item-link:hover { color: var(--accent); background-size: 100% 1px, 100% 1px; }
+
+    .colophon {
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+    }
+
+    /* ── Responsive ── */
+    @media (min-width: 48rem) {
+      #lede { padding: 6rem 0 4rem; }
+      section { padding: 4.5rem 0; }
+      .credits { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .fig-two { grid-template-columns: 1fr 1fr; }
+      .wrap { padding: 0 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="site-header">
+    <nav id="site-nav">
+      <a href="../../" class="nav-logo">Gregory Maly</a>
+      <a href="../../#work" class="nav-back">&larr; Work</a>
+    </nav>
+  </header>
+
+  <!--
+    ────────────────────────────────────────────────────────────────
+    HOW TO FILL THIS IN
+
+    Every "TK" is a placeholder to replace (a newsroom convention —
+    search TK before publishing and nothing should remain).
+
+    Images: drop files in work/bait-to-plate/images/ and replace the
+    <div class="fig-slot ..."> with:
+        <img src="images/your-file.jpg" alt="describe it">
+    Keep the <figcaption>. Captions do real work here — a chart
+    without one is decoration.
+
+    Nothing links to this page yet. Add a link from the Bait to Plate
+    entry in index.html when it is ready to be seen.
+    ────────────────────────────────────────────────────────────────
+  -->
+
+  <div id="lede">
+    <div class="wrap">
+      <p class="kicker">The Outlaw Ocean Project &middot; In development</p>
+      <h1>Bait to Plate</h1>
+      <p class="standfirst">One of the largest seafood supply chain accountability databases in development &mdash; linking fishing vessels, labor records, and catch data to trace accountability from ocean to consumer.</p>
+
+      <div class="credits">
+        <div>
+          <p class="credit-label">Role</p>
+          <p class="credit-value">Lead data scientist and data engineer</p>
+        </div>
+        <div>
+          <p class="credit-label">Organization</p>
+          <p class="credit-value">The Outlaw Ocean Project</p>
+        </div>
+        <div>
+          <p class="credit-label">Status</p>
+          <p class="credit-value">Pending publication, fall 2026</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <!--
+        THE VIDEO GOES HERE. Replace the .fig-slot div with one of these:
+
+        YouTube (use nocookie, and keep the title for screen readers):
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
+                    title="Bait to Plate" loading="lazy" allowfullscreen
+                    allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"></iframe>
+          </div>
+
+        Vimeo:
+          <div class="video-frame">
+            <iframe src="https://player.vimeo.com/video/VIDEO_ID"
+                    title="Bait to Plate" loading="lazy" allowfullscreen></iframe>
+          </div>
+
+        Self-hosted (drop the file in this folder; add a poster frame so
+        it isn't a black box before play):
+          <div class="video-frame">
+            <video controls preload="metadata" poster="images/poster.jpg">
+              <source src="bait-to-plate.mp4" type="video/mp4">
+            </video>
+          </div>
+      -->
+      <figure class="fig-wide">
+        <div class="fig-slot ratio-wide">Video TK &mdash; 16:9<br>paste the embed here</div>
+        <figcaption><b>Caption TK.</b> What the video covers and how long it runs. If it was made for a talk or a screening, say which.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap col">
+      <p class="section-label">The problem</p>
+      <h2>TK &mdash; the question the project set out to answer</h2>
+      <p>TK &mdash; one paragraph on why seafood supply chains are opaque, in plain language. What can't be seen today, and who that opacity protects.</p>
+      <p>TK &mdash; a second paragraph narrowing to the specific, tractable question this database was built to answer. This is the paragraph that earns the rest of the page.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="col">
+        <p class="section-label">Scale</p>
+        <h2>TK &mdash; what the database holds</h2>
+      </div>
+      <div class="stats">
+        <div>
+          <p class="stat-value">TK</p>
+          <p class="stat-label">Vessels tracked</p>
+        </div>
+        <div>
+          <p class="stat-value">TK</p>
+          <p class="stat-label">Records linked</p>
+        </div>
+        <div>
+          <p class="stat-value">TK</p>
+          <p class="stat-label">Countries / fleets covered</p>
+        </div>
+        <div>
+          <p class="stat-value">TK</p>
+          <p class="stat-label">Years of catch data</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <figure>
+        <div class="fig-two">
+          <div class="fig-slot ratio-tall">Figure TK &mdash; 4:5</div>
+          <div class="fig-slot ratio-tall">Figure TK &mdash; 4:5</div>
+          <figcaption><b>Caption TK.</b> Two related views — e.g. the network graph beside the map it was derived from.</figcaption>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap col">
+      <p class="section-label">Method</p>
+      <h2>TK &mdash; how the links were built</h2>
+      <ol class="steps">
+        <li>
+          <p class="step-num">01</p>
+          <p class="step-title">TK &mdash; sourcing</p>
+          <p class="step-body">TK &mdash; where the raw records came from: AIS, port records, labor testimony, trade manifests, corporate registries.</p>
+        </li>
+        <li>
+          <p class="step-num">02</p>
+          <p class="step-title">TK &mdash; entity resolution</p>
+          <p class="step-body">TK &mdash; the hard part. How vessels, companies, and shipments were matched across sources that don't share identifiers.</p>
+        </li>
+        <li>
+          <p class="step-num">03</p>
+          <p class="step-title">TK &mdash; verification</p>
+          <p class="step-body">TK &mdash; what a claim has to clear before it enters the database, and what gets rejected.</p>
+        </li>
+        <li>
+          <p class="step-num">04</p>
+          <p class="step-title">TK &mdash; tracing</p>
+          <p class="step-body">TK &mdash; how a single plate of seafood is walked back to a vessel and a crew.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <blockquote>
+        TK &mdash; a single sentence that captures what this makes visible. Yours or a colleague's, but it has to be a real quote.
+        <cite>TK &mdash; attribution</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <figure class="fig-wide">
+        <div class="fig-slot ratio-wide">Figure TK &mdash; the money shot<br>the one visualization that carries the finding</div>
+        <figcaption><b>Caption TK.</b> If a reader looks at exactly one image on this page, it should be this one. Say what it shows in the first sentence.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap col">
+      <p class="section-label">What it surfaces</p>
+      <h2>TK &mdash; what became visible</h2>
+      <p>TK &mdash; what the data made possible that wasn't possible before. Stay concrete and stay inside what's publishable before the investigation runs.</p>
+      <p>TK &mdash; who uses it and what they do with it: reporters, regulators, importers, advocates.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap col">
+      <p class="section-label">Stack</p>
+      <h2>TK &mdash; how it's built</h2>
+      <p>TK &mdash; brief and specific. Ingestion, storage, the graph layer, the matching approach, how it's served to the newsroom. Two or three sentences, not a résumé.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-links">
+        <a href="https://www.theoutlawocean.com" target="_blank" rel="noopener noreferrer" class="item-link">
+          theoutlawocean.com
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+        <a href="../../#work" class="item-link">All work</a>
+      </div>
+      <p class="colophon">Gregory Maly &middot; 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    var header = document.getElementById('site-header');
+    window.addEventListener('scroll', function () {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
