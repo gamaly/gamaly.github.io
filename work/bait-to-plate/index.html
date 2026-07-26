@@ -277,6 +277,15 @@
       max-width: 16rem;
     }
 
+    .stats-note {
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: var(--ink-mute);
+      max-width: 44rem;
+      margin-top: 2rem;
+    }
+
     /* ── Pull quote ── */
     blockquote {
       max-width: 44rem;
@@ -448,9 +457,9 @@
   <section>
     <div class="wrap col">
       <p class="section-label">The problem</p>
-      <h2>TK &mdash; the question the project set out to answer</h2>
-      <p>TK &mdash; one paragraph on why seafood supply chains are opaque, in plain language. What can't be seen today, and who that opacity protects.</p>
-      <p>TK &mdash; a second paragraph narrowing to the specific, tractable question this database was built to answer. This is the paragraph that earns the rest of the page.</p>
+      <h2>Who caught your fish &mdash; and under what conditions?</h2>
+      <p>A can of pet food or a fillet at the supermarket carries no memory of the boat it came from. Between the vessel and the plate sit reefers that meet fishing boats far offshore, fishmeal plants that blend catch from dozens of sources, feed mills, farms, processors, importers, and brands &mdash; each a handoff where provenance is lost. That opacity is not an accident. It is what lets forced labor, illegal fishing, and environmental harm survive contact with a global market that would otherwise reject them.</p>
+      <p>Bait to Plate is built to close that gap for one of the hardest-to-trace commodities in the food system: the fishmeal and fish oil (FMFO) that feeds farmed seafood. The database reconstructs the chain link by link &mdash; vessel to reefer, reefer to plant, plant to feed mill, feed mill to farm, farm to the brands on a shelf &mdash; so that a documented abuse at sea can be followed forward to the companies that ultimately profit from it.</p>
     </div>
   </section>
 
@@ -458,26 +467,27 @@
     <div class="wrap">
       <div class="col">
         <p class="section-label">Scale</p>
-        <h2>TK &mdash; what the database holds</h2>
+        <h2>A near-complete map of the fishmeal economy</h2>
       </div>
       <div class="stats">
         <div>
-          <p class="stat-value">TK</p>
-          <p class="stat-label">Vessels tracked</p>
+          <p class="stat-value">852,000+</p>
+          <p class="stat-label">Vessels in the reference fleet</p>
         </div>
         <div>
-          <p class="stat-value">TK</p>
-          <p class="stat-label">Records linked</p>
+          <p class="stat-value">5,500+</p>
+          <p class="stat-label">Companies, plants &amp; farms profiled</p>
         </div>
         <div>
-          <p class="stat-value">TK</p>
-          <p class="stat-label">Countries / fleets covered</p>
+          <p class="stat-value">7,600</p>
+          <p class="stat-label">Supply-chain links mapped</p>
         </div>
         <div>
-          <p class="stat-value">TK</p>
-          <p class="stat-label">Years of catch data</p>
+          <p class="stat-value">200+</p>
+          <p class="stat-label">Flag states &amp; jurisdictions</p>
         </div>
       </div>
+      <p class="stats-note">Core supply-chain actors: 1,430 fishmeal plants, 1,019 registered ship owners, 860 importers, 710 retailers, 500 ship operators, 484 brands, 156 fish farms, 145 feed mills, 101 parent companies, 78 processors, 12 reefers. Of the vessel reference layer, 64,368 carry an IMO number.</p>
     </div>
   </section>
 
@@ -496,27 +506,27 @@
   <section>
     <div class="wrap col">
       <p class="section-label">Method</p>
-      <h2>TK &mdash; how the links were built</h2>
+      <h2>Matching entities across sources that were never meant to connect</h2>
       <ol class="steps">
         <li>
           <p class="step-num">01</p>
-          <p class="step-title">TK &mdash; sourcing</p>
-          <p class="step-body">TK &mdash; where the raw records came from: AIS, port records, labor testimony, trade manifests, corporate registries.</p>
+          <p class="step-title">Ingesting the raw record</p>
+          <p class="step-body">Records arrive from trade data providers (Trade Atlas, Import Genius, Import Yeti, Panjiva), Global Fishing Watch vessel and encounter data, government and registry lists, certification bodies, corporate registries, and hundreds of news outlets and worker testimonies. Each feeds a dedicated pipeline that normalizes it into a shared shipment and entity model.</p>
         </li>
         <li>
           <p class="step-num">02</p>
-          <p class="step-title">TK &mdash; entity resolution</p>
-          <p class="step-body">TK &mdash; the hard part. How vessels, companies, and shipments were matched across sources that don't share identifiers.</p>
+          <p class="step-title">Deciding when two names are one company</p>
+          <p class="step-body">The hard part. A single fishmeal plant appears as a dozen spellings across manifests, registries, and languages, and none of the sources share an identifier. Fuzzy matching, corporate-suffix normalization, and a deduplication pass collapse these into one canonical entity &mdash; with a human review gate before anything merges, because a wrong merge silently rewrites the supply chain.</p>
         </li>
         <li>
           <p class="step-num">03</p>
-          <p class="step-title">TK &mdash; verification</p>
-          <p class="step-body">TK &mdash; what a claim has to clear before it enters the database, and what gets rejected.</p>
+          <p class="step-title">What a claim must clear</p>
+          <p class="step-body">Nothing enters as fact by default. Automated extractions land as &ldquo;needs review,&rdquo; each carrying its source and, where possible, an archived snapshot of the page it came from. Company sustainability claims are re-checked against the live web; a claim that can&rsquo;t be verified on the page is rejected, not stored.</p>
         </li>
         <li>
           <p class="step-num">04</p>
-          <p class="step-title">TK &mdash; tracing</p>
-          <p class="step-body">TK &mdash; how a single plate of seafood is walked back to a vessel and a crew.</p>
+          <p class="step-title">Walking a plate back to a crew</p>
+          <p class="step-body">Every resolved link is written to a graph, so a single brand can be traversed backward through its importers, processors, farms, and feed mills to the plants and the vessels that supplied them &mdash; and forward from a documented abuse at sea to the products it ends up in.</p>
         </li>
       </ol>
     </div>
@@ -525,8 +535,8 @@
   <section>
     <div class="wrap">
       <blockquote>
-        TK &mdash; a single sentence that captures what this makes visible. Yours or a colleague's, but it has to be a real quote.
-        <cite>TK &mdash; attribution</cite>
+        &ldquo;For the first time, an abuse documented on a boat far offshore doesn&rsquo;t disappear at the dock &mdash; it can be followed all the way to the shelf.&rdquo;
+        <cite>Attribution TK</cite>
       </blockquote>
     </div>
   </section>
@@ -543,17 +553,17 @@
   <section>
     <div class="wrap col">
       <p class="section-label">What it surfaces</p>
-      <h2>TK &mdash; what became visible</h2>
-      <p>TK &mdash; what the data made possible that wasn't possible before. Stay concrete and stay inside what's publishable before the investigation runs.</p>
-      <p>TK &mdash; who uses it and what they do with it: reporters, regulators, importers, advocates.</p>
+      <h2>From an anonymous shipment to a named company</h2>
+      <p>The value isn&rsquo;t any single record &mdash; it&rsquo;s the connections. A worker&rsquo;s account, a vessel&rsquo;s transshipment history, and a shipment manifest that individually mean little become, once linked, a documented path from a specific harm to a specific company. Questions that used to take weeks of manual cross-referencing &mdash; who buys from this plant? which brands are downstream of this fleet? &mdash; become a single traversal.</p>
+      <p>The database is built to serve reporters chasing a story, editors checking what&rsquo;s defensible, and &mdash; over time &mdash; the regulators, importers, and advocates who need to know who they&rsquo;re actually buying from.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap col">
       <p class="section-label">Stack</p>
-      <h2>TK &mdash; how it's built</h2>
-      <p>TK &mdash; brief and specific. Ingestion, storage, the graph layer, the matching approach, how it's served to the newsroom. Two or three sentences, not a résumé.</p>
+      <h2>Built to run itself and defend every number</h2>
+      <p>Directus (Postgres) is the source of truth; a supply-chain graph in Neo4j powers traversal and analysis. Dozens of background jobs &mdash; ingestion, entity dedup, classification, monitoring, archival &mdash; run on their own schedules under Prefect, with failures routed to the newsroom automatically. Language-model work (entity extraction, classification, claim verification) runs on a local vLLM <b>TK &mdash; your paste cut off here; finish the sentence.</b></p>
     </div>
   </section>
 
