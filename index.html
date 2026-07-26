@@ -11,7 +11,7 @@
   <link rel="icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -25,8 +25,8 @@
       --accent: #A6231B;
       --accent-dark: #7E1913;
 
-      --display: "Newsreader", Georgia, "Times New Roman", serif;
-      --meta: "Archivo Narrow", "Helvetica Neue", Arial, sans-serif;
+      --display: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --meta: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
     html {
@@ -38,8 +38,8 @@
       background: var(--paper);
       color: var(--ink);
       font-family: var(--display);
-      font-size: 1.0625rem;
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.62;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -77,9 +77,9 @@
 
     .nav-logo {
       font-family: var(--display);
-      font-weight: 600;
-      font-size: 1.125rem;
-      letter-spacing: -0.01em;
+      font-weight: 800;
+      font-size: 1.0625rem;
+      letter-spacing: -0.025em;
       color: var(--ink);
     }
     .nav-logo:hover { color: var(--accent); }
@@ -182,11 +182,12 @@
 
     #hero h1 {
       font-family: var(--display);
-      font-size: clamp(2rem, 5.5vw, 3.5rem);
-      font-weight: 600;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
+      font-size: clamp(1.875rem, 5.2vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.035em;
       max-width: 20ch;
+      text-wrap: balance;
       margin-bottom: 1.75rem;
     }
 
@@ -235,17 +236,19 @@
 
     /* ── About ── */
     .about-body p {
-      font-size: 1.1875rem;
-      line-height: 1.62;
+      font-size: 1.0625rem;
+      line-height: 1.65;
       color: var(--ink-soft);
+      text-wrap: pretty;
     }
     .about-body p + p { margin-top: 1.25rem; }
     .about-body p:first-child::first-letter {
       float: left;
-      font-size: 3.25rem;
-      line-height: 0.82;
-      font-weight: 600;
-      padding: 0.15rem 0.5rem 0 0;
+      font-size: 3rem;
+      line-height: 0.86;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      padding: 0.15rem 0.4rem 0 0;
       color: var(--ink);
     }
 
@@ -269,11 +272,12 @@
 
     .item-title {
       font-family: var(--display);
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 1.125rem;
+      font-weight: 700;
       line-height: 1.25;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.022em;
       color: var(--ink);
+      text-wrap: balance;
     }
 
     .item-role {
@@ -297,8 +301,8 @@
       margin-top: 0.375rem;
     }
 
-    .item-body { color: var(--ink-soft); }
-    .item-body-sm { font-size: 1rem; color: var(--ink-soft); }
+    .item-body { color: var(--ink-soft); text-wrap: pretty; }
+    .item-body-sm { font-size: 0.9375rem; color: var(--ink-soft); text-wrap: pretty; }
 
     .item-footer {
       display: flex;
@@ -356,9 +360,12 @@
     .row-items { color: var(--ink-soft); }
 
     .talk-title {
-      font-size: 1.0625rem;
-      line-height: 1.35;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.012em;
       color: var(--ink);
+      text-wrap: balance;
     }
 
     .talk-event {
@@ -379,7 +386,8 @@
     .teaching-org-name {
       font-family: var(--display);
       font-size: 1.125rem;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: -0.022em;
       color: var(--ink);
     }
 
@@ -417,9 +425,10 @@
     /* ── Education ── */
     .edu-school {
       font-family: var(--display);
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 1.125rem;
+      font-weight: 700;
       line-height: 1.25;
+      letter-spacing: -0.022em;
       color: var(--ink);
     }
 
@@ -440,9 +449,9 @@
     /* ── Contact ── */
     .contact-location {
       font-family: var(--display);
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
+      font-size: 1.375rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
       margin-bottom: 1.25rem;
     }
 
@@ -477,7 +486,7 @@
       #hero { padding-top: 5.5rem; padding-bottom: 4.5rem; }
       .item { grid-template-columns: 15rem 1fr; }
       .row { grid-template-columns: 15rem 1fr; }
-      .about-body p { font-size: 1.25rem; }
+      .about-body p { font-size: 1.125rem; }
     }
 
     @media (max-width: 47.99rem) {
@@ -769,6 +778,10 @@
           <span class="row-items">data engineering &middot; statistical modeling &middot; Power BI &middot; Azure ML &middot; Neo4j</span>
         </div>
         <div class="row">
+          <span class="row-label">Cloud &amp; IaC</span>
+          <span class="row-items">AWS &middot; Terraform &middot; AWS GovCloud &middot; FedRAMP environments</span>
+        </div>
+        <div class="row">
           <span class="row-label">Statistics</span>
           <span class="row-items">regression &middot; sampling &middot; causal inference &middot; program evaluation</span>
         </div>
@@ -938,10 +951,6 @@
           gregmaly.substack.com
           <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
         </a>
-        <a href="card/" class="item-link">
-          Contact card
-          <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
-        </a>
       </div>
     </div>
   </section>
@@ -949,7 +958,6 @@
   <footer>
     <div class="container">
       <p>Gregory Maly &middot; 2026</p>
-      <p><a href="card/">Contact card</a></p>
     </div>
   </footer>
 
