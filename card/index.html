@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gregory Maly &middot; Contact card</title>
+  <meta name="description" content="Scan to save Gregory Maly's contact details.">
+  <meta property="og:title" content="Gregory Maly &middot; Contact card">
+  <meta property="og:description" content="Scan to save Gregory Maly's contact details.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Playfair+Display:wght@600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F5F0;
+      --parchment: #DDDFD8;
+      --green: #2D6A4F;
+      --green-dark: #1E4D38;
+      --charcoal: #1A1A1A;
+      --warm-gray: #5A5F58;
+      --warm-gray-light: #8A9088;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: "Source Serif 4", Georgia, serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    ::selection { background: var(--green); color: white; }
+    a { color: inherit; text-decoration: none; }
+
+    header { padding: 1rem 1.5rem; }
+    .nav-logo {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      transition: color 0.2s;
+    }
+    .nav-logo:hover { color: var(--green); }
+
+    main {
+      flex: 1;
+      padding: 3rem 1.5rem 4rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 26rem;
+      text-align: center;
+    }
+
+    .section-label {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-gray-light);
+      margin-bottom: 2rem;
+    }
+
+    .qr-frame {
+      background: #fff;
+      border: 1px solid var(--parchment);
+      border-radius: 2px;
+      padding: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    #qr { display: block; width: 100%; height: auto; }
+    .qr-fallback {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.8125rem;
+      color: var(--warm-gray);
+      padding: 3rem 1rem;
+    }
+
+    h1 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .roles {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.8125rem;
+      line-height: 1.7;
+      color: var(--warm-gray);
+      margin-bottom: 2rem;
+    }
+    .roles strong { color: var(--charcoal); font-weight: 400; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .btn-primary, .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.875rem;
+      padding: 0.625rem 1.25rem;
+      border-radius: 2px;
+      border: 1px solid var(--charcoal);
+      background: none;
+      color: var(--charcoal);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .btn-primary { background: var(--charcoal); color: var(--cream); }
+    .btn-primary:hover { background: var(--green); border-color: var(--green); }
+    .btn-secondary:hover { color: var(--green); border-color: var(--green); }
+
+    .hint {
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      color: var(--warm-gray-light);
+      margin-top: 1.5rem;
+    }
+
+    footer {
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--parchment);
+      text-align: center;
+      font-family: "JetBrains Mono", "Courier New", monospace;
+      font-size: 0.75rem;
+      color: var(--warm-gray-light);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="../" class="nav-logo">Gregory Maly</a>
+  </header>
+
+  <main>
+    <div class="card">
+      <p class="section-label">Contact card</p>
+
+      <div class="qr-frame">
+        <canvas id="qr" width="1024" height="1024"></canvas>
+        <p class="qr-fallback" id="qr-fallback" style="display:none">QR code unavailable &mdash; use the buttons below.</p>
+      </div>
+
+      <h1>Gregory Maly</h1>
+      <p class="roles">
+        Founder &amp; Developer, <strong>Digital Harms Tracker</strong><br>
+        AI &amp; Data Science Editor, <strong>The Outlaw Ocean Project</strong>
+      </p>
+
+      <div class="actions">
+        <button class="btn-primary" id="vcf" type="button">Save contact (.vcf)</button>
+        <button class="btn-secondary" id="png" type="button">Download QR</button>
+      </div>
+
+      <p class="hint">Scan with a phone camera to save.</p>
+    </div>
+  </main>
+
+  <footer>Gregory Maly &middot; 2026</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+  <script>
+    /* ── Contact details: edit these lines to change what the QR encodes ── */
+    var VCARD = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      "N:Maly;Gregory;;;",
+      "FN:Gregory Maly",
+      "ORG:Digital Harms Tracker",
+      "TITLE:Founder & Developer",
+      "EMAIL;TYPE=INTERNET,WORK:gamaly@gmail.com",
+      "URL:https://gamaly.github.io",
+      "URL:https://www.linkedin.com/in/gregmaly/",
+      "NOTE:AI & Data Science Editor, The Outlaw Ocean Project. Based in Takoma Park, MD.",
+      "END:VCARD"
+    ].join("\r\n");
+    /* ─────────────────────────────────────────────────────────────────── */
+
+    (function render() {
+      var canvas = document.getElementById('qr');
+      var qr;
+      try {
+        qr = qrcode(0, 'M');
+        qr.addData(VCARD);
+        qr.make();
+      } catch (e) {
+        canvas.style.display = 'none';
+        document.getElementById('qr-fallback').style.display = 'block';
+        return;
+      }
+
+      var n = qr.getModuleCount(), quiet = 4, total = n + quiet * 2;
+      var scale = Math.floor(1024 / total), size = scale * total;
+      canvas.width = canvas.height = size;
+
+      var ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0, 0, size, size);
+      ctx.fillStyle = '#1A1A1A';
+      for (var r = 0; r < n; r++) {
+        for (var c = 0; c < n; c++) {
+          if (qr.isDark(r, c)) ctx.fillRect((c + quiet) * scale, (r + quiet) * scale, scale, scale);
+        }
+      }
+    })();
+
+    document.getElementById('png').addEventListener('click', function () {
+      var a = document.createElement('a');
+      a.download = 'gregory-maly-qr.png';
+      a.href = document.getElementById('qr').toDataURL('image/png');
+      a.click();
+    });
+
+    document.getElementById('vcf').addEventListener('click', function () {
+      var blob = new Blob([VCARD], { type: 'text/vcard;charset=utf-8' });
+      var a = document.createElement('a');
+      a.download = 'gregory-maly.vcf';
+      a.href = URL.createObjectURL(blob);
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    });
+  </script>
+
+</body>
+</html>
