@@ -248,6 +248,9 @@
       display: block;
     }
 
+    /* Dark UI screenshots sit on their own ground rather than floating on white. */
+    .fig-dark { background: #0B0B0D; }
+
     .ratio-wide { aspect-ratio: 16 / 9; }
     .ratio-tall { aspect-ratio: 4 / 5; }
     .ratio-square { aspect-ratio: 1 / 1; }
@@ -544,8 +547,13 @@
   <section>
     <div class="wrap">
       <figure class="fig-wide">
-        <div class="fig-slot ratio-wide">Figure TK &mdash; the money shot<br>the one visualization that carries the finding</div>
-        <figcaption><b>Caption TK.</b> If a reader looks at exactly one image on this page, it should be this one. Say what it shows in the first sentence.</figcaption>
+        <!-- Save the screenshot as images/supply-chain-graph.png. Until it exists,
+             the onerror handler falls back to the placeholder so nothing breaks. -->
+        <img src="images/supply-chain-graph.png"
+             alt="Force-directed graph of the seafood supply chain: thousands of labelled nodes clustered around fishmeal plants, colour-coded by entity type, with a country filter panel down the left."
+             class="fig-dark"
+             onerror="this.outerHTML='&lt;div class=&quot;fig-slot ratio-wide&quot;&gt;Save screenshot to images/supply-chain-graph.png&lt;/div&gt;'">
+        <figcaption><b>The supply chain as a graph.</b> Vessels (teal) cluster around the fishmeal plants (orange) they deliver to; processors, farms, mills, importers, and retailers chain outward toward the brands on a shelf. Filters down the left isolate a single country&rsquo;s feed mills, farms, or plants. Screenshot from the internal explorer.</figcaption>
       </figure>
     </div>
   </section>
