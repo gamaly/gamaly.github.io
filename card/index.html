@@ -8,7 +8,11 @@
   <meta property="og:title" content="Gregory Maly &middot; Contact card">
   <meta property="og:description" content="Scan to save Gregory Maly's contact details.">
   <meta property="og:type" content="website">
-  <link rel="icon" href="../favicon.ico">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0E0E0C">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" href="../icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -288,6 +292,12 @@
       a.href = document.getElementById('qr').toDataURL('image/png');
       a.click();
     });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function () {});
+      });
+    }
 
     document.getElementById('vcf').addEventListener('click', function () {
       var blob = new Blob([VCARD], { type: 'text/vcard;charset=utf-8' });
