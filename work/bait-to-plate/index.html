@@ -560,7 +560,8 @@
     <div class="wrap col">
       <p class="section-label">Stack</p>
       <h2>Built to run itself and defend every number</h2>
-      <p>Directus (Postgres) is the source of truth; a supply-chain graph in Neo4j powers traversal and analysis. Dozens of background jobs &mdash; ingestion, entity dedup, classification, monitoring, archival &mdash; run on their own schedules under Prefect, with failures routed to the newsroom automatically. Language-model work (entity extraction, classification, claim verification) runs on a local vLLM <b>TK &mdash; your paste cut off here; finish the sentence.</b></p>
+      <p>A data engineering pipeline feeds a graph database, where every company, vessel, plant, and shipment is a node and every relationship an edge &mdash; which is what makes the chain traversable in either direction. Ingestion, deduplication, classification, monitoring, and archival run as automated workflows on their own schedules, with failures surfaced to the newsroom rather than discovered months later.</p>
+      <p>AI agents do the work that doesn&rsquo;t scale by hand: reading documents, extracting entities, classifying records, and checking public claims against their sources. Nothing they produce enters as fact. Every automated judgment lands as a reviewable item with its provenance attached, so any number on the page can be traced back to the record it came from.</p>
     </div>
   </section>
 
