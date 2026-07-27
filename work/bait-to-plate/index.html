@@ -23,9 +23,7 @@
       --ink-soft: #3A3A36;
       --ink-mute: #75736C;
       --rule: #D6D4CC;
-      --rule-strong: #0E0E0C;
       --accent: #26418F;
-      --accent-dark: #1A2E66;
 
       --display: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
       --meta: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -179,31 +177,11 @@
     .col p { color: var(--ink-soft); text-wrap: pretty; }
     .col p + p { margin-top: 1.25rem; }
 
-    .text-link {
-      color: var(--ink);
-      padding-bottom: 1px;
-      background-image:
-        linear-gradient(var(--accent), var(--accent)),
-        linear-gradient(var(--rule), var(--rule));
-      background-repeat: no-repeat, no-repeat;
-      background-position: 0 100%, 0 100%;
-      background-size: 0% 1px, 100% 1px;
-      transition: color 0.2s ease-out, background-size 0.35s cubic-bezier(0.2, 0.7, 0.3, 1);
-    }
-    .text-link:hover { color: var(--accent); background-size: 100% 1px, 100% 1px; }
-
     /* ── Figures ── */
     figure { margin: 3rem 0; }
     figure img { display: block; width: 100%; height: auto; }
 
     .fig-wide { max-width: none; }
-    .fig-two {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    .fig-two figcaption { grid-column: 1 / -1; }
-
     figcaption {
       font-family: var(--meta);
       font-size: 0.75rem;
@@ -214,23 +192,6 @@
     }
     figcaption b { color: var(--ink-soft); font-weight: 600; }
 
-    /* Placeholder: delete the div once a real <img> is dropped in. */
-    .fig-slot {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #FAFAF8;
-      outline: 1px dashed var(--rule);
-      outline-offset: -1px;
-      font-family: var(--meta);
-      font-size: 0.6875rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-mute);
-      text-align: center;
-      padding: 1rem;
-    }
     /* ── Video ── */
     .video-frame {
       position: relative;
@@ -253,10 +214,6 @@
 
     /* Near-square captures shouldn't run the full 72rem — they'd tower. */
     .fig-tall img { max-width: 44rem; margin-inline: auto; }
-
-    .ratio-wide { aspect-ratio: 16 / 9; }
-    .ratio-tall { aspect-ratio: 4 / 5; }
-    .ratio-square { aspect-ratio: 1 / 1; }
 
     /* ── Numbers ── */
     .stats {
@@ -290,29 +247,6 @@
       color: var(--ink-mute);
       max-width: 44rem;
       margin-top: 2rem;
-    }
-
-    /* ── Pull quote ── */
-    blockquote {
-      max-width: 44rem;
-      margin: 3.5rem 0;
-      font-size: clamp(1.25rem, 3vw, 1.75rem);
-      font-weight: 500;
-      line-height: 1.35;
-      letter-spacing: -0.025em;
-      color: var(--ink);
-      text-wrap: balance;
-    }
-    blockquote cite {
-      display: block;
-      font-family: var(--meta);
-      font-size: 0.75rem;
-      font-weight: 600;
-      font-style: normal;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-mute);
-      margin-top: 1.25rem;
     }
 
     /* ── Method list ── */
@@ -366,7 +300,6 @@
       #lede { padding: 6rem 0 4rem; }
       section { padding: 4.5rem 0; }
       .credits { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .fig-two { grid-template-columns: 1fr 1fr; }
       .wrap { padding: 0 2.5rem; }
     }
   </style>
@@ -379,24 +312,6 @@
       <a href="../../#work" class="nav-back">&larr; Work</a>
     </nav>
   </header>
-
-  <!--
-    ────────────────────────────────────────────────────────────────
-    HOW TO FILL THIS IN
-
-    Every "TK" is a placeholder to replace (a newsroom convention —
-    search TK before publishing and nothing should remain).
-
-    Images: drop files in work/bait-to-plate/images/ and replace the
-    <div class="fig-slot ..."> with:
-        <img src="images/your-file.jpg" alt="describe it">
-    Keep the <figcaption>. Captions do real work here — a chart
-    without one is decoration.
-
-    Nothing links to this page yet. Add a link from the Bait to Plate
-    entry in index.html when it is ready to be seen.
-    ────────────────────────────────────────────────────────────────
-  -->
 
   <div id="lede">
     <div class="wrap">
@@ -423,30 +338,6 @@
 
   <section>
     <div class="wrap">
-      <!--
-        THE VIDEO GOES HERE. Replace the .fig-slot div with one of these:
-
-        YouTube (use nocookie, and keep the title for screen readers):
-          <div class="video-frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
-                    title="Bait to Plate" loading="lazy" allowfullscreen
-                    allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"></iframe>
-          </div>
-
-        Vimeo:
-          <div class="video-frame">
-            <iframe src="https://player.vimeo.com/video/VIDEO_ID"
-                    title="Bait to Plate" loading="lazy" allowfullscreen></iframe>
-          </div>
-
-        Self-hosted (drop the file in this folder; add a poster frame so
-        it isn't a black box before play):
-          <div class="video-frame">
-            <video controls preload="metadata" poster="images/poster.jpg">
-              <source src="bait-to-plate.mp4" type="video/mp4">
-            </video>
-          </div>
-      -->
       <figure class="fig-wide">
         <div class="video-frame">
           <iframe src="https://drive.google.com/file/d/1h4h_LLF76CqL866sIfRkiWrhm0_H2AGA/preview"

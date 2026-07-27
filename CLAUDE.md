@@ -4,10 +4,13 @@ Personal website for Gregory Maly. Live at https://www.gregorymaly.com (also htt
 
 ## Structure
 
-Static site, no build step. Two pages:
+Static site, no build step. Each page is self-contained — its own HTML, CSS, and JS in one file, with the design tokens duplicated rather than shared. There is no stylesheet to import, so a change to the palette or type means editing every page.
 
-- `index.html` — the main site. All HTML, CSS, and JavaScript in one file.
+- `index.html` — the main site.
 - `card/index.html` — contact card at `/card/`. Renders a vCard QR from a hardcoded `VCARD` array; the only runtime dependency is `qrcode-generator` from jsDelivr.
+- `work/bait-to-plate/index.html` — case study. Wide page (`72rem`) with text held to a `40rem` column, full-width figures, and a Google Drive video embed. Screenshots live in `work/bait-to-plate/images/`.
+
+Everything in the repo is published as-is, including files nothing links to. Keep drafts and scratch out of the tree — `.gitignore` covers `preview.html` and `*.local.html`.
 
 `CNAME` holds the custom domain (`www.gregorymaly.com`). Pages is Actions-sourced, so this file — not the Pages settings UI — is what binds the domain; the apex redirects to `www`.
 
@@ -39,10 +42,10 @@ One typeface does everything, so hierarchy lives in **weight, size, and case**:
 - `--ink: #0E0E0C` — primary text and button fills
 - `--ink-soft: #3A3A36` — body copy and descriptions
 - `--ink-mute: #75736C` — metadata, roles, captions
-- `--rule: #D6D4CC` — retained for the hero separator glyph and as a hover tint; no longer draws dividers
-- `--rule-strong: #0E0E0C` — currently unused
+- `--rule: #D6D4CC` — the hero separator glyph, the scrolled-masthead hairline, and resting link underlines; it no longer draws dividers
 - `--accent: #26418F` — active labels, section numbers, link underlines, hover states
-- `--accent-dark: #1A2E66` — darker accent (index only)
+
+Keep the token list honest: unused custom properties were removed once the rules came out, so anything declared here should have a `var()` referencing it.
 
 **Nav anchors**: `#work`, `#speaking`, `#education`, `#contact`
 
@@ -54,6 +57,16 @@ One typeface does everything, so hierarchy lives in **weight, size, and case**:
 - `.item-link` — uppercase external link with accent underline and arrow icon.
 - `.container` caps width at `60rem`; add `.measure` to hold running prose to `42rem`.
 
+## Motion
+
+Three effects only, all under 450ms with `ease-out`, all behind a `prefers-reduced-motion` guard: link underlines wipe in via `background-size`, one page-load `settle`, and the masthead gains a hairline past 40px of scroll (an inset shadow, so nothing reflows). Resist per-section scroll reveals — they were considered and rejected.
+
 ## Assets
 
-`icons/` holds a generated QR-mark used as favicon, apple-touch-icon, and PWA icon (32/180/192/512). `card/manifest.webmanifest` and `card/sw.js` make `/card/` installable and offline-capable; bump `CACHE` in `sw.js` when the card page changes.
+`icons/` holds a generated QR-mark used as favicon, apple-touch-icon, and PWA icon (32/180/192/512). `card/manifest.webmanifest` and `card/sw.js` make `/card/` installable and offline-capable; **bump `CACHE` in `sw.js` whenever the card page changes**, or installed phones keep serving the old copy.
+
+Give every `<img>` explicit `width`/`height` plus `loading="lazy"`, so figures reserve their space before decoding. Dark UI screenshots take `.fig-dark`; near-square ones also take `.fig-tall`, which caps them at `44rem` so they don't tower.
+
+## Privacy notes
+
+`/card/` is deliberately unlinked from the site: its vCard carries a personal phone number. Unlinked is not private — the repo is public and the URL resolves — so don't add links to it without asking.
