@@ -251,6 +251,9 @@
     /* Dark UI screenshots sit on their own ground rather than floating on white. */
     .fig-dark { background: #0B0B0D; }
 
+    /* Near-square captures shouldn't run the full 72rem — they'd tower. */
+    .fig-tall img { max-width: 44rem; margin-inline: auto; }
+
     .ratio-wide { aspect-ratio: 16 / 9; }
     .ratio-tall { aspect-ratio: 4 / 5; }
     .ratio-square { aspect-ratio: 1 / 1; }
@@ -553,6 +556,18 @@
       <h2>From an anonymous shipment to a named company</h2>
       <p>The value isn&rsquo;t any single record &mdash; it&rsquo;s the connections. A worker&rsquo;s account, a vessel&rsquo;s transshipment history, and a shipment manifest that individually mean little become, once linked, a documented path from a specific harm to a specific company. Questions that used to take weeks of manual cross-referencing &mdash; who buys from this plant? which brands are downstream of this fleet? &mdash; become a single traversal.</p>
       <p>The database is built to serve reporters chasing a story, editors checking what&rsquo;s defensible, and &mdash; over time &mdash; the regulators, importers, and advocates who need to know who they&rsquo;re actually buying from.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <figure class="fig-wide fig-tall">
+        <img src="images/globe-supply-chains.png"
+             alt="Globe view tracing supply chain routes: directional arrows run from plants and processors in Asia outward to mills, farms, importers, and retailers across Europe, Africa, and the Americas."
+             class="fig-dark"
+             width="944" height="993" loading="lazy" decoding="async">
+        <figcaption><b>One traversal, drawn across the world.</b> Directional arrows follow shipments outward from plants and processors to the mills, farms, importers, and retailers downstream. Markers group by country until you zoom to precise locations; colour marks the entity type &mdash; ship, plant, processor, farm, mill, importer, retailer.</figcaption>
+      </figure>
     </div>
   </section>
 
