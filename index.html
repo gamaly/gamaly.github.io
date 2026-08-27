@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gregory Maly</title>
-  <meta name="description" content="Independent researcher and builder working at the intersection of AI, digital rights, and public accountability.">
-  <meta property="og:title" content="Gregory Maly">
-  <meta property="og:description" content="Independent researcher and builder working at the intersection of AI, digital rights, and public accountability.">
+  <title>Greg Maly</title>
+  <meta name="description" content="I start and lead data teams inside organizations that need them and don't have them yet.">
+  <meta property="og:title" content="Greg Maly">
+  <meta property="og:description" content="I start and lead data teams inside organizations that need them and don't have them yet.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#0E0E0C">
   <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
@@ -29,11 +29,6 @@
       --meta: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 6rem;
-    }
-
     body {
       background: var(--paper);
       color: var(--ink);
@@ -41,12 +36,11 @@
       font-size: 1rem;
       line-height: 1.62;
       -webkit-font-smoothing: antialiased;
+      animation: settle 0.45s ease-out both;
     }
 
     ::selection { background: var(--ink); color: var(--paper); }
 
-    /* One settle on load — not per section. */
-    body { animation: settle 0.45s ease-out both; }
     @keyframes settle {
       from { opacity: 0; transform: translateY(6px); }
       to   { opacity: 1; transform: none; }
@@ -57,947 +51,246 @@
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
       }
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    /* ── Masthead ── */
-    #site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: var(--paper);
-      /* inset shadow, not a border: no layout shift when it appears */
-      box-shadow: inset 0 -1px 0 transparent;
-      transition: box-shadow 0.3s ease-out;
-    }
-    #site-header.scrolled { box-shadow: inset 0 -1px 0 var(--rule); }
-
-    #site-nav {
-      max-width: 60rem;
-      margin: 0 auto;
-      padding: 0.875rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-    }
-
-    .nav-logo {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: 1.0625rem;
-      letter-spacing: -0.025em;
-      color: var(--ink);
-    }
-    .nav-logo:hover { color: var(--accent); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.75rem;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: var(--meta);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      padding-bottom: 2px;
+    /* Links: accent underline wipes in on hover. */
+    a {
+      color: inherit;
+      text-decoration: none;
+      padding-bottom: 1px;
       background-image: linear-gradient(var(--accent), var(--accent));
       background-repeat: no-repeat;
       background-position: 0 100%;
-      background-size: 0% 1px;
+      background-size: 100% 1px;
       transition: color 0.2s ease-out, background-size 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
     }
-    .nav-links a:hover { color: var(--accent); background-size: 100% 1px; }
+    a:hover { color: var(--accent); }
 
-    #menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.25rem;
-      color: var(--ink);
+    /* ── Page frame ── */
+    .page {
+      max-width: 68rem;
+      margin: 0 auto;
+      padding: 3.5rem 1.75rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
     }
 
-    #mobile-menu {
-      display: none;
-      background: var(--paper);
-      padding: 0.25rem 1.5rem 1.25rem;
+    @media (min-width: 60rem) {
+      .page {
+        grid-template-columns: 21rem 1fr;
+        gap: 4.5rem;
+        padding: 4.5rem 2.5rem 3.5rem;
+        align-items: start;
+      }
     }
-    #mobile-menu.open { display: block; }
-    #mobile-menu ul { display: flex; flex-direction: column; gap: 0.25rem; list-style: none; }
-    #mobile-menu a {
-      display: block;
-      padding: 0.625rem 0;
+
+    /* ── Left rail ── */
+    .dateline {
       font-family: var(--meta);
-      font-size: 0.8125rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--ink-soft);
-    }
-    #mobile-menu a:hover { color: var(--accent); }
-
-    /* ── Layout ── */
-    .container { max-width: 60rem; margin: 0 auto; padding: 0 1.5rem; }
-    .measure { max-width: 42rem; }
-
-    section { padding: 4.5rem 0; }
-
-    /* ── Section kicker ── */
-    .section-label {
-      display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      font-family: var(--meta);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
       color: var(--ink-mute);
-      margin-bottom: 2.5rem;
-    }
-    .section-num {
-      font-variant-numeric: tabular-nums;
-      color: var(--accent);
-      font-weight: 700;
+      margin-bottom: 1.25rem;
     }
 
-    /* ── Hero ── */
-    #hero { padding-top: 4rem; padding-bottom: 3.5rem; }
-
-    .hero-kicker {
-      font-family: var(--meta);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-mute);
+    .name {
+      font-size: clamp(2.5rem, 7vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
       margin-bottom: 1.5rem;
     }
 
-    #hero h1 {
-      font-family: var(--display);
-      font-size: clamp(1.875rem, 5.2vw, 3.25rem);
-      font-weight: 800;
-      line-height: 1.06;
-      letter-spacing: -0.035em;
-      max-width: 20ch;
-      text-wrap: balance;
-      margin-bottom: 1.75rem;
+    .lede {
+      font-size: 1.125rem;
+      font-weight: 500;
+      line-height: 1.45;
+      letter-spacing: -0.012em;
+      margin-bottom: 1.25rem;
     }
 
-    .hero-roles {
+    .intro {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    /* ── Right column ── */
+    .col-main {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1rem;
-      margin-bottom: 2.25rem;
+      flex-direction: column;
+      gap: 2.5rem;
     }
 
-    .hero-role {
+    .section-label {
       font-family: var(--meta);
-      font-size: 0.8125rem;
-      letter-spacing: 0.04em;
-      color: var(--ink-mute);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.125rem;
     }
-    .hero-role strong { color: var(--ink); font-weight: 700; }
-    .hero-sep { color: var(--rule); }
 
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .entries {
+      display: flex;
+      flex-direction: column;
+      gap: 1.375rem;
+    }
 
-    .btn-primary, .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+    .entry-title {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.022em;
+      line-height: 1.35;
+    }
+    .entry-role {
       font-family: var(--meta);
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 0.625rem 1.125rem;
-      border: 1px solid var(--ink);
-      border-radius: 0;
-      background: none;
-      color: var(--ink);
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      color: var(--ink-mute);
+      margin-top: 0.1875rem;
     }
-    .btn-primary { background: var(--ink); color: var(--paper); }
-    .btn-primary:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
-    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* ── About ── */
-    .about-body p {
-      font-size: 1.0625rem;
-      line-height: 1.65;
+    .entry-body {
+      font-size: 0.9375rem;
+      line-height: 1.58;
       color: var(--ink-soft);
-      text-wrap: pretty;
-    }
-    .about-body p + p { margin-top: 1.25rem; }
-    .about-body p:first-child::first-letter {
-      float: left;
-      font-size: 3rem;
-      line-height: 0.86;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      padding: 0.15rem 0.4rem 0 0;
-      color: var(--ink);
+      margin-top: 0.4375rem;
+      max-width: 42rem;
     }
 
-    .text-link {
-      color: var(--ink);
-      padding-bottom: 1px;
-      background-image:
-        linear-gradient(var(--accent), var(--accent)),
-        linear-gradient(var(--rule), var(--rule));
-      background-repeat: no-repeat, no-repeat;
-      background-position: 0 100%, 0 100%;
-      background-size: 0% 1px, 100% 1px;
-      transition: color 0.2s ease-out, background-size 0.35s cubic-bezier(0.2, 0.7, 0.3, 1);
-    }
-    .text-link:hover { color: var(--accent); background-size: 100% 1px, 100% 1px; }
-
-    /* ── Entry rows ── */
-    .item-list { display: flex; flex-direction: column; gap: 2.75rem; }
-
-    .item {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.5rem 2rem;
-    }
-
-    .item-title {
-      font-family: var(--display);
-      font-size: 1.125rem;
-      font-weight: 700;
-      line-height: 1.25;
-      letter-spacing: -0.022em;
-      color: var(--ink);
-      text-wrap: balance;
-    }
-
-    .item-role {
+    .entry-link {
       font-family: var(--meta);
       font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-mute);
-      margin-top: 0.25rem;
-    }
-
-    .item-active {
-      display: inline-block;
-      font-family: var(--meta);
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-top: 0.375rem;
+      background-size: 0% 1px;
+      white-space: nowrap;
+    }
+    .entry-link:hover { background-size: 100% 1px; }
+    .entry-link::after { content: " \2192"; }
+
+    .prose {
+      font-size: 0.9375rem;
+      line-height: 1.58;
+      color: var(--ink-soft);
+      max-width: 42rem;
+    }
+    .prose strong {
+      font-weight: 700;
+      letter-spacing: -0.022em;
+      color: var(--ink);
     }
 
-    .item-body { color: var(--ink-soft); text-wrap: pretty; }
-    .item-body-sm { font-size: 0.9375rem; color: var(--ink-soft); text-wrap: pretty; }
-
-    .item-footer {
+    /* ── Footer ── */
+    .footer {
+      grid-column: 1 / -1;
+      margin-top: 1rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 0.5rem 1.25rem;
-      margin-top: 0.75rem;
-    }
-
-    .item-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.375rem;
-      font-family: var(--meta);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink);
-      padding-bottom: 2px;
-      background-image:
-        linear-gradient(var(--accent), var(--accent)),
-        linear-gradient(var(--rule), var(--rule));
-      background-repeat: no-repeat, no-repeat;
-      background-position: 0 100%, 0 100%;
-      background-size: 0% 1px, 100% 1px;
-      transition: color 0.2s ease-out, background-size 0.35s cubic-bezier(0.2, 0.7, 0.3, 1);
-    }
-    .item-link:hover { color: var(--accent); background-size: 100% 1px, 100% 1px; }
-
-    .item-note {
-      font-family: var(--meta);
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-      color: var(--ink-mute);
-      text-transform: uppercase;
-    }
-
-    /* ── Two-column rows (technical / speaking) ── */
-    .row-list { display: flex; flex-direction: column; gap: 1.5rem; }
-
-    .row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.25rem 2rem;
-    }
-
-    .row-label {
       font-family: var(--meta);
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--ink-mute);
-      padding-top: 0.25rem;
     }
-
-    .row-items { color: var(--ink-soft); }
-
-    .talk-title {
-      font-size: 1rem;
-      font-weight: 600;
-      line-height: 1.4;
-      letter-spacing: -0.012em;
-      color: var(--ink);
-      text-wrap: balance;
-    }
-
-    .talk-event {
-      font-family: var(--meta);
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--ink-mute);
-      margin-top: 0.25rem;
-    }
-
-    /* ── Teaching ── */
-    .teaching-intro {
+    .footer a {
       color: var(--ink-soft);
-      margin-bottom: 1.75rem;
+      background-image: linear-gradient(var(--rule), var(--rule));
     }
-
-    .teaching-org-name {
-      font-family: var(--display);
-      font-size: 1.125rem;
-      font-weight: 700;
-      letter-spacing: -0.022em;
-      color: var(--ink);
-    }
-
-    .teaching-org-role {
-      font-family: var(--meta);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-mute);
-      margin: 0.125rem 0 0.375rem;
-    }
-
-    .teaching-org-desc { font-size: 1rem; color: var(--ink-soft); }
-
-    .techchange-label {
-      font-family: var(--meta);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-mute);
-      margin: 1.75rem 0 0.5rem;
-    }
-
-    .techchange-list { list-style: none; display: flex; flex-direction: column; gap: 0.375rem; }
-    .techchange-list li {
-      font-size: 1rem;
-      color: var(--ink-soft);
-    }
-
-    /* ── Education ── */
-    .edu-school {
-      font-family: var(--display);
-      font-size: 1.125rem;
-      font-weight: 700;
-      line-height: 1.25;
-      letter-spacing: -0.022em;
-      color: var(--ink);
-    }
-
-    .edu-degree {
-      font-family: var(--meta);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-mute);
-      margin: 0.25rem 0 0.75rem;
-    }
-
-    .edu-notes { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .edu-notes li, .edu-thesis { font-size: 1rem; color: var(--ink-soft); }
-    .edu-notes strong { color: var(--ink); font-weight: 600; }
-
-    /* ── Contact ── */
-    .contact-location {
-      font-family: var(--display);
-      font-size: 1.375rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.25rem;
-    }
-
-    .contact-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.75rem; }
-
-    /* ── Footer ── */
-    footer {
-      padding: 1rem 0 3rem;
-    }
-
-    footer .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 0.5rem 1rem;
-    }
-
-    footer p, footer a {
-      font-family: var(--meta);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-mute);
-    }
-    footer a:hover { color: var(--accent); }
-
-    /* ── Responsive ── */
-    @media (min-width: 48rem) {
-      section { padding: 6rem 0; }
-      #hero { padding-top: 6rem; padding-bottom: 5rem; }
-      .item { grid-template-columns: 15rem 1fr; }
-      .row { grid-template-columns: 15rem 1fr; }
-      .about-body p { font-size: 1.125rem; }
-    }
-
-    @media (max-width: 47.99rem) {
-      .nav-links { display: none; }
-      #menu-toggle { display: block; }
+    .footer a:hover {
+      color: var(--accent);
+      background-image: linear-gradient(var(--accent), var(--accent));
     }
   </style>
 </head>
 <body>
+  <main class="page">
 
-  <header id="site-header">
-    <nav id="site-nav">
-      <a href="#" class="nav-logo">Gregory Maly</a>
-      <ul class="nav-links">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#speaking">Speaking</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button id="menu-toggle" aria-label="Toggle menu">
-        <svg id="icon-hamburger" width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M2 5H18" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M2 10H18" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M2 15H18" stroke="currentColor" stroke-width="1.5"/>
-        </svg>
-        <svg id="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" style="display:none">
-          <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="1.5"/>
-        </svg>
-      </button>
-    </nav>
-    <div id="mobile-menu">
-      <ul>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#speaking">Speaking</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <header class="col-rail">
+      <p class="dateline">Takoma Park, Maryland</p>
+      <h1 class="name">Greg Maly</h1>
+      <p class="lede">I start and lead data teams inside organizations that need them and don&rsquo;t have them yet.</p>
+      <p class="intro">Three times I have built a data function where none existed: as one of the first members of the Office of Advanced Analytics at the State Department&rsquo;s Bureau of Conflict and Stabilization Operations, as founder of the Data Science and Digital Products team at DAI Global, and as co-founder of Exchange.Design. The work has been the same across all of them: take evidence that is scattered and contested and turn it into something a policymaker, an editor, or a court can rely on. My background runs across policy, diplomacy, and technology, so I pick up requirements quickly and can explain the work to the people paying for it.</p>
+    </header>
+
+    <div class="col-main">
+
+      <section>
+        <h2 class="section-label">Now</h2>
+        <div class="entries">
+
+          <article>
+            <h3 class="entry-title"><a href="https://www.theoutlawocean.com">The Outlaw Ocean Project</a></h3>
+            <p class="entry-role">AI &amp; Data Science Editor</p>
+            <p class="entry-body">Back end infrastructure and machine learning engineering for Bait to Plate, a seafood supply chain accountability database holding more than 10,000 resolved entities across 113 countries, each linked to documented crimes and labor abuses. Publication fall 2026. <a class="entry-link" href="work/bait-to-plate/">Case study</a></p>
+          </article>
+
+          <article>
+            <h3 class="entry-title">U.S. Department of the Treasury</h3>
+            <p class="entry-role">Advisor, Office of Technical Assistance</p>
+            <p class="entry-body">Data science and data engineering methods, with international counterparts.</p>
+          </article>
+
+          <article>
+            <h3 class="entry-title">University of Maryland, College of Information</h3>
+            <p class="entry-role">Adjunct Faculty</p>
+          </article>
+
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-label">Before</h2>
+        <div class="entries">
+
+          <article>
+            <h3 class="entry-title">DAI Global</h3>
+            <p class="entry-role">Associate Director, Data Science &amp; Digital Products</p>
+            <p class="entry-body">Founded the Data Science and Digital Products team at the Center for Digital Acceleration and grew it to 15 people serving every business unit across 80-plus countries, running six enterprise applications for thousands of users. Portfolio included USAID Digital Frontiers, the agency&rsquo;s $90M flagship digital program.</p>
+          </article>
+
+          <article>
+            <h3 class="entry-title">Exchange.Design</h3>
+            <p class="entry-role">Co-founder &amp; CTO</p>
+            <p class="entry-body">Co-founded the firm and grew it past $1 million in revenue in 18 months, helping mission-driven organizations adopt AI and data science methods. Departed early 2026.</p>
+          </article>
+
+          <p class="prose"><strong>Earlier</strong> &mdash; One of the first members of the Office of Advanced Analytics, Bureau of Conflict and Stabilization Operations, U.S. Department of State. Data science advisor, UN Foundation Data2X. Taught at the Department of State and the U.S. Institute of Peace.</p>
+
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-label">Selected builds</h2>
+        <p class="prose">USAID Knowledge Rescue, a retrieval system over 150,000 documents from USAID&rsquo;s public archive, built after the collection went offline. EvidenceBase.ai, an evidence tool used by more than 50 nonprofits. Machine learning disease forecasts for Mozambique and Somalia under FEWS NET.</p>
+      </section>
+
+      <section>
+        <h2 class="section-label">Elsewhere</h2>
+        <p class="prose">Talks at Google New York, the World Bank, and PeaceCon. Writing at <a href="https://gregmaly.substack.com/">gregmaly.substack.com</a>. MA, Josef Korbel School, University of Denver. BA in Policy, Ethics &amp; Conflict, a self-designed major, St. Mary&rsquo;s College of Maryland.</p>
+      </section>
+
     </div>
-  </header>
 
-  <section id="hero">
-    <div class="container">
-      <p class="hero-kicker">Takoma Park, Maryland</p>
-      <h1>Building data tools and technology infrastructure for researchers, journalists, government, and civil society.</h1>
-      <div class="hero-roles">
-        <span class="hero-role">AI &amp; Data Science Editor, <strong>The Outlaw Ocean Project</strong></span>
-        <span class="hero-sep">/</span>
-        <span class="hero-role">Founder &amp; Developer, <strong>Digital Harms Tracker</strong></span>
-      </div>
-      <div class="hero-actions">
-        <a href="https://digitalharmstracker.org" target="_blank" rel="noopener noreferrer" class="btn-primary">
-          Digital Harms Tracker
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" opacity="0.6"/></svg>
-        </a>
-        <a href="#contact" class="btn-secondary">Get in touch</a>
-      </div>
-    </div>
-  </section>
+    <footer class="footer">
+      <span>Takoma Park, MD</span>
+      <a href="https://www.linkedin.com/in/gregmaly/">LinkedIn</a>
+      <a href="https://bsky.app/profile/gmaly.bsky.social">Bluesky</a>
+      <a href="https://gregmaly.substack.com/">Substack</a>
+    </footer>
 
-  <section id="about">
-    <div class="container">
-      <div class="about-body measure">
-        <p>I&rsquo;m a social scientist, technologist, and builder. For twenty years I&rsquo;ve been working with researchers, journalists, governments, and civil society organizations on hard problems: conflict, global health, ocean crime, global development.</p>
-        <p>I believe technology infrastructure matters. The tools researchers, advocates, and governments use shape what&rsquo;s visible, what gets acted on, and what doesn&rsquo;t. My work sits where that infrastructure meets the people who need it: policy staff, diplomats, investigative journalists, humanitarian responders, community health workers, civil society researchers.</p>
-        <p>Current focus: leading data science and AI at <a href="https://www.theoutlawocean.com" target="_blank" rel="noopener noreferrer" class="text-link">The Outlaw Ocean Project</a>, building the <a href="https://digitalharmstracker.org" target="_blank" rel="noopener noreferrer" class="text-link">Digital Harms Tracker</a>, public-interest infrastructure linking platform harm evidence to the policy and legal response, and advising U.S. government agencies on data science and technology.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="work">
-    <div class="container">
-      <p class="section-label"><span class="section-num">01</span> Current Work</p>
-      <div class="item-list">
-
-        <div class="item">
-          <div>
-            <p class="item-title">The Outlaw Ocean Project</p>
-            <p class="item-role">AI &amp; Data Science Editor</p>
-          </div>
-          <div>
-            <p class="item-body">Leading the application of data science and AI in investigative journalism at The Outlaw Ocean Project. Current focus includes Bait to Plate, one of the largest seafood supply chain accountability databases in development, tracking labor abuse and illegal fishing across global fishing fleets.</p>
-            <div class="item-footer">
-              <a href="https://www.theoutlawocean.com" target="_blank" rel="noopener noreferrer" class="item-link">
-                theoutlawocean.com
-                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
-              </a>
-              <a href="work/bait-to-plate/" class="item-link">
-                Bait to Plate case study
-                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
-              </a>
-              <span class="item-note">Pending publication, fall 2026</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="item-title">Digital Harms Tracker</p>
-            <p class="item-role">Founder &middot; Developer &middot; Data Engineer</p>
-          </div>
-          <div>
-            <p class="item-body">Building open infrastructure that links digital harm incidents to policy and regulatory responses. Designed for researchers, journalists, and advocates working on platform accountability.</p>
-            <div class="item-footer">
-              <a href="https://digitalharmstracker.org" target="_blank" rel="noopener noreferrer" class="item-link">
-                digitalharmstracker.org
-                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
-              </a>
-              <a href="https://digitalharmstracker.substack.com/" target="_blank" rel="noopener noreferrer" class="item-link">
-                Substack
-                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="item-title">Technical &amp; Advisory Work</p>
-            <p class="item-role">Independent</p>
-          </div>
-          <div>
-            <p class="item-body">Data science, analytics, and advisory work for government and nonprofit clients. AI strategy, data infrastructure, applied analytics, and responsible technology deployment.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="container">
-      <p class="section-label"><span class="section-num">02</span> Select Experience</p>
-      <div class="item-list">
-
-        <div class="item">
-          <div>
-            <p class="item-title">U.S. Department of the Treasury</p>
-            <p class="item-role">Data and Technology Advisor, Office of Technical Assistance</p>
-            <span class="item-active">Active</span>
-          </div>
-          <div>
-            <p class="item-body-sm">Advisory support to the Department and international counterparts on data science and data engineering tools and methods.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="item-title">Exchange.Design</p>
-            <p class="item-role">Co-founder &amp; CTO</p>
-          </div>
-          <div>
-            <p class="item-body-sm">Supported mission-driven organizations in adopting AI and data science tools and methods. Departed early 2026.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="item-title">UN Foundation / Data2X</p>
-            <p class="item-role">Data Science Advisor</p>
-          </div>
-          <div>
-            <p class="item-body-sm">Advisory on data strategy and applied analytics for gender data initiatives across global development programs.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="item-title">DAI Global</p>
-            <p class="item-role">Associate Director, Data Science &amp; Digital Products</p>
-          </div>
-          <div>
-            <p class="item-body-sm">Led data science and analytics teams delivering platforms and decision-support tools across international development programs.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="item-title">U.S. Department of State</p>
-            <p class="item-role">Conflict Data Analyst</p>
-          </div>
-          <div>
-            <p class="item-body-sm">Integrated data analysis and geospatial methods into conflict prevention and stabilization policy work.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="container">
-      <p class="section-label"><span class="section-num">03</span> Selected Projects</p>
-      <div class="item-list">
-
-        <div class="item">
-          <div>
-            <p class="item-title">Digital Harms Tracker</p>
-            <span class="item-active">Active</span>
-          </div>
-          <div>
-            <p class="item-body-sm">Founder, engineer, and primary researcher behind a structured database linking digital harm incidents to policy responses. Public interest AI infrastructure.</p>
-            <div class="item-footer">
-              <a href="https://digitalharmstracker.org" target="_blank" rel="noopener noreferrer" class="item-link">
-                digitalharmstracker.org
-                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="item-title">Bait to Plate</p>
-            <span class="item-active">Active</span>
-          </div>
-          <div>
-            <p class="item-body-sm">Lead data scientist and data engineer for one of the largest seafood supply chain accountability databases in development, built at The Outlaw Ocean Project. Links fishing vessels, labor records, and catch data to trace accountability from ocean to consumer.</p>
-            <div class="item-footer">
-              <a href="work/bait-to-plate/" class="item-link">
-                Read the case study
-                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="item-title">USAID Digital Frontiers</p>
-            <p class="item-role">Completed</p>
-          </div>
-          <div>
-            <p class="item-body-sm">Served as Associate Director, Data Science and Digital Products at DAI, the implementing partner for USAID&rsquo;s flagship $90M digital development program. Led data science strategy and digital product delivery across a program working with 35+ USAID Missions worldwide on responsible technology adoption.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="item-title">EvidenceBase.ai</p>
-            <p class="item-role">Sunset</p>
-          </div>
-          <div>
-            <p class="item-body-sm">Lead engineer and product manager for a personalized copilot tool built for non-profits to surface and synthesize evidence for program design and decision-making. Used by over 50 organizations. Open source project, sunset in 2025.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="item-title">FEWS NET Health Threat Extension Support</p>
-            <p class="item-role">Completed</p>
-          </div>
-          <div>
-            <p class="item-body-sm">Project manager and data scientist for ML-powered subnational disease forecasts for Mozambique and Somalia, built for USAID. Extended FEWS NET food security monitoring to include health threat modeling at the subnational level.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="item-title">AI-Powered Conflict Dataset Builder</p>
-            <p class="item-role">Archived</p>
-          </div>
-          <div>
-            <p class="item-body-sm">Proof of concept using NLP to build structured datasets from conflict news coverage.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="item-title">Spa Creek Water Testing Platform</p>
-            <p class="item-role">Completed</p>
-          </div>
-          <div>
-            <p class="item-body-sm">Civic tech for Spa Creek Conservancy, in partnership with Anne Arundel Community College. Weekly water quality tracking for Annapolis waterways. Volunteer project.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="technical">
-    <div class="container">
-      <p class="section-label"><span class="section-num">04</span> Technical</p>
-      <div class="row-list">
-        <div class="row">
-          <span class="row-label">Languages</span>
-          <span class="row-items">Python &middot; R &middot; SQL &middot; JavaScript</span>
-        </div>
-        <div class="row">
-          <span class="row-label">AI &amp; NLP</span>
-          <span class="row-items">LLMs &middot; NLP &middot; text analysis &middot; TF-IDF to transformers</span>
-        </div>
-        <div class="row">
-          <span class="row-label">Geospatial</span>
-          <span class="row-items">GIS &middot; ArcGIS &middot; QGIS &middot; geospatial analytics</span>
-        </div>
-        <div class="row">
-          <span class="row-label">Data &amp; Infra</span>
-          <span class="row-items">data engineering &middot; statistical modeling &middot; Power BI &middot; Azure ML &middot; Neo4j</span>
-        </div>
-        <div class="row">
-          <span class="row-label">Cloud &amp; IaC</span>
-          <span class="row-items">AWS &middot; Terraform &middot; AWS GovCloud &middot; FedRAMP environments</span>
-        </div>
-        <div class="row">
-          <span class="row-label">Statistics</span>
-          <span class="row-items">regression &middot; sampling &middot; causal inference &middot; program evaluation</span>
-        </div>
-        <div class="row">
-          <span class="row-label">Methods</span>
-          <span class="row-items">survey design &middot; network analysis &middot; spatial statistics</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="speaking">
-    <div class="container">
-      <p class="section-label"><span class="section-num">05</span> Speaking</p>
-      <div class="row-list">
-        <div class="row">
-          <span class="row-label">Panelist</span>
-          <div>
-            <p class="talk-title">The Role of Artificial Intelligence in Peacebuilding</p>
-            <p class="talk-event">PeaceCon 2024, George Mason University</p>
-          </div>
-        </div>
-        <div class="row">
-          <span class="row-label">Speaker</span>
-          <div>
-            <p class="talk-title">Retrieval Augmented Generation and Conflict Data</p>
-            <p class="talk-event">AI for Peace Conference, Google New York, 2023</p>
-          </div>
-        </div>
-        <div class="row">
-          <span class="row-label">Panelist</span>
-          <div>
-            <p class="talk-title">Accelerating Progress Towards Africa&rsquo;s Agenda 2063 and the SDGs Using Gender Statistics</p>
-            <p class="talk-event">Joint Africa Conference on Gender Statistics, Casablanca, 2023</p>
-          </div>
-        </div>
-        <div class="row">
-          <span class="row-label">Moderator</span>
-          <div>
-            <p class="talk-title">Toward Ethical Artificial Intelligence in International Development</p>
-            <p class="talk-event">ICT4D, 2022</p>
-          </div>
-        </div>
-        <div class="row">
-          <span class="row-label">Moderator</span>
-          <div>
-            <p class="talk-title">Understanding Algorithmic Bias</p>
-            <p class="talk-event">Law Justice and Development Week, The World Bank, 2021</p>
-          </div>
-        </div>
-        <div class="row">
-          <span class="row-label">Panelist</span>
-          <div>
-            <p class="talk-title">Open Mapping and Data in Disaster Response</p>
-            <p class="talk-event">FedGeo Day, 2019</p>
-          </div>
-        </div>
-        <div class="row">
-          <span class="row-label">Opening Speaker</span>
-          <div>
-            <p class="talk-title">Data Science in 20-minutes or Less</p>
-            <p class="talk-event">MerlTech, 2018</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="teaching">
-    <div class="container">
-      <p class="section-label"><span class="section-num">06</span> Teaching</p>
-      <p class="teaching-intro measure">Guest lecturer and course instructor at Johns Hopkins SAIS, the U.S. Department of State, and the U.S. Institute of Peace, including early online course development on Moodle when that was still a frontier.</p>
-      <div class="item-list">
-        <div class="item">
-          <div>
-            <p class="teaching-org-name">University of Maryland</p>
-            <p class="teaching-org-role">Adjunct Professor, College of Information</p>
-            <span class="item-active">Active</span>
-          </div>
-          <div>
-            <p class="teaching-org-desc">Teaching at the College of Information, where the coursework sits at the intersection of data, technology, and public interest practice.</p>
-          </div>
-        </div>
-        <div class="item">
-          <div>
-            <p class="teaching-org-name">U.S. Department of State</p>
-            <p class="teaching-org-role">Learning and Training Specialist</p>
-          </div>
-          <div>
-            <p class="teaching-org-desc">Designed and taught multiple courses in monitoring and evaluation and conflict analysis.</p>
-          </div>
-        </div>
-        <div class="item">
-          <div>
-            <p class="teaching-org-name">U.S. Institute of Peace</p>
-            <p class="teaching-org-role">Education and Training Center</p>
-          </div>
-          <div>
-            <p class="teaching-org-desc">Courses in international negotiation and conflict resolution.</p>
-          </div>
-        </div>
-      </div>
-      <p class="techchange-label">TechChange courses</p>
-      <ul class="techchange-list">
-        <li>TC141: Mapping for Social Good (2012, 2013, 2015)</li>
-        <li>TC104: Technology for Humanitarian Assistance (2012)</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="education">
-    <div class="container">
-      <p class="section-label"><span class="section-num">07</span> Education</p>
-      <div class="item-list">
-
-        <div class="item">
-          <div>
-            <p class="edu-school">University of Denver</p>
-          </div>
-          <div>
-            <p class="edu-degree">MA, International Studies: International Political Economy, Comparative Politics, International Political Theory</p>
-            <ul class="edu-notes">
-              <li><strong>Graduate Researcher, Pardee Center for International Futures.</strong> Research with the International Futures (IFs) integrated assessment model.</li>
-              <li><strong>Graduate Researcher, Global Health Affairs Program.</strong> Mobile survey design for global health data collection.</li>
-              <li><strong>Coordinator, TechWeek@Korbel.</strong> Convened international experts on remote sensing, mobile technology, and digital tools in development.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="edu-school">St. Mary&rsquo;s College of Maryland</p>
-          </div>
-          <div>
-            <p class="edu-degree">BA, Policy, Ethics &amp; Conflict (self-designed major)</p>
-            <p class="edu-thesis">Senior thesis on international diplomatic efforts in conflict resolution.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div>
-            <p class="edu-school">George Mason University</p>
-          </div>
-          <div>
-            <p class="edu-degree">Coursework in mediation and conflict management systems, Northern Virginia Mediation Service</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <p class="section-label"><span class="section-num">08</span> Contact</p>
-      <p class="contact-location">Takoma Park, MD</p>
-      <div class="contact-links">
-        <a href="https://bsky.app/profile/gmaly.bsky.social" target="_blank" rel="noopener noreferrer" class="item-link">
-          @gmaly.bsky.social
-          <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/gregmaly/" target="_blank" rel="noopener noreferrer" class="item-link">
-          LinkedIn
-          <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
-        </a>
-        <a href="https://gregmaly.substack.com/" target="_blank" rel="noopener noreferrer" class="item-link">
-          gregmaly.substack.com
-          <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <p>Gregory Maly &middot; 2026</p>
-    </div>
-  </footer>
-
-  <script>
-    var header = document.getElementById('site-header');
-    window.addEventListener('scroll', function () {
-      header.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
-
-    var menuToggle = document.getElementById('menu-toggle');
-    var mobileMenu = document.getElementById('mobile-menu');
-    var iconHamburger = document.getElementById('icon-hamburger');
-    var iconClose = document.getElementById('icon-close');
-
-    menuToggle.addEventListener('click', function() {
-      var open = mobileMenu.classList.toggle('open');
-      iconHamburger.style.display = open ? 'none' : 'block';
-      iconClose.style.display = open ? 'block' : 'none';
-    });
-
-    document.querySelectorAll('#mobile-menu a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        mobileMenu.classList.remove('open');
-        iconHamburger.style.display = 'block';
-        iconClose.style.display = 'none';
-      });
-    });
-  </script>
-
+  </main>
 </body>
 </html>

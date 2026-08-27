@@ -6,7 +6,7 @@ Personal website for Gregory Maly. Live at https://www.gregorymaly.com (also htt
 
 Static site, no build step. Each page is self-contained — its own HTML, CSS, and JS in one file, with the design tokens duplicated rather than shared. There is no stylesheet to import, so a change to the palette or type means editing every page.
 
-- `index.html` — the main site.
+- `index.html` — the whole profile on one screen. ~330 words: dateline, name, one-line lede, an intro paragraph, then Now / Before / Selected builds / Elsewhere, and a footer of links. No JS at all.
 - `card/index.html` — contact card at `/card/`. Renders a vCard QR from a hardcoded `VCARD` array; the only runtime dependency is `qrcode-generator` from jsDelivr.
 - `work/bait-to-plate/index.html` — case study. Wide page (`72rem`) with text held to a `40rem` column, full-width figures, and a Google Drive video embed. Screenshots live in `work/bait-to-plate/images/`.
 
@@ -47,19 +47,23 @@ One typeface does everything, so hierarchy lives in **weight, size, and case**:
 
 Keep the token list honest: unused custom properties were removed once the rules came out, so anything declared here should have a `var()` referencing it.
 
-**Nav anchors**: `#work`, `#speaking`, `#education`, `#contact`
+**No nav.** `index.html` is one screen with no masthead, no anchors, and no scroll behaviour — the sections are short enough that navigation would cost more than it saves. The case study keeps its own sticky masthead, whose links point back at `../../` (site root), not at anchors.
 
 ## CSS class conventions
 
-- `.section-label` — kicker row. Wrap the leading number in `.section-num` (accent, tabular). Numbers run `01`–`08` in document order — renumber if you add a section.
-- `.item-list` / `.item` — entry rows, spaced by `gap: 2.75rem`. `.item` is a two-column grid (`15rem 1fr`) above `48rem`, single column below. Left column holds `.item-title` + `.item-role` + `.item-active`; right column holds `.item-body` / `.item-body-sm` and `.item-footer`.
-- `.row-list` / `.row` — same grid at `gap: 1.5rem`, for technical / speaking. Left column is `.row-label`.
-- `.item-link` — uppercase external link with accent underline and arrow icon.
-- `.container` caps width at `60rem`; add `.measure` to hold running prose to `42rem`.
+`index.html` (compact profile):
+
+- `.page` — the whole frame. Caps at `68rem`; a single column below `60rem`, then a `21rem 1fr` grid above it: left rail (dateline, name, lede, intro) and right column of sections.
+- `.dateline` / `.section-label` / `.entry-role` / `.entry-link` / `.footer` — the metadata register: uppercase `0.75rem`, `letter-spacing: 0.1em`. Labels are accent; dateline and roles are `--ink-mute`.
+- `.entries` / `.entry-title` + `.entry-role` + `.entry-body` — one job or engagement per `<article>`, stacked at `gap: 1.375rem`.
+- `.prose` — running copy inside a section, held to `42rem`. `.prose strong` is the lead-in ("Earlier — ").
+- `.entry-link` — uppercase accent link with a trailing arrow (a CSS `::after`, not an SVG).
+
+`work/bait-to-plate/index.html` still uses the older `.container` / `.item-list` / `.item` / `.row-list` vocabulary. It was left alone; the two pages no longer share class names, only tokens.
 
 ## Motion
 
-Three effects only, all under 450ms with `ease-out`, all behind a `prefers-reduced-motion` guard: link underlines wipe in via `background-size`, one page-load `settle`, and the masthead gains a hairline past 40px of scroll (an inset shadow, so nothing reflows). Resist per-section scroll reveals — they were considered and rejected.
+Under 450ms with `ease-out`, behind a `prefers-reduced-motion` guard. `index.html` has two: one page-load `settle`, and link underlines that wipe in via `background-size`. The scrolled-masthead hairline survives only on the case study, which still has a masthead. Resist per-section scroll reveals — they were considered and rejected.
 
 ## Assets
 
