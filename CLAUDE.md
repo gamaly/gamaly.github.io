@@ -67,10 +67,20 @@ Under 450ms with `ease-out`, behind a `prefers-reduced-motion` guard. `index.htm
 
 ## Assets
 
-`icons/` holds a generated QR-mark used as favicon, apple-touch-icon, and PWA icon (32/180/192/512). `card/manifest.webmanifest` and `card/sw.js` make `/card/` installable and offline-capable; **bump `CACHE` in `sw.js` whenever the card page changes**, or installed phones keep serving the old copy.
+`icons/` holds a generated QR-mark used as favicon, apple-touch-icon, and PWA icon (32/180/192/512), plus `og-card.png` — the 1200×630 social preview, rendered from Libre Franklin in the site palette. Regenerate it if the name or lede changes, or link previews go stale. `card/manifest.webmanifest` and `card/sw.js` make `/card/` installable and offline-capable; **bump `CACHE` in `sw.js` whenever the card page changes**, or installed phones keep serving the old copy.
 
 Give every `<img>` explicit `width`/`height` plus `loading="lazy"`, so figures reserve their space before decoding. Dark UI screenshots take `.fig-dark`; near-square ones also take `.fig-tall`, which caps them at `44rem` so they don't tower.
 
+## SEO
+
+Absolute URLs everywhere: canonical, `og:url`, `og:image`, sitemap. The site answers on two hostnames and only `www.gregorymaly.com` should accumulate signal.
+
+- Each indexed page carries `<link rel="canonical">`, an OG block with the shared `icons/og-card.png`, and `twitter:card = summary_large_image`.
+- `index.html` holds one `Person` node in JSON-LD, `@id` = `https://www.gregorymaly.com/#greg-maly`. The case study's `Article` node references that `@id` as its author rather than restating the person — keep it that way so the two pages resolve to one entity.
+- `alternateName` carries "Gregory Maly" so the formal spelling (and the domain) still resolves to the same person as the displayed "Greg Maly".
+- `robots.txt` points at `sitemap.xml`; the sitemap lists only the two public pages. Bump `lastmod` on real content changes.
+- Do not chase broad executive/recruiting queries — those SERPs belong to LinkedIn and job boards. The page is built to win the name and specific long-tail work queries.
+
 ## Privacy notes
 
-`/card/` is deliberately unlinked from the site: its vCard carries a personal phone number. Unlinked is not private — the repo is public and the URL resolves — so don't add links to it without asking.
+`/card/` is deliberately unlinked from the site: its vCard carries a personal phone number. Unlinked is not private — the repo is public and the URL resolves — so don't add links to it without asking. It also carries `<meta name="robots" content="noindex, nofollow">` and is absent from `sitemap.xml`. Deliberately it is **not** disallowed in `robots.txt`: a disallow would stop crawlers reading the noindex, and would advertise the path in a public file.
