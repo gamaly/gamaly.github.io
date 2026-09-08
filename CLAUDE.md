@@ -45,6 +45,10 @@ One typeface does everything, so hierarchy lives in **weight, size, and case**:
 - `--rule: #D6D4CC` — the hero separator glyph, the scrolled-masthead hairline, and resting link underlines; it no longer draws dividers
 - `--accent: #26418F` — active labels, section numbers, link underlines, hover states
 
+**Dark mode** (`index.html` only, so far): the same paper/ink relationship inverted, declared as token overrides inside `@media (prefers-color-scheme: dark)` — never as new rules. `--paper: #121211`, `--ink: #F4F3EF`, `--ink-soft: #C9C7C0`, `--ink-mute: #928F87`, `--rule: #3B3A36`, and `--accent: #8AA4EE`, because `#26418F` is unreadable on a dark ground. `:root` carries `color-scheme: light dark`, and `theme-color` is declared twice with `media` attributes. Every pairing clears WCAG AA; re-check if you touch a token. There is no toggle — the page follows the OS, and a manual switch would mean adding the first JS on the page.
+
+`work/bait-to-plate/index.html` is still light-only. Anyone adding dark mode there has the figures to think about: `.fig-dark` screenshots sit on a dark ground that will need to hold up against a dark page.
+
 Keep the token list honest: unused custom properties were removed once the rules came out, so anything declared here should have a `var()` referencing it.
 
 **No nav.** `index.html` is one screen with no masthead, no anchors, and no scroll behaviour — the sections are short enough that navigation would cost more than it saves. The case study keeps its own sticky masthead, whose links point back at `../../` (site root), not at anchors.

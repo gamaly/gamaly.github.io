@@ -19,7 +19,8 @@
   <meta property="profile:first_name" content="Greg">
   <meta property="profile:last_name" content="Maly">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#0E0E0C">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,6 +39,22 @@
 
       --display: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
       --meta: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+      color-scheme: light dark;
+    }
+
+    /* Dark: the same paper/ink relationship inverted. The accent lifts to a
+       paler ultramarine - #26418F is unreadable on a dark ground. */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #121211;
+        --ink: #F4F3EF;
+        --ink-soft: #C9C7C0;
+        --ink-mute: #928F87;
+        --rule: #3B3A36;
+        --accent: #8AA4EE;
+      }
+      body { -webkit-font-smoothing: antialiased; }
     }
 
     body {
