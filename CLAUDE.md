@@ -62,7 +62,7 @@ Keep the token list honest: unused custom properties were removed once the rules
 - `.section-label` — section headings (Now, Before, …) at `1.5rem`/800 in ink. They were small uppercase accent labels until the page got longer and the sections stopped reading as separate; sections sit `4rem` apart.
 - `.dateline` / `.entry-role` / `.entry-link` / `.footer` — the metadata register: uppercase `0.75rem`, `letter-spacing: 0.1em`. Links are accent; dateline and roles are `--ink-mute`.
 - `.entries` / `.entry-title` + `.entry-role` + `.entry-body` — one job or engagement per `<article>`, stacked at `gap: 1.375rem`.
-- `.entry-lead` — the main job (The Outlaw Ocean Project), alone under "Now" and one step larger. Everything else current sits under "Advisory & other work" at the normal entry size; keep that split.
+- `.entry-lead` — the main job (The Outlaw Ocean Project), alone under "Now" and one step larger. Everything else current sits under "Advisory, teaching & other work" at the normal entry size; keep that split.
 - `.prose` — running copy inside a section, held to `42rem`. `.prose strong` is the lead-in ("Earlier — ").
 - `.entry-link` — uppercase accent link with a trailing arrow (a CSS `::after`, not an SVG).
 
