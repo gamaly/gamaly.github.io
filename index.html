@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Greg Maly &middot; Data and Technology Leadership, Washington DC</title>
-  <meta name="description" content="Greg Maly builds and runs technology teams and platforms for organizations working in the public interest — The Outlaw Ocean Project, the U.S. Treasury, the University of Maryland.">
+  <meta name="description" content="Greg Maly builds data systems for people who need evidence to hold up: editors, policymakers, and courts. AI &amp; Data Science Editor at The Outlaw Ocean Project.">
   <meta name="author" content="Greg Maly">
   <link rel="canonical" href="https://www.gregorymaly.com/">
   <meta property="og:title" content="Greg Maly &middot; Data and Technology Leadership, Washington DC">
-  <meta property="og:description" content="I build and run technology teams and platforms for organizations working in the public interest.">
+  <meta property="og:description" content="I build data systems for people who need evidence to hold up: editors, policymakers, and courts.">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://www.gregorymaly.com/">
   <meta property="og:site_name" content="Greg Maly">
   <meta property="og:image" content="https://www.gregorymaly.com/icons/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Greg Maly — I build and run technology teams and platforms for organizations working in the public interest.">
+  <meta property="og:image:alt" content="Greg Maly — I build data systems for people who need evidence to hold up: editors, policymakers, and courts.">
   <meta property="profile:first_name" content="Greg">
   <meta property="profile:last_name" content="Maly">
   <meta name="twitter:card" content="summary_large_image">
@@ -115,6 +115,14 @@
     }
 
     /* ── Left rail ── */
+    .portrait {
+      display: block;
+      width: 7.5rem;
+      height: auto;
+      border-radius: 50%;
+      margin-bottom: 1.75rem;
+    }
+
     .dateline {
       font-family: var(--meta);
       font-size: 0.75rem;
@@ -133,41 +141,32 @@
       margin-bottom: 1.5rem;
     }
 
-    .lede {
-      font-size: 1.125rem;
-      font-weight: 500;
-      line-height: 1.45;
-      letter-spacing: -0.012em;
-      margin-bottom: 1.25rem;
-    }
-
     .intro {
       font-size: 0.9375rem;
       line-height: 1.6;
       color: var(--ink-soft);
     }
+    .intro + .intro { margin-top: 0.875rem; }
 
     /* ── Right column ── */
     .col-main {
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
+      gap: 4rem;
     }
 
     .section-label {
-      font-family: var(--meta);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.125rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
     }
 
     .entries {
       display: flex;
       flex-direction: column;
-      gap: 1.375rem;
+      gap: 1.75rem;
     }
 
     .entry-title {
@@ -193,6 +192,11 @@
       max-width: 42rem;
     }
 
+    /* The main job: one step up in size from the entries around it. */
+    .entry-lead .entry-title { font-size: 1.25rem; line-height: 1.25; }
+    .entry-lead .entry-role { margin-top: 0.3125rem; }
+    .entry-lead .entry-body { font-size: 1rem; line-height: 1.6; margin-top: 0.625rem; }
+
     .entry-link {
       font-family: var(--meta);
       font-size: 0.75rem;
@@ -205,6 +209,43 @@
     }
     .entry-link:hover { background-size: 100% 1px; }
     .entry-link::after { content: " \2192"; }
+    .entry-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem 1.5rem;
+      margin-top: 0.75rem;
+    }
+
+    /* ── Video dialog: the page's paper as the scrim, no box around the frame. ── */
+    .video {
+      width: min(100% - 2rem, 60rem, (100vh - 7rem) * 16 / 9);
+      max-width: none;
+      margin: auto;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--ink);
+      overflow: visible;
+    }
+    .video::backdrop { background: var(--paper); opacity: 0.94; }
+    .video-close {
+      display: block;
+      margin: 0 0 0.75rem auto;
+      padding: 0;
+      border: 0;
+      background: none;
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: color 0.2s ease-out;
+    }
+    .video-close:hover { color: var(--accent); }
+    .video-frame { aspect-ratio: 16 / 9; }
+    .video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
 
     .prose {
       font-size: 0.9375rem;
@@ -253,13 +294,13 @@
     "Greg A. Maly"
   ],
   "url": "https://www.gregorymaly.com/",
-  "image": "https://www.gregorymaly.com/icons/og-card.png",
-  "description": "I build and run technology teams and platforms for organizations working in the public interest.",
+  "image": "https://www.gregorymaly.com/icons/greg-maly.jpg",
+  "description": "I build data systems for people who need evidence to hold up: editors, policymakers, and courts.",
   "jobTitle": [
-    "Lead Architect",
     "AI & Data Science Editor",
+    "Lead Architect",
     "Advisor",
-    "Adjunct Faculty"
+    "Adjunct Lecturer"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -270,13 +311,13 @@
   "worksFor": [
     {
       "@type": "Organization",
-      "name": "The Technology Policy Data Project",
-      "url": "https://www.digitalharmstracker.org/"
+      "name": "The Outlaw Ocean Project",
+      "url": "https://theoutlawocean.com/"
     },
     {
       "@type": "Organization",
-      "name": "The Outlaw Ocean Project",
-      "url": "https://theoutlawocean.com/"
+      "name": "The Technology Policy Data Project",
+      "url": "https://www.digitalharmstracker.org/"
     },
     {
       "@type": "GovernmentOrganization",
@@ -326,10 +367,13 @@
   <main class="page">
 
     <header class="col-rail">
+      <img class="portrait" src="icons/greg-maly.jpg" alt="Greg Maly" width="800" height="800">
       <p class="dateline">Takoma Park, Maryland</p>
       <h1 class="name">Greg Maly</h1>
-      <p class="lede">I build and run technology teams and platforms for organizations working in the public interest.</p>
-      <p class="intro">I do that for people solving hard problems in government, civil society, academia, and the private sector. The work has been the same across all of them, in conflict analysis, global health, development, and ocean crime: take evidence that is scattered and contested and turn it into something a policymaker, an editor, or a court can rely on. My background runs across policy, diplomacy, and technology.</p>
+      <p class="intro">I am the AI &amp; Data Science Editor at The Outlaw Ocean Project, where I lead the back-end and machine learning work for <a href="https://baittoplate.theoutlawocean.com/">Bait to Plate</a>, a database that traces seafood from fishing vessel to retail shelf and links more than a million entities across 113 countries to documented crimes and labor abuses. It launched in October 2026 with the Project&rsquo;s <a href="https://foodforfeed.theoutlawocean.com/">Food for Feed</a> investigation.</p>
+      <p class="intro">Before journalism, I worked on the same problem in other fields. I was an early member of the State Department&rsquo;s Office of Advanced Analytics in the Bureau of Conflict and Stabilization Operations, built machine learning disease forecasts for FEWS NET, and founded the Data Science and Digital Products team at <a href="https://www.dai.com/">DAI Global</a>, which I grew to 15 people serving programs in more than 80 countries. I co-founded Exchange.Design and served as its CTO.</p>
+      <p class="intro">I also maintain the Digital Harms Tracker as part of the Technology Policy Data Project, which connects reported harms from digital products to the bills and lawsuits that bear on them, and have spoken on technology and society at Google, the World Bank, and PeaceCon. I am an advisor at the U.S. Treasury&rsquo;s Office of Technical Assistance, teach at the University of Maryland&rsquo;s College of Information, and sit on the Maryland Responsible AI Council. I write at <a href="https://gregmaly.substack.com/">gregmaly.substack.com</a>.</p>
+      <p class="intro">I spent the early part of my career playing music professionally.</p>
     </header>
 
     <div class="col-main">
@@ -338,27 +382,42 @@
         <h2 class="section-label">Now</h2>
         <div class="entries">
 
-          <article>
+          <article class="entry-lead">
             <h3 class="entry-title"><a href="https://theoutlawocean.com/">The Outlaw Ocean Project</a></h3>
             <p class="entry-role">AI &amp; Data Science Editor</p>
-            <p class="entry-body">Back end infrastructure and machine learning engineering for Bait to Plate, a seafood supply chain accountability database tracking more than a million entities across 113 countries &mdash; ships, manning agencies, aquaculture farms, brands &mdash; linked to documented crimes and labor abuses. Publication fall 2026. <a class="entry-link" href="work/bait-to-plate/">Case study</a></p>
+            <p class="entry-body">Leading the integration of data science into investigative journalism, and the back-end and machine learning work for <a href="https://baittoplate.theoutlawocean.com/">Bait to Plate</a>, which covers ships, manning agencies, aquaculture farms, and brands. Launched October 2026 with <a href="https://foodforfeed.theoutlawocean.com/">Food for Feed</a>. It is a complicated moment to bring machine learning into a newsroom. The tools are useful. The work is building data pipelines that meet the high bar investigative reporting sets for evidence.</p>
+            <p class="entry-links"><a class="entry-link" href="https://www.youtube.com/watch?v=RCcJjUj0CJE" data-video="RCcJjUj0CJE">Watch video</a> <a class="entry-link" href="work/bait-to-plate/">Case study</a></p>
+          </article>
+
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-label">Advisory &amp; other work</h2>
+        <div class="entries">
+
+          <article>
+            <h3 class="entry-title">University of Maryland, College of Information</h3>
+            <p class="entry-role">Adjunct Lecturer</p>
+            <p class="entry-body">Teaching Data Engineering Methods and Data Preparation for Analytics to master&rsquo;s and undergraduate students.</p>
           </article>
 
           <article>
-            <h3 class="entry-title"><a href="https://www.digitalharmstracker.org/">The Technology Policy Data Project</a></h3>
-            <p class="entry-role">Lead Architect, Independent Project</p>
-            <p class="entry-body">A research platform connecting incidents where a person was reportedly harmed through interaction with a digital product to the legislation and litigation that bears on them, with ties built across five dimensions. Includes a bill comparison tool covering more than 14,000 bills from all 50 states, so a drafter can enter their own text and see what already exists.</p>
+            <h3 class="entry-title">Maryland Responsible AI Council</h3>
+            <p class="entry-role">Member</p>
+            <p class="entry-body">Advising on AI legislation and reviewing the technical sections of bills.</p>
           </article>
 
           <article>
             <h3 class="entry-title">U.S. Department of the Treasury</h3>
             <p class="entry-role">Advisor, Office of Technical Assistance</p>
-            <p class="entry-body">Technology advisory for the department, and implementation with international counterparts.</p>
+            <p class="entry-body">Intermittent technology advisory for the department, and implementation with international counterparts.</p>
           </article>
 
           <article>
-            <h3 class="entry-title">University of Maryland, College of Information</h3>
-            <p class="entry-role">Adjunct Faculty</p>
+            <h3 class="entry-title"><a href="https://www.digitalharmstracker.org/">The Technology Policy Data Project</a></h3>
+            <p class="entry-role">Lead Architect, Independent Project</p>
+            <p class="entry-body">Built the Digital Harms Tracker, a research platform connecting reported harms from digital products to the bills and lawsuits that bear on them, with ties built across five dimensions. Includes a bill comparison tool covering more than 14,000 bills from all 50 states, so a drafter can enter their own text and see what already exists.</p>
           </article>
 
         </div>
@@ -369,7 +428,7 @@
         <div class="entries">
 
           <article>
-            <h3 class="entry-title">DAI Global</h3>
+            <h3 class="entry-title"><a href="https://www.dai.com/">DAI Global</a></h3>
             <p class="entry-role">Associate Director, Data Science &amp; Digital Products</p>
             <p class="entry-body">Founded the Data Science and Digital Products team at the Center for Digital Acceleration and grew it to 15 people serving every business unit across 80-plus countries, running six enterprise applications for thousands of users. Portfolio included USAID Digital Frontiers, the agency&rsquo;s $90M flagship digital program.</p>
           </article>
@@ -380,7 +439,7 @@
             <p class="entry-body">Grew the firm past $1 million in revenue in 18 months, helping mission-driven organizations adopt AI and data science methods. Departed early 2026.</p>
           </article>
 
-          <p class="prose"><strong>Earlier</strong> &mdash; Conflict data analyst, U.S. Department of State. Data science advisor, UN Foundation Data2X. Taught at the Department of State and the U.S. Institute of Peace.</p>
+          <p class="prose"><strong>Earlier</strong> &mdash; Early member of the State Department&rsquo;s Office of Advanced Analytics, in the Bureau of Conflict and Stabilization Operations. Data science advisor, UN Foundation Data2X. Taught at the Department of State and the U.S. Institute of Peace.</p>
 
         </div>
       </section>
@@ -392,7 +451,7 @@
 
       <section>
         <h2 class="section-label">Elsewhere</h2>
-        <p class="prose">Member of the Maryland Responsible AI Council. Talks at Google New York, the World Bank, and PeaceCon. Writing at <a href="https://gregmaly.substack.com/">gregmaly.substack.com</a>. MA, Josef Korbel School, University of Denver. BA in Policy, Ethics &amp; Conflict, a self-designed major, St. Mary&rsquo;s College of Maryland.</p>
+        <p class="prose">Talks at Google New York, the World Bank, and PeaceCon. Writing at <a href="https://gregmaly.substack.com/">gregmaly.substack.com</a>. MA, Josef Korbel School, University of Denver. BA in Policy, Ethics &amp; Conflict, a self-designed major, St. Mary&rsquo;s College of Maryland.</p>
       </section>
 
     </div>
@@ -405,5 +464,31 @@
     </footer>
 
   </main>
+
+  <dialog class="video" id="video" aria-label="Bait to Plate video">
+    <form method="dialog"><button class="video-close">Close</button></form>
+    <div class="video-frame"></div>
+  </dialog>
+
+  <script>
+    /* The player loads on click and is removed on close, so audio stops and
+       YouTube is not contacted until asked. Without JS the link opens YouTube. */
+    (function () {
+      var link = document.querySelector('[data-video]');
+      var dialog = document.getElementById('video');
+      if (!link || !dialog || !dialog.showModal) return;
+      var frame = dialog.querySelector('.video-frame');
+
+      link.addEventListener('click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+        e.preventDefault();
+        frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + link.dataset.video +
+          '?autoplay=1&rel=0" title="Bait to Plate video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+        dialog.showModal();
+      });
+      dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+      dialog.addEventListener('close', function () { frame.innerHTML = ''; });
+    })();
+  </script>
 </body>
 </html>

@@ -9,3 +9,6 @@ Thumbs.db
 # Everything in the repo root is published, so keep drafts out.
 preview.html
 *.local.html
+
+# Full-size portrait source (8 MB). The published copy is icons/greg-maly.jpg.
+Greg Photo*.png

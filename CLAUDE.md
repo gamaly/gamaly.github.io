@@ -6,7 +6,7 @@ Personal website for Gregory Maly. Live at https://www.gregorymaly.com (also htt
 
 Static site, no build step. Each page is self-contained — its own HTML, CSS, and JS in one file, with the design tokens duplicated rather than shared. There is no stylesheet to import, so a change to the palette or type means editing every page.
 
-- `index.html` — the whole profile on one screen. ~330 words: dateline, name, one-line lede, an intro paragraph, then Now / Before / Selected builds / Elsewhere, and a footer of links. No JS at all.
+- `index.html` — the whole profile on one screen. Dateline, name, then the first-person bio in the left rail as `.intro` paragraphs (the one-line lede was removed from the page; it survives only in the meta description, social tags, and `og-card.png`), then Now / Before / Selected builds / Elsewhere, and a footer of links. The only JS is a short inline script that opens the Bait to Plate YouTube video in a native `<dialog>` (`.video`); the player is injected on click and removed on close, and the link falls back to YouTube without JS.
 - `card/index.html` — contact card at `/card/`. Renders a vCard QR from a hardcoded `VCARD` array; the only runtime dependency is `qrcode-generator` from jsDelivr.
 - `work/bait-to-plate/index.html` — case study. Wide page (`72rem`) with text held to a `40rem` column, full-width figures, and a Google Drive video embed. Screenshots live in `work/bait-to-plate/images/`.
 
@@ -45,7 +45,7 @@ One typeface does everything, so hierarchy lives in **weight, size, and case**:
 - `--rule: #D6D4CC` — the hero separator glyph, the scrolled-masthead hairline, and resting link underlines; it no longer draws dividers
 - `--accent: #26418F` — active labels, section numbers, link underlines, hover states
 
-**Dark mode** (`index.html` only, so far): the same paper/ink relationship inverted, declared as token overrides inside `@media (prefers-color-scheme: dark)` — never as new rules. `--paper: #121211`, `--ink: #F4F3EF`, `--ink-soft: #C9C7C0`, `--ink-mute: #928F87`, `--rule: #3B3A36`, and `--accent: #8AA4EE`, because `#26418F` is unreadable on a dark ground. `:root` carries `color-scheme: light dark`, and `theme-color` is declared twice with `media` attributes. Every pairing clears WCAG AA; re-check if you touch a token. There is no toggle — the page follows the OS, and a manual switch would mean adding the first JS on the page.
+**Dark mode** (`index.html` only, so far): the same paper/ink relationship inverted, declared as token overrides inside `@media (prefers-color-scheme: dark)` — never as new rules. `--paper: #121211`, `--ink: #F4F3EF`, `--ink-soft: #C9C7C0`, `--ink-mute: #928F87`, `--rule: #3B3A36`, and `--accent: #8AA4EE`, because `#26418F` is unreadable on a dark ground. `:root` carries `color-scheme: light dark`, and `theme-color` is declared twice with `media` attributes. Every pairing clears WCAG AA; re-check if you touch a token. There is no toggle — the page follows the OS, and a manual switch would mean more JS and stored state.
 
 `work/bait-to-plate/index.html` is still light-only. Anyone adding dark mode there has the figures to think about: `.fig-dark` screenshots sit on a dark ground that will need to hold up against a dark page.
 
@@ -58,8 +58,11 @@ Keep the token list honest: unused custom properties were removed once the rules
 `index.html` (compact profile):
 
 - `.page` — the whole frame. Caps at `68rem`; a single column below `60rem`, then a `21rem 1fr` grid above it: left rail (dateline, name, lede, intro) and right column of sections.
-- `.dateline` / `.section-label` / `.entry-role` / `.entry-link` / `.footer` — the metadata register: uppercase `0.75rem`, `letter-spacing: 0.1em`. Labels are accent; dateline and roles are `--ink-mute`.
+- `.portrait` — the black-and-white headshot at the top of the rail, `7.5rem` and round. It is the one deliberate exception to the no-border-radius rule; no border or shadow.
+- `.section-label` — section headings (Now, Before, …) at `1.5rem`/800 in ink. They were small uppercase accent labels until the page got longer and the sections stopped reading as separate; sections sit `4rem` apart.
+- `.dateline` / `.entry-role` / `.entry-link` / `.footer` — the metadata register: uppercase `0.75rem`, `letter-spacing: 0.1em`. Links are accent; dateline and roles are `--ink-mute`.
 - `.entries` / `.entry-title` + `.entry-role` + `.entry-body` — one job or engagement per `<article>`, stacked at `gap: 1.375rem`.
+- `.entry-lead` — the main job (The Outlaw Ocean Project), alone under "Now" and one step larger. Everything else current sits under "Advisory & other work" at the normal entry size; keep that split.
 - `.prose` — running copy inside a section, held to `42rem`. `.prose strong` is the lead-in ("Earlier — ").
 - `.entry-link` — uppercase accent link with a trailing arrow (a CSS `::after`, not an SVG).
 
@@ -73,7 +76,9 @@ Under 450ms with `ease-out`, behind a `prefers-reduced-motion` guard. `index.htm
 
 `icons/` holds a generated QR-mark used as favicon, apple-touch-icon, and PWA icon (32/180/192/512), plus `og-card.png` — the 1200×630 social preview, rendered from Libre Franklin in the site palette. Regenerate it if the name or lede changes, or link previews go stale. `card/manifest.webmanifest` and `card/sw.js` make `/card/` installable and offline-capable; **bump `CACHE` in `sw.js` whenever the card page changes**, or installed phones keep serving the old copy.
 
-Give every `<img>` explicit `width`/`height` plus `loading="lazy"`, so figures reserve their space before decoding. Dark UI screenshots take `.fig-dark`; near-square ones also take `.fig-tall`, which caps them at `44rem` so they don't tower.
+`icons/greg-maly.jpg` is the 800px portrait, downsized from a full-size PNG that is gitignored; it is also the `image` on the `Person` node.
+
+Give every `<img>` explicit `width`/`height` plus `loading="lazy"`, so figures reserve their space before decoding. The portrait is the exception on `loading`: it is the first thing on the page, so it loads eagerly. Dark UI screenshots take `.fig-dark`; near-square ones also take `.fig-tall`, which caps them at `44rem` so they don't tower.
 
 ## SEO
 

@@ -1,5 +1,5 @@
 /* Offline support for the contact card. Bump CACHE when the page changes. */
-var CACHE = "card-v3";
+var CACHE = "card-v4";
 var ASSETS = [
   '/card/',
   '/card/index.html',
