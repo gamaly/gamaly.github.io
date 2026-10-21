@@ -253,6 +253,35 @@
       color: var(--ink-soft);
       max-width: 42rem;
     }
+    /* Substack posts: title, then the date in the metadata register. */
+    .writing {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 42rem;
+    }
+    .writing li {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.125rem 0.75rem;
+    }
+    .writing a {
+      font-weight: 700;
+      letter-spacing: -0.022em;
+      line-height: 1.35;
+    }
+    .writing time {
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      white-space: nowrap;
+    }
+
     .prose strong {
       font-weight: 700;
       letter-spacing: -0.022em;
@@ -298,7 +327,7 @@
   "description": "I build data systems for people who need evidence to hold up: editors, policymakers, and courts.",
   "jobTitle": [
     "AI & Data Science Editor",
-    "Lead Architect",
+    "Advisor",
     "Adjunct Lecturer"
   ],
   "address": {
@@ -314,9 +343,8 @@
       "url": "https://theoutlawocean.com/"
     },
     {
-      "@type": "Organization",
-      "name": "The Technology Policy Data Project",
-      "url": "https://www.digitalharmstracker.org/"
+      "@type": "GovernmentOrganization",
+      "name": "U.S. Department of the Treasury, Office of Technical Assistance"
     },
     {
       "@type": "CollegeOrUniversity",
@@ -367,8 +395,7 @@
       <h1 class="name">Greg Maly</h1>
       <p class="intro">I am the AI &amp; Data Science Editor at The Outlaw Ocean Project, where I architected much of the data infrastructure and the machine learning and natural language processing pipelines behind <a href="https://baittoplate.theoutlawocean.com/">Bait to Plate</a>, a database that traces seafood from fishing vessel to retail shelf and links hundreds of thousands of entities across more than 100 countries to documented crimes and labor abuses. It launched in October 2026 with the Project&rsquo;s <a href="https://foodforfeed.theoutlawocean.com/">Food for Feed</a> investigation and was featured in <a href="https://www.nytimes.com/interactive/2026/10/08/magazine/farm-raised-fish-aquaculture-overfishing.html">The New York Times Magazine</a>.</p>
       <p class="intro">Before journalism, I worked on the same problem in other fields. I was an early member of the State Department&rsquo;s Office of Advanced Analytics in the Bureau of Conflict and Stabilization Operations, built machine learning disease forecasts for the Famine Early Warning Systems Network (FEWS NET), and founded the Data Science and Digital Products team at <a href="https://www.dai.com/">DAI Global</a>, which I grew to 15 people serving programs in more than 80 countries. I co-founded Exchange.Design and served as its CTO.</p>
-      <p class="intro">I also maintain the Digital Harms Tracker as part of the Technology Policy Data Project, which connects reported harms from digital products to the bills and lawsuits that bear on them, and have spoken on technology and society at Google, the World Bank, PeaceCon, Johns Hopkins University, and George Washington University. I teach at the University of Maryland&rsquo;s College of Information and sit on the Maryland Responsible AI Council. I write at <a href="https://gregmaly.substack.com/">gregmaly.substack.com</a>.</p>
-      <p class="intro">I spent the early part of my career playing music professionally.</p>
+      <p class="intro">I have spoken on technology and society at Google, the World Bank, PeaceCon, Johns Hopkins University, and George Washington University. I am an intermittent advisor at the U.S. Treasury&rsquo;s Office of Technical Assistance, teach at the University of Maryland&rsquo;s College of Information, and sit on the Maryland Responsible AI Council. As a personal project, I maintain the Technology Policy Data Project, which connects reported incidents involving digital products to the bills and lawsuits that bear on them. I write at <a href="https://gregmaly.substack.com/">gregmaly.substack.com</a>.</p>
     </header>
 
     <div class="col-main">
@@ -404,9 +431,9 @@
           </article>
 
           <article>
-            <h3 class="entry-title"><a href="https://www.digitalharmstracker.org/">The Technology Policy Data Project</a></h3>
-            <p class="entry-role">Lead Architect, Independent Project</p>
-            <p class="entry-body">Built the Digital Harms Tracker, a research platform connecting reported harms from digital products to the bills and lawsuits that bear on them, with ties built across five dimensions. Includes a bill comparison tool covering more than 14,000 bills from all 50 states, so a drafter can enter their own text and see what already exists.</p>
+            <h3 class="entry-title">U.S. Department of the Treasury</h3>
+            <p class="entry-role">Advisor, Office of Technical Assistance</p>
+            <p class="entry-body">Intermittent technology advisory for the department, and implementation with international counterparts.</p>
           </article>
 
         </div>
@@ -441,12 +468,24 @@
 
       <section>
         <h2 class="section-label">Selected builds</h2>
-        <p class="prose"><a href="https://www.development-commons.org/">USAID Knowledge Rescue</a>, a retrieval system over 150,000 documents from USAID&rsquo;s public archive, built after the collection went offline. EvidenceBase.ai, an evidence tool used by more than 50 nonprofits. Machine learning disease forecasts for Mozambique and Somalia under the <a href="https://fews.net/">Famine Early Warning Systems Network</a> (FEWS NET), one of the longest-running humanitarian early warning systems, operating since 1985.</p>
+        <p class="prose"><a href="https://www.digitalharmstracker.org/">The Technology Policy Data Project</a>, a personal project: a research platform connecting reported incidents involving digital products to the bills and lawsuits that bear on them, with a bill comparison tool covering more than 14,000 bills from all 50 states. <a href="https://www.guitarstory.info/">Guitar Story</a>, another personal project, tracing who has owned guitar brands over time, where their instruments were built, and where the wood comes from. <a href="https://www.development-commons.org/">USAID Knowledge Rescue</a>, a retrieval system over 150,000 documents from USAID&rsquo;s public archive, built after the collection went offline. EvidenceBase.ai, an evidence tool used by more than 50 nonprofits. Machine learning disease forecasts for Mozambique and Somalia under the <a href="https://fews.net/">Famine Early Warning Systems Network</a> (FEWS NET), one of the longest-running humanitarian early warning systems, operating since 1985.</p>
+      </section>
+
+      <section>
+        <h2 class="section-label">Recent writing</h2>
+        <ul class="writing">
+          <li><a href="https://gregmaly.substack.com/p/the-work-before-the-chatbot">The Work Before the Chatbot</a> <time datetime="2026-10-20">Oct 20, 2026</time></li>
+          <li><a href="https://gregmaly.substack.com/p/what-it-takes-to-follow-a-fish">What It Takes to Follow a Fish</a> <time datetime="2026-10-12">Oct 12, 2026</time></li>
+          <li><a href="https://gregmaly.substack.com/p/a-resource-for-the-people-who-design-technology-rules">A Resource for the People Who Have to Design Technology&rsquo;s Rules</a> <time datetime="2026-09-16">Sep 16, 2026</time></li>
+          <li><a href="https://gregmaly.substack.com/p/in-praise-of-boring-ai">In Praise of Boring AI</a> <time datetime="2026-06-25">Jun 25, 2026</time></li>
+          <li><a href="https://gregmaly.substack.com/p/what-happens-when-anyone-can-build">What Happens When Anyone Can Build?</a> <time datetime="2026-05-27">May 27, 2026</time></li>
+        </ul>
+        <p class="entry-links"><a class="entry-link" href="https://gregmaly.substack.com/">All posts on Substack</a></p>
       </section>
 
       <section>
         <h2 class="section-label">Elsewhere</h2>
-        <p class="prose">Talks at Google New York, the World Bank, PeaceCon at George Mason University, and Johns Hopkins University, and guest lectures in courses at George Washington University. Writing at <a href="https://gregmaly.substack.com/">gregmaly.substack.com</a>. MA, Josef Korbel School, University of Denver. BA in Policy, Ethics &amp; Conflict, a self-designed major, St. Mary&rsquo;s College of Maryland.</p>
+        <p class="prose">Talks at Google New York, the World Bank, PeaceCon at George Mason University, and Johns Hopkins University, and guest lectures in courses at George Washington University. MA, Josef Korbel School, University of Denver. BA in Policy, Ethics &amp; Conflict, a self-designed major, St. Mary&rsquo;s College of Maryland.</p>
       </section>
 
     </div>
