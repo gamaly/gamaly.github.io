@@ -267,7 +267,7 @@
       align-items: baseline;
       gap: 0.125rem 0.75rem;
     }
-    .writing a {
+    .writing li > :first-child {
       font-weight: 700;
       letter-spacing: -0.022em;
       line-height: 1.35;
@@ -280,6 +280,16 @@
       text-transform: uppercase;
       color: var(--ink-mute);
       white-space: nowrap;
+    }
+
+    /* Selected builds: name on one line, what it is underneath. */
+    .builds-list li { display: block; }
+    .builds-list .desc {
+      display: block;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      margin-top: 0.125rem;
     }
 
     .prose strong {
@@ -468,7 +478,15 @@
 
       <section>
         <h2 class="section-label">Selected builds</h2>
-        <p class="prose"><a href="https://www.digitalharmstracker.org/">The Technology Policy Data Project</a>, a personal project: a research platform connecting reported incidents involving digital products to the bills and lawsuits that bear on them, with a bill comparison tool covering more than 14,000 bills from all 50 states. <a href="https://www.guitarstory.info/">Guitar Story</a>, another personal project, tracing who has owned guitar brands over time, where their instruments were built, and where the wood comes from. <a href="https://www.development-commons.org/">USAID Knowledge Rescue</a>, a retrieval system over 150,000 documents from USAID&rsquo;s public archive, built after the collection went offline. EvidenceBase.ai, an evidence tool used by more than 50 nonprofits. Machine learning disease forecasts for Mozambique and Somalia under the <a href="https://fews.net/">Famine Early Warning Systems Network</a> (FEWS NET), one of the longest-running humanitarian early warning systems, operating since 1985.</p>
+        <ul class="writing builds-list">
+          <li><a href="https://www.digitalharmstracker.org/">The Technology Policy Data Project</a> <span class="desc">Connects real-world events involving digital products to the laws and court cases that follow.</span></li>
+          <li><a href="https://www.lineage.international/">Lineage</a> <span class="desc">A knowledge graph of U.S. foreign assistance, built from 125,000 USAID documents.</span></li>
+          <li><a href="https://www.guitarstory.info/">Guitar Story</a> <span class="desc">Who owned each guitar brand, which plant built it, and where the wood came from.</span></li>
+          <li><a href="https://www.development-commons.org/">USAID Knowledge Rescue</a> <span class="desc">Search across 150,000 USAID documents, rescued after the archive went offline.</span></li>
+          <li><span>EvidenceBase.ai</span> <span class="desc">An evidence tool used by more than 50 nonprofits.</span></li>
+          <li><span>Disease forecasts for FEWS NET</span> <span class="desc">Machine learning disease forecasts for Mozambique and Somalia.</span></li>
+        </ul>
+        <p class="entry-links"><a class="entry-link" href="work/">Portfolio with screenshots</a></p>
       </section>
 
       <section>

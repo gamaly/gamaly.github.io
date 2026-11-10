@@ -8,6 +8,7 @@ Static site, no build step. Each page is self-contained — its own HTML, CSS, a
 
 - `index.html` — the whole profile on one screen. Dateline, name, then the first-person bio in the left rail as `.intro` paragraphs (the one-line lede was removed from the page; it survives only in the meta description, social tags, and `og-card.png`), then Now / Advisory, teaching & other work / Before / Selected builds / Recent writing / Elsewhere, and a footer of links. Recent writing (`.writing`) is a hand-kept list of Substack posts, newest first; add new posts at the top. The only JS is a short inline script that opens the Bait to Plate YouTube video in a native `<dialog>` (`.video`); the player is injected on click and removed on close, and the link falls back to YouTube without JS.
 - `card/index.html` — contact card at `/card/`. Renders a vCard QR from a hardcoded `VCARD` array; the only runtime dependency is `qrcode-generator` from jsDelivr.
+- `work/index.html` — portfolio at `/work/`, linked from the front page's Selected builds list. One `<article class="build">` per tool: a screenshot (`work/images/*.jpg`, 1280×800 captures of the live site) beside a kicker, title, short write-up, optional `.stats`, and links. Builds with no public site go under "Also" as text. Follows the OS colour scheme like the front page. Re-capture a screenshot when a site's home page changes noticeably.
 - `work/bait-to-plate/index.html` — case study. Wide page (`72rem`) with text held to a `40rem` column, full-width figures, and a Google Drive video embed. Screenshots live in `work/bait-to-plate/images/`.
 
 Everything in the repo is published as-is, including files nothing links to. Keep drafts and scratch out of the tree — `.gitignore` covers `preview.html` and `*.local.html`.
@@ -87,7 +88,7 @@ Absolute URLs everywhere: canonical, `og:url`, `og:image`, sitemap. The site ans
 - Each indexed page carries `<link rel="canonical">`, an OG block with the shared `icons/og-card.png`, and `twitter:card = summary_large_image`.
 - `index.html` holds one `Person` node in JSON-LD, `@id` = `https://www.gregorymaly.com/#greg-maly`. The case study's `Article` node references that `@id` as its author rather than restating the person — keep it that way so the two pages resolve to one entity.
 - `alternateName` carries "Gregory Maly" so the formal spelling (and the domain) still resolves to the same person as the displayed "Greg Maly".
-- `robots.txt` points at `sitemap.xml`; the sitemap lists only the two public pages. Bump `lastmod` on real content changes.
+- `robots.txt` points at `sitemap.xml`; the sitemap lists the three public pages (front page, `/work/`, the case study). Bump `lastmod` on real content changes.
 - Do not chase broad executive/recruiting queries — those SERPs belong to LinkedIn and job boards. The page is built to win the name and specific long-tail work queries.
 
 ## Privacy notes

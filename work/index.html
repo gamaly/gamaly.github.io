@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selected builds &middot; Greg Maly</title>
+  <meta name="description" content="Databases and research tools built by Greg Maly: Bait to Plate, the Technology Policy Data Project, Lineage, Guitar Story, and USAID Knowledge Rescue.">
+  <meta name="author" content="Greg Maly">
+  <link rel="canonical" href="https://www.gregorymaly.com/work/">
+  <meta property="og:title" content="Selected builds &middot; Greg Maly">
+  <meta property="og:description" content="Databases and research tools built at work and on my own time.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.gregorymaly.com/work/">
+  <meta property="og:site_name" content="Greg Maly">
+  <meta property="og:image" content="https://www.gregorymaly.com/icons/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper: #FFFFFF;
+      --ink: #0E0E0C;
+      --ink-soft: #3A3A36;
+      --ink-mute: #75736C;
+      --rule: #D6D4CC;
+      --accent: #26418F;
+
+      --display: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --meta: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+      color-scheme: light dark;
+    }
+
+    /* Dark: same tokens as the front page. */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #121211;
+        --ink: #F4F3EF;
+        --ink-soft: #C9C7C0;
+        --ink-mute: #928F87;
+        --rule: #3B3A36;
+        --accent: #8AA4EE;
+      }
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: 1rem;
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+      animation: settle 0.45s ease-out both;
+    }
+
+    ::selection { background: var(--ink); color: var(--paper); }
+
+    @keyframes settle {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      padding-bottom: 1px;
+      background-image: linear-gradient(var(--accent), var(--accent));
+      background-repeat: no-repeat;
+      background-position: 0 100%;
+      background-size: 100% 1px;
+      transition: color 0.2s ease-out, background-size 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
+    }
+    a:hover { color: var(--accent); }
+
+    .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── Masthead ── */
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding-top: 1.25rem;
+    }
+    .nav-logo {
+      font-weight: 800;
+      font-size: 1.0625rem;
+      letter-spacing: -0.025em;
+      background: none;
+    }
+    .nav-back {
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      background: none;
+    }
+
+    /* ── Opening ── */
+    .opening { padding-block: 4.5rem 4rem; }
+    .kicker {
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 1.25rem;
+    }
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+    }
+    .standfirst {
+      font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+      line-height: 1.5;
+      color: var(--ink-soft);
+      max-width: 34rem;
+    }
+
+    /* ── Builds: screenshot beside the write-up, whitespace between ── */
+    .builds { display: flex; flex-direction: column; gap: 5.5rem; padding-bottom: 5rem; }
+
+    .build { display: grid; grid-template-columns: 1fr; gap: 1.75rem; }
+    @media (min-width: 56rem) {
+      .build { grid-template-columns: 7fr 5fr; gap: 3.5rem; align-items: start; }
+    }
+
+    .shot { display: block; background: none; padding: 0; }
+    .shot img { display: block; width: 100%; height: auto; transition: opacity 0.2s ease-out; }
+    .shot:hover img { opacity: 0.88; }
+
+    .build h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.875rem;
+    }
+    .build-body { font-size: 0.9375rem; line-height: 1.6; color: var(--ink-soft); }
+    .build-body + .build-body { margin-top: 0.75rem; }
+
+    .stats {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.75rem;
+      margin-top: 1.5rem;
+    }
+    .stat-value {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .stat-label {
+      display: block;
+      font-family: var(--meta);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-top: 0.375rem;
+    }
+
+    .links { display: flex; flex-wrap: wrap; gap: 0.375rem 1.5rem; margin-top: 1.5rem; }
+    .link {
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background-size: 0% 1px;
+      white-space: nowrap;
+    }
+    .link:hover { background-size: 100% 1px; }
+    .link::after { content: " \2192"; }
+
+    /* ── Builds without a public site ── */
+    .also { padding-bottom: 5rem; }
+    .also > * { max-width: 42rem; }
+    .also h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .also ul { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+    .also-title { font-weight: 700; letter-spacing: -0.022em; }
+    .also-body { font-size: 0.9375rem; color: var(--ink-soft); margin-top: 0.25rem; }
+
+    footer {
+      padding: 0 0 3.5rem;
+      font-family: var(--meta);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+    }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
+    footer a { color: var(--ink-soft); background-image: linear-gradient(var(--rule), var(--rule)); }
+    footer a:hover { color: var(--accent); background-image: linear-gradient(var(--accent), var(--accent)); }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Selected builds",
+  "url": "https://www.gregorymaly.com/work/",
+  "author": { "@id": "https://www.gregorymaly.com/#greg-maly" },
+  "hasPart": [
+    { "@type": "WebSite", "name": "Bait to Plate", "url": "https://baittoplate.theoutlawocean.com/" },
+    { "@type": "WebSite", "name": "The Technology Policy Data Project", "url": "https://www.digitalharmstracker.org/" },
+    { "@type": "WebSite", "name": "Lineage", "url": "https://www.lineage.international/" },
+    { "@type": "WebSite", "name": "Guitar Story", "url": "https://www.guitarstory.info/" },
+    { "@type": "WebSite", "name": "USAID Knowledge Rescue", "url": "https://www.development-commons.org/" }
+  ]
+}
+  </script>
+</head>
+<body>
+
+  <header class="wrap masthead">
+    <a href="../" class="nav-logo">Greg Maly</a>
+    <a href="../" class="nav-back">&larr; Back</a>
+  </header>
+
+  <main>
+    <div class="wrap opening">
+      <p class="kicker">Portfolio</p>
+      <h1>Selected builds</h1>
+      <p class="standfirst">Databases and research tools I have built, at work and on my own time.</p>
+    </div>
+
+    <div class="wrap builds">
+
+      <article class="build">
+        <a class="shot" href="https://baittoplate.theoutlawocean.com/"><img src="images/bait-to-plate.jpg" alt="Bait to Plate home page" width="1280" height="800"></a>
+        <div>
+          <p class="kicker">The Outlaw Ocean Project</p>
+          <h2>Bait to Plate</h2>
+          <p class="build-body">A database that traces seafood from fishing vessel to retail shelf, linking hundreds of thousands of entities across more than 100 countries to documented crimes and labor abuses.</p>
+          <p class="build-body">I architected much of the data infrastructure and the machine learning and NLP pipelines. It launched in October 2026 with the Food for Feed investigation and was featured in The New York Times Magazine.</p>
+          <p class="links">
+            <a class="link" href="https://baittoplate.theoutlawocean.com/">Visit</a>
+            <a class="link" href="bait-to-plate/">Case study</a>
+            <a class="link" href="https://www.youtube.com/watch?v=RCcJjUj0CJE">Video</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="build">
+        <a class="shot" href="https://www.digitalharmstracker.org/"><img src="images/tpdp.jpg" alt="The Technology Policy Data Project home page" width="1280" height="800" loading="lazy"></a>
+        <div>
+          <h2>The Technology Policy Data Project</h2>
+          <p class="build-body">A research platform that connects real-world events involving digital products to the governance that follows: the statutes, the court cases fought over them, and how a new draft compares to the thousands already written.</p>
+          <ul class="stats">
+            <li><span class="stat-value">15,000+</span><span class="stat-label">Bill texts</span></li>
+            <li><span class="stat-value">2,500+</span><span class="stat-label">Court cases</span></li>
+            <li><span class="stat-value">1,500</span><span class="stat-label">Documented events</span></li>
+          </ul>
+          <p class="links"><a class="link" href="https://www.digitalharmstracker.org/">Visit</a></p>
+        </div>
+      </article>
+
+      <article class="build">
+        <a class="shot" href="https://www.lineage.international/"><img src="images/lineage.jpg" alt="Lineage home page" width="1280" height="800" loading="lazy"></a>
+        <div>
+          <h2>Lineage</h2>
+          <p class="build-body">A knowledge graph of U.S. foreign assistance, built from more than 125,000 USAID documents: the programs, the organizations that ran them, the places they worked, and how one program led to the next. Every fact cites the page it came from.</p>
+          <p class="build-body">Independent; not affiliated with the U.S. Government or USAID.</p>
+          <ul class="stats">
+            <li><span class="stat-value">11,970</span><span class="stat-label">Programs</span></li>
+            <li><span class="stat-value">153</span><span class="stat-label">Countries</span></li>
+            <li><span class="stat-value">1955&ndash;2024</span><span class="stat-label">Years covered</span></li>
+          </ul>
+          <p class="links"><a class="link" href="https://www.lineage.international/">Visit</a></p>
+        </div>
+      </article>
+
+      <article class="build">
+        <a class="shot" href="https://www.guitarstory.info/"><img src="images/guitar-story.jpg" alt="Guitar Story home page" width="1280" height="800" loading="lazy"></a>
+        <div>
+          <h2>Guitar Story</h2>
+          <p class="build-body">A name on a headstock is not a maker. Guitar brands get sold, licensed and moved between factories, so the same brand in two different years can be two different guitars. Guitar Story traces who owned each brand over time, which plant built it, and where the wood comes from.</p>
+          <ul class="stats">
+            <li><span class="stat-value">82</span><span class="stat-label">Plants mapped</span></li>
+            <li><span class="stat-value">41</span><span class="stat-label">Outside the U.S.</span></li>
+          </ul>
+          <p class="links"><a class="link" href="https://www.guitarstory.info/">Visit</a></p>
+        </div>
+      </article>
+
+      <article class="build">
+        <a class="shot" href="https://www.development-commons.org/"><img src="images/knowledge-rescue.jpg" alt="The Development Knowledge Commons home page" width="1280" height="800" loading="lazy"></a>
+        <div>
+          <p class="kicker">The Development Knowledge Commons</p>
+          <h2>USAID Knowledge Rescue</h2>
+          <p class="build-body">A retrieval system over 150,000 documents from USAID&rsquo;s public archive, built after the collection went offline in 2025, so decades of analyses, evaluations and field reports stay searchable.</p>
+          <p class="links"><a class="link" href="https://www.development-commons.org/">Visit</a></p>
+        </div>
+      </article>
+
+    </div>
+
+    <section class="wrap also">
+      <h2>Also</h2>
+      <ul>
+        <li>
+          <p class="also-title">EvidenceBase.ai</p>
+          <p class="also-body">An evidence tool used by more than 50 nonprofits.</p>
+        </li>
+        <li>
+          <p class="also-title">Disease forecasts for FEWS NET</p>
+          <p class="also-body">Machine learning disease forecasts for Mozambique and Somalia under the <a href="https://fews.net/">Famine Early Warning Systems Network</a>, one of the longest-running humanitarian early warning systems, operating since 1985.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <a href="../">Greg Maly</a>
+      <a href="https://www.linkedin.com/in/gregmaly/">LinkedIn</a>
+      <a href="https://gregmaly.substack.com/">Substack</a>
+    </div>
+  </footer>
+
+</body>
+</html>
